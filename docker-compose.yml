@@ -1,0 +1,10 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: .
+    container_name: first_logistics
+    hostname: first_logistics
+    restart: always
+    ports:
+      - 6009:80

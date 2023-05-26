@@ -1,0 +1,1 @@
+export {InputFormController} from './inputFormController'

@@ -1,0 +1,1 @@
+export {Managment} from './Managment'

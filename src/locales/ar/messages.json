@@ -1,0 +1,13 @@
+{
+  "g.no.data": "Sem dados",
+  "g.no.answers": "Sem respostas",
+  "g.no.options": "Sem opções",
+  "registration.first.name": "First name",
+  "registration.last.name": "Last name",
+  "registration.email": "Email",
+  "registration.password": "Password",
+  "registration.sign.up": "Sign Up",
+  "registration.phonenumber": "Mobile Number ",
+  "promo.code.optional": "Promo Code (optional)",
+  "promo.code": "Promo Code"
+}
