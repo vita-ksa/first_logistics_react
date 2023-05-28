@@ -4,6 +4,7 @@ import localforage from 'localforage'
 import {authAPI, productAPI} from '../services/apis'
 import notificationReducer from 'pages/notification/notificationSlice'
 import modalReducer from 'components/modal/modalSlice'
+import localesReducers from 'locales/localesSlice'
 
 const authPersistConfig = {
   key: 'auth',
@@ -11,12 +12,21 @@ const authPersistConfig = {
   whiteList: ['entities'],
 }
 
+const localesPersistConfig = {
+  key: 'locales',
+  storage: localforage,
+  whiteList: ['lang'],
+}
+
+const localesPersistReducer = persistReducer(localesPersistConfig, localesReducers)
+
 const authPersistReducer = persistReducer(authPersistConfig, authAPI.authSlice.reducer)
 
 const reducers = combineReducers({
   auth: authPersistReducer,
   notification: notificationReducer,
   modal: modalReducer,
+  locales: localesPersistReducer,
   refreshToken: authAPI.refreshTokenSlice.reducer,
   register: authAPI.registerSlice.reducer,
   productList: productAPI.getProductListSlice.reducer,

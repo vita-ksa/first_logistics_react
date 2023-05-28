@@ -40,9 +40,9 @@ export const Login = () => {
 
   return (
     <form className='form w-100' noValidate id='kt_login_signin_form'>
-      <div className='text-start mb-11'>
+      <div className=' mb-11'>
         <h1 className='text-dark fw-bolder mb-3'>
-          <Trans i18nKey={'login.sign.in.to'} />
+          <Trans i18nKey={'signin.title'} />
         </h1>
       </div>
 

@@ -45,9 +45,11 @@ export const Dropdown = ({
 
   return (
     <>
-      <label className='form-label fs-6 fw-bold' {...getLabelProps()}>
-        <span className={`${required ? 'required' : ''}`}>{label}</span>
-      </label>
+      {label ? (
+        <label className='form-label fs-6 fw-bold' {...getLabelProps()}>
+          <span className={`${required ? 'required' : ''}`}>{label}</span>
+        </label>
+      ) : null}
       <div
         className='form-select  fw-bolder'
         data-kt-select2='true'
@@ -64,7 +66,7 @@ export const Dropdown = ({
       <MenuBody
         {...{isOpen}}
         {...getMenuProps()}
-        className='absolute w-72 p-0 bg-white shadow-md max-h-80 overflow-scroll'
+        className=' w-72 p-0 bg-white shadow-md max-h-80 overflow-scroll'
       >
         {isOpen &&
           items?.map((item: any, index: any) => (

@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import {UseControllerReturn} from 'react-hook-form'
 
 import {EyeOffSVG, EyeSVG} from './Theme'
+import {useSelector} from 'react-redux'
 interface InputProps {
   type: React.HTMLInputTypeAttribute
   name?: string | any
@@ -25,6 +26,7 @@ export const Input = ({
   ...rest
 }: UseControllerReturn & InputProps) => {
   const [showPassword, setShowPassword] = useState(false)
+  const {lang} = useSelector<any>((state) => state?.locales) as any
 
   switch (type) {
     case 'password': {
@@ -50,9 +52,18 @@ export const Input = ({
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? (
-                <EyeOffSVG color='gray' className='mx-6 svg-icon-1 position-absolute end-0' />
+                <EyeOffSVG
+                  color='gray'
+                  className={`mx-6 svg-icon-1 position-absolute ${
+                    lang === 'en' ? 'end-0' : 'left-0'
+                  }`}
+                />
               ) : (
-                <EyeSVG className='mx-6 svg-icon-1 position-absolute end-0' />
+                <EyeSVG
+                  className={`mx-6 svg-icon-1 position-absolute ${
+                    lang === 'en' ? 'end-0' : 'left-0'
+                  }`}
+                />
               )}
             </button>
           </div>

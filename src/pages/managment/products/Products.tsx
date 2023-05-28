@@ -1,43 +1,14 @@
 import React, {Fragment, useCallback} from 'react'
 import {Helmet} from 'react-helmet-async'
-import {Table} from 'components/table'
 import {useLocales, useNotification} from 'hooks'
 import {ReactComponent as UsersNoDataSVG} from 'assets/icons/default-small.svg'
-import styled from 'styled-components'
 import {SUCCESS_STATUS} from 'constants/auth'
 import {useDispatch, useSelector} from 'react-redux'
 import {productAPI} from 'services/apis'
 import {AddProductModal} from './addProductModal'
 import {toggleAction} from 'components/modal/modalSlice'
 import {PopoverMenu} from './popoverMenu'
-
-export const StyledTable = styled(Table)`
-  th:nth-last-child(2),
-  td:nth-last-child(2) {
-    width: auto !important;
-  }
-`
-
-const fackData = [
-  {
-    id: 1,
-    name: 'Product 1',
-    price: 1000,
-    sku: 'Product',
-    Price: '500',
-    currancy: 'SAR',
-    Barcode: 'BAR001',
-  },
-  {
-    id: 1,
-    name: 'Product 2',
-    price: 1000,
-    sku: 'Product2',
-    Price: '500',
-    currancy: 'SAR',
-    Barcode: 'BAR002',
-  },
-]
+import {StyledTable} from './Theme'
 
 export const Products = () => {
   const {Trans, trans} = useLocales()
@@ -65,12 +36,6 @@ export const Products = () => {
   }
 
   const columns = [
-    // {
-    //   Header: () => <Trans i18nKey={'products.list.id'}>ID</Trans>,
-    //   accessor: 'id',
-    //   // Cell: ({row}: any) => <></>,
-    //   disableSortBy: true,
-    // },
     {
       Header: () => <Trans i18nKey={'products.product.name'}>Product Name</Trans>,
       accessor: 'name',
@@ -154,7 +119,7 @@ export const Products = () => {
             exportData: false,
             reloadData,
           }}
-          title={trans('breadcrumb.dashboard')}
+          title={trans('breadcrumb.products')}
           searchPlaceholder={'g.search'}
           onClickAction={handelAddNewModal}
           searchInput
