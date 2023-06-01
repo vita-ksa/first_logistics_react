@@ -58,7 +58,6 @@ export const AddProductModal = ({type = 'add', id}: any) => {
   }
 
   const onSubmit = async (_data: any) => {
-    console.log(_data, '_data_data')
 
     if (type === 'add') {
       const formData = new FormData()

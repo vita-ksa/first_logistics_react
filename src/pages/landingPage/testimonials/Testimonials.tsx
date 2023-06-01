@@ -28,13 +28,11 @@ export const Testimonials = () => {
       <div className='absolute z-[0] w-[60%] h-[60%] -right-[50%] rounded-full blue__gradient bottom-40' />
 
       <div className='w-full flex justify-between items-center md:flex-row flex-col sm:mb-16 mb-6 relative z-[1]'>
-        <h2 className={styles.heading2}>
-          What People are <br className='sm:block hidden' /> saying about us
-        </h2>
-        <div className='w-full md:mt-0 mt-6'>
-          <p className={`${styles.paragraph} text-left max-w-[450px]`}>
-            Everything you need to accept card payments and grow your business anywhere on the
-            planet.
+        <h2 className={styles.heading2}>Ship with the best shipping companies</h2>
+        <div className='w-full mt-6 md:mt-0'>
+          <p className={`${styles.paragraph} text-white text-left max-w-[450px]`}>
+            Integrate and ship with +180 local and international carriers in one dashboard, you can
+            ship, track and manage the order until it is delivered to the customer.
           </p>
         </div>
       </div>
@@ -43,6 +41,17 @@ export const Testimonials = () => {
         {feedback.map((card) => (
           <FeedbackCard key={card.id} {...card} />
         ))}
+      </div>
+      <div className='w-full flex justify-between items-center md:flex-row flex-col sm:mb-16 mb-6 relative z-[1]'>
+        <h2 className={styles.heading2}>
+          Integrate with the best <br className='hidden sm:block' /> E-commerce platforms
+        </h2>
+        <div className='w-full mt-6 md:mt-0'>
+          <p className={`${styles.paragraph} text-white text-left max-w-[450px]`}>
+            Integrate your online store with OTO and ship your orders nationally and internationally
+            with 180+ carriers.
+          </p>
+        </div>
       </div>
     </section>
   )

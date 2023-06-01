@@ -1,7 +1,7 @@
 import {PageTitle} from '_metronic/layout/core'
 import {useLocales} from 'hooks'
 import React from 'react'
-import {Navigate, Outlet, Route, Routes, useLocation} from 'react-router-dom'
+import {Navigate, Outlet, Route, Routes} from 'react-router-dom'
 import {mainBreadCrumbs} from './breadCrumbs'
 import {Products} from './products'
 

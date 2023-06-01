@@ -70,7 +70,7 @@ export const PopoverItems = ({layerProps, isOpen, setOpen, id}: PopoverItemsProp
       error({message: payload?.message?.message})
     }
   }
-  console.log(id, 'ididid')
+
   if (!isOpen) return null
 
   return (

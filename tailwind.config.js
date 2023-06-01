@@ -8,9 +8,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Poppins', 'sans-serif', ...defaultTheme.fontFamily.sans],
+        display: ['Inter', 'Helvetica', 'sans-serif', ...defaultTheme.fontFamily.sans],
       },
       extend: {
+        gradientColorStops: {
+          'black-gray': ['rgb(0, 0, 0)', 'rgb(67, 67, 67)'],
+        },
         colors: {
           primary: 'linear-gradient(to right, rgb(0, 0, 0), rgb(67, 67, 67))',
           secondary: '#00f6ff',

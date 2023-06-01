@@ -24,8 +24,6 @@ export const Products = () => {
   const count = useSelector((state: any) => state?.productList?.entities?.totalCount || 0)
   const loading = useSelector((state: any) => state?.productList?.loading === 'pending')
 
-  console.log(data, 'productList')
-
   const handelAddNewModal = () => {
     toggleAction({
       show: true,
@@ -40,7 +38,6 @@ export const Products = () => {
       Header: () => <Trans i18nKey={'products.product.name'}>Product Name</Trans>,
       accessor: 'name',
       // Cell: ({row}: any) => <></>,
-      disableSortBy: true,
     },
     {
       Header: () => <Trans i18nKey={'product.barcode'}>Barcode</Trans>,
@@ -99,7 +96,6 @@ export const Products = () => {
     buttonText: trans('product.nodata.add'),
     Icon: UsersNoDataSVG,
   }
-  console.log(reloadData, 'addProductaddProduct')
   return (
     <Fragment>
       <Helmet>

@@ -1,0 +1,18 @@
+import {InputFormController} from 'components'
+import styled from 'styled-components'
+
+export const FormBody = styled.div`
+  @media screen and (max-width: 767px) {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+`
+
+export const NoteMsg = styled.p`
+  color: #7e7e7e;
+  margin-top: 0.3rem;
+`
+
+export const InputControllerMinimumMargin = styled(InputFormController)`
+  margin-bottom: 0 !important;
+`

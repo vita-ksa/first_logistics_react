@@ -32,7 +32,6 @@ export const FileUpload = ({
   const handelClear = () => {
     field?.onChange(null)
   }
-  console.log(field, 'fieldfieldfield')
   return (
     <div>
       <>

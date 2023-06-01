@@ -29,7 +29,7 @@ const options = [
   },
   {
     label: 'Delivary Company ',
-    value: 'delivary_company ',
+    value: 'DeliveryCompany',
   },
 ]
 export const Registration = () => {
@@ -53,8 +53,6 @@ export const Registration = () => {
   const acceptTerms = getValues('acceptTerms')
 
   const registr = async (_data: any) => {
-    console.log(_data, 'datadatadata')
-
     const data = {
       name: `${_data?.firstname} ${_data?.lastname}`,
       phone: _data?.phone,
@@ -65,14 +63,12 @@ export const Registration = () => {
     }
     const {payload} = await dispatch(authAPI.register()({...data}))
 
-    console.log(payload, 'registrregistr')
     if (SUCCESS_STATUS.includes(payload?.status)) {
       success({
         message: `Success`,
       })
       navigateTo('/auth/login')
     } else {
-      console.log(payload.message?.message, 'payload.message?.message')
       error({
         message: payload.message?.message,
       })
@@ -90,7 +86,7 @@ export const Registration = () => {
       id='kt_login_signup_form'
       onSubmit={handleSubmit((data) => registr(data))}
     >
-      <div className='text-center mb-10'>
+      <div className='mb-10 text-center'>
         {/* begin::Title */}
         <h1 className='mb-3 text-dark fw-bolder'>Sign Up</h1>
         {/* end::Title */}

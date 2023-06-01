@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const TableBudy = styled.div`
-  th:nth-last-child(-n + 2),
-  td:nth-last-child(-n + 2) {
+  th:nth-last-child(-n + 1),
+  td:nth-last-child(-n + 1) {
     text-align: center;
     width: 5% !important;
   }

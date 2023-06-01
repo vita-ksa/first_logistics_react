@@ -1,20 +1,23 @@
 import React from 'react'
 import styles, {layout} from '../style'
 import card from 'assets/img/card.png'
+import {StartButton} from '../startButton'
 
 export const CardDeal = () => {
   return (
     <section className={layout.section}>
       <div className={layout.sectionInfo}>
         <h2 className={styles.heading2}>
-          Find a better card deal <br className='sm:block hidden' /> in few easy steps.
+          Scale your online store’s <br className='hidden sm:block' /> day-to-day shipping
+          experience
         </h2>
-        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          Arcu tortor, purus in mattis at sed integer faucibus. Aliquet quis aliquet eget mauris
-          tortor.ç Aliquet ultrices ac, ametau.
+        <p className={`${styles.paragraph} text-white max-w-[470px] mt-5`}>
+          Easily manage your online store’s daily shipping operations from preparations to dispatch
+          with OTO’s gateway. We help you pick, pack, ship, and deliver your orders on time, in
+          full, and at an affordable cost.
         </p>
 
-        {/* <Button styles={`mt-10`} /> */}
+        <StartButton styles={`mt-10`} />
       </div>
 
       <div className={layout.sectionImg}>
