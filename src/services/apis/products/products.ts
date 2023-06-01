@@ -40,7 +40,7 @@ export const addProduct = () => {
   return requestAsyncThunk({
     storeName: 'addProduct',
     _url: `/product/`,
-    method: 'UPLOAD',
+    method: 'POST',
     exact: 'add_product',
   })
 }
@@ -60,7 +60,7 @@ export const UpdateProduct = () => {
   return requestAsyncThunk({
     storeName: 'UpdateProductState',
     _url: `/product/`,
-    method: 'PATCH_UPLOAD',
+    method: 'PATCH',
     exact: 'update_product',
   })
 }

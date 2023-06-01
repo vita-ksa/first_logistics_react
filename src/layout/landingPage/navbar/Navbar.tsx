@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import logo from 'assets/icons/logo.svg'
+import logo from 'assets/icons/default-small.svg'
 import close from 'assets/icons/close.svg'
 import menu from 'assets/icons/menu.svg'
 import {navLinks} from 'constants/landing-data'
@@ -9,10 +9,10 @@ export const Navbar = () => {
   const [toggle, setToggle] = useState(false)
 
   return (
-    <nav className='w-full flex py-6 justify-between items-center navbar'>
+    <nav className='flex items-center justify-between w-full py-6 navbar '>
       <img src={logo} alt='hoobank' className='w-[124px] h-[32px]' />
 
-      <ul className='list-none sm:flex hidden justify-end items-center flex-1'>
+      <ul className='items-center justify-end flex-1 hidden list-none sm:flex'>
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
@@ -28,7 +28,7 @@ export const Navbar = () => {
         ))}
       </ul>
 
-      <div className='sm:hidden flex flex-1 cursor-pointer justify-end items-center'>
+      <div className='flex items-center justify-end flex-1 cursor-pointer sm:hidden'>
         <img
           src={toggle ? close : menu}
           alt='menu'
@@ -41,7 +41,7 @@ export const Navbar = () => {
             !toggle ? 'hidden' : 'flex'
           } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
         >
-          <ul className='list-none flex justify-end items-start flex-1 flex-col'>
+          <ul className='flex flex-col items-start justify-end flex-1 list-none'>
             {navLinks.map((nav, index) => (
               <li
                 key={nav.id}

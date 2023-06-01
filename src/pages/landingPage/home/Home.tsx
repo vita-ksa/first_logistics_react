@@ -1,8 +1,7 @@
 import React from 'react'
 import styles from '../style'
-import discount from 'assets/icons/Discount.svg'
 import arrowUp from 'assets/icons/arrow-up.svg'
-import robot from 'assets/img/robot.png'
+import robot from 'assets/icons/default-small.svg'
 import {Link} from 'react-router-dom'
 
 const GetStarted = () => (
@@ -10,7 +9,9 @@ const GetStarted = () => (
     <div
       className={`${styles.flexCenter} w-[140px] h-[140px] rounded-full bg-blue-gradient p-[2px] cursor-pointer`}
     >
-      <div className={`${styles.flexCenter} flex-col bg-primary w-[100%] h-[100%] rounded-full`}>
+      <div
+        className={`${styles.flexCenter} flex-col bg-gradient-to-r  w-[100%] h-[100%] rounded-full`}
+      >
         <div className={`${styles.flexStart} flex-row`}>
           <p className='font-poppins font-medium text-[18px] leading-[23.4px]'>
             <span className='text-gradient'>Get</span>
@@ -30,18 +31,18 @@ export const Home = () => {
   return (
     <section id='home' className={`flex md:flex-row flex-col ${styles.paddingY}`}>
       <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
-        <div className='flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2'>
+        {/* <div className='flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2'>
           <img src={discount} alt='discount' className='w-[32px] h-[32px]' />
           <p className={`${styles.paragraph} ml-2`}>
-            <span className='text-white'>20%</span> Discount For{' '}
+            <span className='text-white'>20%</span> Discount For
             <span className='text-white'>1 Month</span> Account
           </p>
-        </div>
+        </div> */}
 
         <div className='flex flex-row items-center justify-between w-full'>
           <h1 className='flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] text-white ss:leading-[100.8px] leading-[75px]'>
-            The Next <br className='hidden sm:block' />{' '}
-            <span className='text-gradient'>Generation</span>{' '}
+            The First <br className='hidden sm:block' />
+            <span className='text-gradient'>Logistics</span>
           </h1>
           <div className='hidden mr-0 ss:flex md:mr-4'>
             <GetStarted />
@@ -49,11 +50,11 @@ export const Home = () => {
         </div>
 
         <h1 className='font-poppins font-semibold ss:text-[68px] text-[52px] text-white ss:leading-[100.8px] leading-[75px] w-full'>
-          Payment Method.
+          Everything you need to ship <strong className='text-gradient'>better</strong>
         </h1>
-        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          Our team of experts uses a methodology to identify the credit cards most likely to fit
-          your needs. We examine annual percentage rates, annual fees.
+        <p className={`${styles.paragraph} text-white max-w-[470px] mt-5`}>
+          MENA’s #1 shipping gateway for e-commerce stores and retailers to ship, manage, track,
+          analyze and return orders with 180+ carriers from a single dashboard.
         </p>
       </div>
 

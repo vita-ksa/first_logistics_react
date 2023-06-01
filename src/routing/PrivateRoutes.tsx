@@ -12,6 +12,12 @@ const Management = lazy(() =>
   }))
 )
 
+const OrdersManagement = lazy(() =>
+  import('pages/ordersManagment').then((m) => ({
+    default: m.OrdersManagment,
+  }))
+)
+
 const PrivateRoutes = () => {
   return (
     <Routes>
@@ -27,6 +33,14 @@ const PrivateRoutes = () => {
           element={
             <SuspensedView>
               <Management />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='orders/*'
+          element={
+            <SuspensedView>
+              <OrdersManagement />
             </SuspensedView>
           }
         />

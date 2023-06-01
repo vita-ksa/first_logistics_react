@@ -12,12 +12,14 @@ import {Footer} from './footer'
 export const LandingPage = () => {
   return (
     <>
-      <div className={`bg-primary ${styles.flexStart}`}>
+      <div className={`bg-gradient-to-r from-black to-gray ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Home />
         </div>
       </div>
-      <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
+      <div
+        className={`bg-gradient-to-r from-black to-gray ${styles.paddingX} ${styles.flexCenter}`}
+      >
         <div className={`${styles.boxWidth}`}>
           <Features />
           <UseCases />

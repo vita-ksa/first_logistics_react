@@ -6,7 +6,6 @@ import {dismissAction} from './notificationSlice'
 
 export const Notification = () => {
   const {text, show, type, color} = useSelector((state: any) => state.notification)
-  console.log({text, show, type, color}, 'texttext')
   return (
     <Body
       show={show}

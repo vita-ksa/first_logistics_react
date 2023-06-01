@@ -1,42 +1,28 @@
 import React from 'react'
 import styles, {layout} from '../style'
-import apple from 'assets/icons/apple.svg'
+import apple from 'assets/icons/default-small.svg'
 import google from 'assets/icons/google.svg'
 import bill from 'assets/img/bill.png'
 
 export const UseCases = () => {
   return (
     <section id='use-Cases' className={layout.sectionReverse}>
-      <div className={layout.sectionImgReverse}>
-        <img src={bill} alt='billing' className='w-[100%] h-[100%] relative z-[5]' />
-
-        {/* gradient start */}
-        <div className='absolute z-[3] -left-1/2 top-0 w-[50%] h-[50%] rounded-full white__gradient' />
-        <div className='absolute z-[0] w-[50%] h-[50%] -left-1/2 bottom-0 rounded-full pink__gradient' />
-        {/* gradient end */}
-      </div>
-
       <div className={layout.sectionInfo}>
         <h2 className={styles.heading2}>
-          Easily control your <br className='sm:block hidden' /> billing & invoicing
+          Sell on many social platforms and ship with one
+          <br className='hidden sm:block' /> all-inclusive dashboard.
         </h2>
-        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          Elit enim sed massa etiam. Mauris eu adipiscing ultrices ametodio aenean neque. Fusce
-          ipsum orci rhoncus aliporttitor integer platea placerat.
+        <p className={`${styles.paragraph} text-white max-w-[470px] mt-5`}>
+          First logistics is a shipping gateway that helps you as a social seller to get discounted
+          shipping rates up to 90%, instant access to +180 shipping company, and powerful tracking
+          and return systems.
         </p>
 
-        <div className='flex flex-row flex-wrap sm:mt-10 mt-6'>
-          <img
-            src={apple}
-            alt='google_play'
-            className='w-[128.86px] h-[42.05px] object-contain mr-5 cursor-pointer'
-          />
-          <img
-            src={google}
-            alt='google_play'
-            className='w-[144.17px] h-[43.08px] object-contain cursor-pointer'
-          />
-        </div>
+        {/* <Button styles={`mt-10`} /> */}
+      </div>
+
+      <div className={layout.sectionImg}>
+        <img src={apple} alt='billing' className='w-[100%] h-[100%]' />
       </div>
     </section>
   )
