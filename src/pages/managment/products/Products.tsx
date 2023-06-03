@@ -63,7 +63,8 @@ export const Products = () => {
     },
 
     {
-      Header: () => <Trans i18nKey={'view'} />,
+      Header: () => 'actions',
+      //() => <Trans i18nKey={'view'} />,
       accessor: 'view',
       Cell: ({row}: any) => (
         <>

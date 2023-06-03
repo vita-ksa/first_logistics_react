@@ -31,7 +31,7 @@ export const Input = ({
   switch (type) {
     case 'password': {
       return (
-        <form autoComplete={autoComplete}>
+        <>
           <div className='my-1 d-flex align-items-center position-relative'>
             <input
               placeholder={placeholder}
@@ -67,7 +67,7 @@ export const Input = ({
               )}
             </button>
           </div>
-        </form>
+        </>
       )
     }
     default:
@@ -84,7 +84,7 @@ export const Input = ({
           )}
           type={type}
           name={name}
-          autoComplete={autoComplete}
+          // autoComplete={autoComplete}
         />
       )
   }

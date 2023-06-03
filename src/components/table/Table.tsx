@@ -112,11 +112,11 @@ export const Table = ({
           <TableBudy className={`${className} table-responsive`}>
             <table
               id='kt_table_users'
-              className='settings-table table align-middle table-row-dashed fs-6 gy-3 dataTable no-footer'
+              className='table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3'
               {...getTableProps()}
             >
               <thead>
-                <tr className='text-start text-muted fw-bolder fs-7 gs-0'>
+                <tr className='fw-bold text-muted'>
                   {headers.map((column: ColumnInstance<any>) => (
                     <TableHeader key={column.id} column={column} />
                   ))}
@@ -133,7 +133,7 @@ export const Table = ({
                     <td colSpan={9}>
                       {loading ? (
                         <LoaderBody>
-                          <Loader color={'#FD17A9'} width={'50px'} height={'50px'} />
+                          <Loader width={'50px'} height={'50px'} />
                         </LoaderBody>
                       ) : (
                         <NoData {...nodata} />

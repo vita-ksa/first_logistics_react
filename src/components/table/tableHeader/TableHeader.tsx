@@ -14,13 +14,15 @@ const Th = styled.th`
 
 export const TableHeader: FC<Props> = ({column}) => {
   return (
-    <Th {...column.getHeaderProps(column.getSortByToggleProps())}>
-      {column.render('Header')}
+    <Th className='min-w-150px' {...column.getHeaderProps(column.getSortByToggleProps())}>
       {column.canSort ? (
-        <span className=''>
-          {column?.isSortedDesc ? <ArrowUPSVGStyled /> : <ArrowDownSVGStyled />}
-        </span>
-      ) : null}
+        <div className='d-flex align-items-center'>
+          {column.render('Header')}
+          <span>{column?.isSortedDesc ? <ArrowUPSVGStyled /> : <ArrowDownSVGStyled />}</span>
+        </div>
+      ) : (
+        <>{column.render('Header')}</>
+      )}
     </Th>
   )
 }

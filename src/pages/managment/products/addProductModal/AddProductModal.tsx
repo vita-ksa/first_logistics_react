@@ -58,7 +58,6 @@ export const AddProductModal = ({type = 'add', id}: any) => {
   }
 
   const onSubmit = async (_data: any) => {
-
     if (type === 'add') {
       const formData = new FormData()
 
@@ -139,7 +138,7 @@ export const AddProductModal = ({type = 'add', id}: any) => {
       <div className='p-0 m-0 d-flex justify-content-between align-items-end'>
         <h2>{trans(`product.${type}.title`)}</h2>
         <div className='btn btn-sm btn-icon' onClick={handleClose}>
-          <CloseSVG color={'#FD17A9'} />
+          <CloseSVG />
         </div>
       </div>
       <form className='mt-5'>

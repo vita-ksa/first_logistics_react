@@ -21,7 +21,7 @@ export const StepIndicator = styled.div<any>`
   ${(props) =>
     props.isActive || props.skiped
       ? css`
-          background: #fd17a9;
+          background: var(--kt-dark);
           color: #fff;
         `
       : ``}
