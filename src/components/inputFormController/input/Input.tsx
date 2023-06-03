@@ -24,6 +24,7 @@ interface InputProps {
   unit?: string
   subUnit?: string
   disabled?: boolean
+  onChangeCurrancy?:any
 }
 const unacceptableKeys = [38, 40, 69, 107, 109, 189, 187]
 
@@ -44,6 +45,7 @@ export const Input = ({
   unit,
   subUnit,
   disabled,
+  onChangeCurrancy,
   ...rest
 }: UseControllerReturn & InputProps) => {
   const handelOnKeyDown = (e: any) => {
@@ -187,7 +189,7 @@ export const Input = ({
             <>
               <DropdownSelect
                 items={['SAR', 'KAW', 'BHD', 'EUR', 'GBP', 'EUR']}
-                // onChange={onChangePageSize}
+                 onChange={onChangeCurrancy}
                 disabled={disabled}
                 menuStyle={{bottom: 30, overflow: 'auto', maxHeight: '150px'}}
               />

@@ -1,10 +1,10 @@
-import React, {Fragment, useCallback} from 'react'
+import React, {Fragment, useCallback, useEffect} from 'react'
 import {Helmet} from 'react-helmet-async'
 import {useLocales, useNotification} from 'hooks'
 import {ReactComponent as UsersNoDataSVG} from 'assets/icons/default-small.svg'
 import {SUCCESS_STATUS} from 'constants/auth'
 import {useDispatch, useSelector} from 'react-redux'
-import {productAPI} from 'services/apis'
+import {ordersAPI, productAPI} from 'services/apis'
 import {AddProductModal} from './addProductModal'
 import {toggleAction} from 'components/modal/modalSlice'
 import {PopoverMenu} from './popoverMenu'
@@ -74,6 +74,15 @@ export const Products = () => {
       disableSortBy: true,
     },
   ]
+
+  useEffect(() => {
+    dispatch(ordersAPI.getCategoriesList()({})).then(() =>
+      dispatch(ordersAPI.getCategoriesListSlice.actions.getOptions())
+    )
+    return () => {
+      dispatch(ordersAPI.getCategoriesListSlice.actions.resetAction())
+    }
+  }, [])
 
   const fetchData = useCallback(async ({pageSize, pageIndex, search}: any) => {
     const page = pageIndex + 1
