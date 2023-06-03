@@ -73,7 +73,7 @@ export const Dropdown = ({
             <ItemMenu
               key={`${item?.value}${index}`}
               style={{
-                backgroundColor: highlightedIndex === index ? '#3b3b64' : '',
+                backgroundColor: highlightedIndex === index ? '#B5B5C3' : '',
                 fontWeight: selectedItem === item && 'bold',
               }}
               {...getItemProps({item, index})}

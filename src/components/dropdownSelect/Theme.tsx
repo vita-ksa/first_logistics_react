@@ -59,8 +59,7 @@ export const SelectBody = styled.div`
 export const ItemBody = styled.div<any>`
   width: 100%;
   cursor: pointer;
-  background-color: ${(props) =>
-    props.highlightedIndex === props.index ? 'RGBA(253,23,169,0.29)' : 'none'};
+  background-color: ${(props) => (props.highlightedIndex === props.index ? '#B5B5C3' : 'none')};
   text-align: start;
   border-radius: 4px;
   padding: 5px 10px;
