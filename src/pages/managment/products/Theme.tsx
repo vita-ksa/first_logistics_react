@@ -55,8 +55,8 @@ export const GenderContainer = styled.div<any>`
 `
 
 export const StyledTable = styled(Table)`
-  th:nth-last-child(1),
-  td:nth-last-child(1) {
+  th:nth-last-child(2),
+  td:nth-last-child(2) {
     width: auto !important;
   }
 `
