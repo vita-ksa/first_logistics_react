@@ -22,6 +22,7 @@ export const Orders = () => {
   const navigateTo = useNavigate()
 
   const data = useSelector((state: any) => state?.ordersList?.entities?.orderList || [])
+  const userType = useSelector((state: any) => state?.auth?.entities?.user?.type) as string
   const count = useSelector((state: any) => state?.ordersList?.entities?.totalCount || 0)
   const loading = useSelector((state: any) => state?.ordersList?.loading === 'pending')
 
@@ -158,9 +159,18 @@ export const Orders = () => {
 
   const fetchData = useCallback(async ({pageSize, pageIndex, search}: any) => {
     const page = pageIndex + 1
+
+    const url: any = `${
+      userType?.toLowerCase() === 'shop'
+        ? `/order/?page=${page}&perPage=${pageSize}${search ? `&name=${search}` : ''}`
+        : `/delivery-company/orders/?page=${page}&perPage=${pageSize}${
+            search ? `&name=${search}` : ''
+          }`
+    }`
+
     const {payload} = await dispatch(
       ordersAPI.getOrdersList()({
-        urlParams: `?page=${page}&perPage=${pageSize}${search ? `&name=${search}` : ''}`,
+        urlParams: url,
         // filters: filters || {},
       })
     )
@@ -179,6 +189,7 @@ export const Orders = () => {
     buttonText: trans('orders.nodata.add'),
     // Icon: UsersNoDataSVG,
   }
+
   return (
     <Fragment>
       <Helmet>

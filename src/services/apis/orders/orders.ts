@@ -19,7 +19,7 @@ const initialState = {
 export const getOrdersList = () => {
   return requestAsyncThunk({
     storeName: 'ordersList',
-    _url: `/order/`,
+    // _url: `/order/`,
     method: 'GET',
     exact: 'orders_list',
   })

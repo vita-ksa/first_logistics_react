@@ -1,7 +1,7 @@
 import React from 'react'
 import {useLocales} from 'hooks'
 import {useFormContext} from 'react-hook-form'
-import {InputFormController} from 'components'
+import {InputFormController, RadioController} from 'components'
 import {useSelector} from 'react-redux'
 import {DropdownControllerStyled, FormBody, InputControllerMinimumMargin, Title} from './Theme'
 
@@ -29,6 +29,18 @@ const shipmentOptions = [
     value: 'Documents',
   },
 ]
+
+const list = [
+  {
+    label: 'Cash On Delivery',
+    value: 'CashOnDelivery',
+  },
+  {
+    label: 'Visa',
+    value: 'Visa',
+  },
+] as any
+
 export const OrderInformation = ({shipmentDestination, type}: any) => {
   const {Trans, trans} = useLocales()
   const methods = useFormContext()
@@ -169,6 +181,16 @@ export const OrderInformation = ({shipmentDestination, type}: any) => {
               rules={{required: 'This is required.'}}
             />
           </div>
+          <>
+            <RadioController
+              name='paymentMethod'
+              title='Payment Method'
+              list={list}
+              control={methods?.control}
+              required
+              rules={{required: 'This is required.'}}
+            />
+          </>
         </FormBody>
       </div>
     </div>

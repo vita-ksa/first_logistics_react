@@ -3,7 +3,7 @@ import {useLocales} from 'hooks'
 import {useForm} from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
 import {dismissAction} from 'components/modal/modalSlice'
-import {InputFormController, Button} from 'components'
+import {InputFormController, Button, DropdownController} from 'components'
 import {schema} from './schema'
 import {ReactComponent as CloseSVG} from 'assets/icons/close_modal.svg'
 import {useDispatch, useSelector} from 'react-redux'
@@ -21,6 +21,12 @@ export const AddProductModal = ({type = 'add', id}: any) => {
 
   const [currancy, setCurrancy] = useState('')
 
+  const {categoriesList} = useSelector((state: any) => {
+    return {
+      categoriesList: state?.categoriesList?.options,
+    }
+  })
+
   const loading = useSelector<any>((state) => state.addProduct.loading === 'pending')
   const UpdateLoading = useSelector<any>((state) => state.UpdateProductState.loading === 'pending')
 
@@ -33,15 +39,16 @@ export const AddProductModal = ({type = 'add', id}: any) => {
     tax_amount: data?.tax || '',
     barcode: data?.barcode || '',
     second_barcode: data?.second_barcode || '',
-    category: data?.category?.name || '',
+    category: {label: data?.category?.name, value: data?.category?.id} || '',
     description: data?.description || '',
     item_length: data?.length || '',
     width: data?.width || '',
     height: data?.height || '',
     weight: data?.weight || '',
     cubic_meter: data?.cubicMeter || '',
+    currancy: data?.currency || '',
   }
-
+  console.log(currancy, 'currancycurrancycurrancy')
   const {
     control,
     handleSubmit,
@@ -71,7 +78,8 @@ export const AddProductModal = ({type = 'add', id}: any) => {
       formData.append('height', _data?.height)
       formData.append('weight', _data?.weight)
       formData.append('cubicMeter', _data?.cubic_meter)
-      formData.append('categoryId', _data?.category)
+      formData.append('categoryId', _data?.category?.value)
+      formData.append('currency', currancy)
       // formData.append('image', _data?.image_url?.files)
       const {payload} = await dispatch(
         productAPI.addProduct()({
@@ -104,7 +112,7 @@ export const AddProductModal = ({type = 'add', id}: any) => {
       formData.append('weight', _data?.weight)
       formData.append('cubicMeter', _data?.cubic_meter)
       formData.append('categoryId', _data?.category)
-
+      // formData.append('currancy', _data?.currancy)
       if (dirtyFields.image_url) {
         formData.append('image', _data?.image_url?.files)
       }
@@ -172,6 +180,7 @@ export const AddProductModal = ({type = 'add', id}: any) => {
               control={control}
               placeholder={''}
               type={'amount'}
+              onChangeCurrancy={setCurrancy}
             />
             <InputFormController
               disabled={VIEW_MODE}
@@ -201,14 +210,25 @@ export const AddProductModal = ({type = 'add', id}: any) => {
               placeholder={''}
               type={'text'}
             /> */}
-            <InputFormController
+            {/* <InputFormController
               disabled={VIEW_MODE}
               label={trans('product.category')}
               name='category'
               control={control}
               placeholder={''}
               type={'text'}
-            />
+            /> */}
+            <div className='w-100'>
+              <DropdownController
+                name='category'
+                label={trans('product.category', {defaultValue: 'Category'})}
+                items={categoriesList || []}
+                control={control}
+                placeholder={trans('product.category')}
+                required
+                rules={{required: 'This is required.'}}
+              />
+            </div>
           </FormBody>
           <FormBody className='gap-8 d-flex'>
             <InputFormController

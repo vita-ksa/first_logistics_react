@@ -18,6 +18,7 @@ interface InputControllerProps {
   subUnit?: string
   register?: any
   disabled?: boolean
+  onChangeCurrancy?: any
 }
 
 export const InputFormController = ({
@@ -37,6 +38,7 @@ export const InputFormController = ({
   subUnit,
   register,
   disabled = false,
+  onChangeCurrancy,
   ...rest
 }: UseControllerProps & InputControllerProps) => {
   const {field, formState, fieldState} = useController({
@@ -49,7 +51,7 @@ export const InputFormController = ({
   return (
     <div className={`fv-row mb-8 w-100 ${className}`}>
       {label ? (
-        <label className='d-flex align-items-center fs-5 fw-semibold mb-2'>
+        <label className='mb-2 d-flex align-items-center fs-5 fw-semibold'>
           <span className={`${required ? 'required' : ''}`}>{label}</span>
         </label>
       ) : null}
@@ -70,6 +72,7 @@ export const InputFormController = ({
           subUnit,
           register,
           disabled,
+          onChangeCurrancy,
           ...rest,
         }}
       />

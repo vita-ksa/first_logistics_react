@@ -30,6 +30,7 @@ export const EditOrder = () => {
         label: data?.Shipment?.deliveryCompany?.name,
         value: data?.deliveryCompany?.id,
       },
+      paymentMethod: data?.Shipment?.paymentMethod || 'CashOnDelivery',
       quantity: data?.Shipment?.quantity,
       content: data?.Shipment?.content,
       height: data?.Shipment?.height,

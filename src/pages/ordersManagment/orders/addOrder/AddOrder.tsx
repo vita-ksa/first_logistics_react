@@ -93,6 +93,7 @@ export const AddOrder = () => {
         quantity: _data?.quantity,
         type: _data?.type?.value,
         deliveryCompanyId: _data?.deliveryCompanyId?.value,
+        paymentMethod: _data?.paymentMethod,
         sender: {
           name: _data?.sender_name,
           email: _data?.sender_email,
