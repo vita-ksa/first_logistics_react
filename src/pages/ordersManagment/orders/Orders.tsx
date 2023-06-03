@@ -60,7 +60,6 @@ export const Orders = () => {
           <div className='w-100'>{row?.original?.number}</div>
         </>
       ),
-      disableSortBy: true,
     },
     {
       Header: () => <Trans i18nKey={'order.list.data'}>Date</Trans>,

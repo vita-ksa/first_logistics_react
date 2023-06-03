@@ -168,7 +168,7 @@ export const AddOrder = () => {
                   disabled={Boolean(loading)}
                   onClick={methods.handleSubmit(onSubmit)}
                 >
-                  <Trans i18nKey={'programs.add.program'}>Add Program</Trans>
+                  <Trans i18nKey={'order.add.order'}>Add Order</Trans>
                 </SubmitButton>
               )}
             </div>

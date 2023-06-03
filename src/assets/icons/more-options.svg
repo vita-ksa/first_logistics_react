@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="21.575" height="4.793" viewBox="0 0 21.575 4.793">
   <g id="Layer_2" data-name="Layer 2" transform="translate(21.575 4.793) rotate(180)">
     <g id="Layer_1" data-name="Layer 1">
-      <path id="Path_169" data-name="Path 169" d="M2.4,0A2.4,2.4,0,1,1,.7.7,2.4,2.4,0,0,1,2.4,0Z" transform="translate(8.395 0)" fill="#FD17A9"/>
-      <path id="Path_170" data-name="Path 170" d="M4.793,2.4a2.38,2.38,0,0,1-2.4,2.4A2.414,2.414,0,0,1,0,2.384,2.412,2.412,0,0,1,2.386,0,2.386,2.386,0,0,1,4.793,2.4Z" fill="#FD17A9"/>
-      <path id="Path_171" data-name="Path 171" d="M0,2.409A2.379,2.379,0,0,1,2.384,0a2.409,2.409,0,0,1,2.4,2.4A2.4,2.4,0,0,1,0,2.4Z" transform="translate(16.787 0)" fill="#FD17A9"/>
+      <path id="Path_169" data-name="Path 169" d="M2.4,0A2.4,2.4,0,1,1,.7.7,2.4,2.4,0,0,1,2.4,0Z" transform="translate(8.395 0)" fill="#181C32"/>
+      <path id="Path_170" data-name="Path 170" d="M4.793,2.4a2.38,2.38,0,0,1-2.4,2.4A2.414,2.414,0,0,1,0,2.384,2.412,2.412,0,0,1,2.386,0,2.386,2.386,0,0,1,4.793,2.4Z" fill="#181C32"/>
+      <path id="Path_171" data-name="Path 171" d="M0,2.409A2.379,2.379,0,0,1,2.384,0a2.409,2.409,0,0,1,2.4,2.4A2.4,2.4,0,0,1,0,2.4Z" transform="translate(16.787 0)" fill="#181C32"/>
     </g>
   </g>
 </svg>

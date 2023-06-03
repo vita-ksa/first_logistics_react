@@ -90,9 +90,9 @@ export const OrderInformation = () => {
               },
             }}
           />
-          <div className='gap-8 d-flex'>
+          <div className='gap-8 w-100 d-flex'>
             <InputFormController
-              label={trans('product.length')}
+              label={trans('product.weight')}
               name='weight'
               control={methods?.control}
               placeholder={''}
@@ -100,7 +100,7 @@ export const OrderInformation = () => {
               unit='Kg'
             />
             <InputFormController
-              label={trans('product.width')}
+              label={trans('product.length')}
               name='width'
               control={methods?.control}
               placeholder={''}

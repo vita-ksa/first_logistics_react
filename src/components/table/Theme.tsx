@@ -18,7 +18,7 @@ export const EditButton = styled.button`
 export const TitlwBody = styled.div<any>`
   display: flex;
   align-items: center;
-  border-left: ${(props) => (props?.showMarker ? '3px solid #fd17a9' : '')};
+  border-left: ${(props) => (props?.showMarker ? '3px solid var(--kt-dark)' : '')};
   padding-left: 10px;
 `
 

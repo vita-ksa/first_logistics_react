@@ -9,7 +9,6 @@ export const Body = styled.div`
   flex-direction: column;
 `
 
-
 export const Title = styled.div`
   font-size: 20px;
   color: #000000;
@@ -26,7 +25,7 @@ export const Text = styled.div`
 `
 
 export const AddNewButton = styled.button`
-  background-color: #FD17A9;
+  background-color: var(--kt-dark);
   color: #ffff;
   border-radius: 8px;
   width: 179px;

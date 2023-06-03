@@ -383,8 +383,8 @@
     --kt-scrolltop-opacity-on: #{$scrolltop-opacity-on};
     --kt-scrolltop-opacity-hover: #{$scrolltop-opacity-hover};
     --kt-scrolltop-box-shadow: #{$scrolltop-box-shadow};
-    --kt-scrolltop-bg-color: #FD17A9; 
-    --kt-scrolltop-bg-color-hover: #FD17A9;
+    --kt-scrolltop-bg-color: #{$scrolltop-bg-color};
+    --kt-scrolltop-bg-color-hover:#{$scrolltop-bg-color-hover};
     --kt-scrolltop-icon-color: #{$scrolltop-icon-color};
     --kt-scrolltop-icon-color-hover: #{$scrolltop-icon-color-hover};
 
