@@ -38,7 +38,7 @@ export const OrdersManagment = () => {
           element={
             <>
               <PageTitle breadcrumbs={getEditProgramBreadCrumbs(state?.orderNumber)}>
-                {trans('title.edit.order')}
+                {state?.type === 'view' ? trans('title.view.order') : trans('title.edit.order')}
               </PageTitle>
               <EditOrder />
             </>

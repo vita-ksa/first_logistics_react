@@ -26,6 +26,7 @@ export const RadioButton = ({field, list, title, ref, disabled, ...rest}: RadioP
               {..._rest}
               {...rest}
               onChange={(e) => {}}
+              disabled={disabled}
             />
             <Label className='form-check-label' htmlFor={index + value}>
               {label}

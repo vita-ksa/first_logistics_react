@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const MenuBody = styled.div<any>`
-  background: #ffffff;
+  background: var(--kt-input-disabled-bg);
   z-index: 1004;
   display: ${(props) => (props.isOpen && !props.disabled ? 'flex' : 'none')};
   width: 100%;
@@ -14,7 +14,7 @@ export const MenuBody = styled.div<any>`
   outline: none;
   position: absolute;
   margin-top: 4px;
-top: 100%;
+  top: 100%;
 `
 
 export const ItemMenu = styled.div<any>`

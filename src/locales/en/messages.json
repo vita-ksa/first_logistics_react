@@ -77,6 +77,7 @@
   "order.info.edit.title": "Order Information",
   "sender.info.edit.title": "Sender Information",
   "receiver.info.edit.title": "Receiver Information",
-  "title.edit.order": "Edit Orders",
+  "title.edit.order": "Edit Order",
+  "title.view.order": "View Order",
   "order.add.order": "Add Order"
 }

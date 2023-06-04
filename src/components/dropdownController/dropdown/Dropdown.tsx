@@ -51,11 +51,14 @@ export const Dropdown = ({
         </label>
       ) : null}
       <div
-        className='form-select  fw-bolder'
+        className='form-select fw-bolder'
         data-kt-select2='true'
         data-placeholder='Select option'
         data-allow-clear='true'
-        {...getToggleButtonProps()}
+        {...getToggleButtonProps({disabled: disabled})}
+        style={{
+          backgroundColor: disabled && 'var(--kt-input-disabled-bg)',
+        }}
       >
         {field?.value?.label ? (
           <span>{field?.value?.label} </span>
@@ -65,8 +68,10 @@ export const Dropdown = ({
       </div>
       <MenuBody
         {...{isOpen}}
-        {...getMenuProps()}
-        className=' w-72 p-0 bg-white shadow-md max-h-80 overflow-scroll'
+        {...getMenuProps({
+          disabled: disabled,
+        })}
+        className='p-0 overflow-scroll bg-white shadow-md w-72 max-h-80'
       >
         {isOpen &&
           items?.map((item: any, index: any) => (
@@ -80,7 +85,7 @@ export const Dropdown = ({
             >
               {item?.image ? (
                 <div className='symbol symbol-40px me-1 ms-2'>
-                  <SymbolLabel className='symbol-label bg-light overflow-hidden'>
+                  <SymbolLabel className='overflow-hidden symbol-label bg-light'>
                     <Image src={item?.image} className='align-self-end' alt={item?.label} />
                   </SymbolLabel>
                 </div>

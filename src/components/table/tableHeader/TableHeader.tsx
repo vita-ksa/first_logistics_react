@@ -14,7 +14,7 @@ const Th = styled.th`
 
 export const TableHeader: FC<Props> = ({column}) => {
   return (
-    <Th className='min-w-150px' {...column.getHeaderProps(column.getSortByToggleProps())}>
+    <Th className='' {...column.getHeaderProps(column.getSortByToggleProps())}>
       {column.canSort ? (
         <div className='d-flex align-items-center'>
           {column.render('Header')}

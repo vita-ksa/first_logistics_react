@@ -4,7 +4,7 @@ import {InputFormController} from 'components'
 import {useLocales} from 'hooks'
 import {FormBody, InputControllerMinimumMargin, Title} from './Theme'
 
-export const ReceiverInformation = () => {
+export const ReceiverInformation = ({viewMode}: any) => {
   const {Trans, trans} = useLocales()
   const methods = useFormContext()
 
@@ -31,6 +31,7 @@ export const ReceiverInformation = () => {
                 }),
               },
             }}
+            disabled={viewMode}
           />
           <InputControllerMinimumMargin
             name='receiver_email'
@@ -48,6 +49,7 @@ export const ReceiverInformation = () => {
                   'Email address must be a valid address',
               },
             }}
+            disabled={viewMode}
           />
         </FormBody>
 
@@ -68,6 +70,7 @@ export const ReceiverInformation = () => {
               //     }),
               //   },
             }}
+            disabled={viewMode}
           />
           <InputFormController
             label={trans('registration.phonenumber', {defaultValue: 'Mobile Number'})}
@@ -79,6 +82,7 @@ export const ReceiverInformation = () => {
             type={'phone'}
             // register={}
             {...{register: {...methods?.register}}}
+            disabled={viewMode}
           />
         </FormBody>
         <FormBody className='gap-8 d-flex'>
@@ -98,6 +102,7 @@ export const ReceiverInformation = () => {
               //     }),
               //   },
             }}
+            disabled={viewMode}
           />
           <InputControllerMinimumMargin
             name='receiver_street'
@@ -115,6 +120,7 @@ export const ReceiverInformation = () => {
               //     }),
               //   },
             }}
+            disabled={viewMode}
           />
         </FormBody>
         <FormBody className='gap-8 mt-8 d-flex'>
@@ -134,6 +140,7 @@ export const ReceiverInformation = () => {
               //     }),
               //   },
             }}
+            disabled={viewMode}
           />
           <InputControllerMinimumMargin
             name='receiver_buildingName'
@@ -151,6 +158,7 @@ export const ReceiverInformation = () => {
               //     }),
               //   },
             }}
+            disabled={viewMode}
           />
         </FormBody>
       </div>

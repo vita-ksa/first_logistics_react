@@ -12,6 +12,7 @@ interface PhoneProps {
   placeholder?: string
   control: any
   register: any
+  disabled?: any
 }
 
 export const Phone = ({
@@ -23,6 +24,7 @@ export const Phone = ({
   placeholder,
   control,
   register,
+  disabled,
   ...rest
 }: UseControllerReturn & PhoneProps) => {
   const parsedNumber: any = parsePhoneNumber(field?.value) || ''
@@ -41,6 +43,7 @@ export const Phone = ({
         data-placeholder='Latest'
         data-hide-search='true'
         value={phoneCountryCode}
+        disabled={disabled}
         onChange={(event) => {
           field.onChange()
           phoneCountryCodeSetter(() => event.target.value || undefined)
@@ -84,6 +87,7 @@ export const Phone = ({
         onChange={(phone: any) => {
           field.onChange(phone)
         }}
+        disabled={disabled}
         {...rest}
       />
     </Body>
