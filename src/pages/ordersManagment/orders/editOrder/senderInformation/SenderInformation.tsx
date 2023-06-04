@@ -4,7 +4,7 @@ import {InputFormController} from 'components'
 import {useLocales} from 'hooks'
 import {FormBody, InputControllerMinimumMargin, Title} from './Theme'
 
-export const SenderInformation = () => {
+export const SenderInformation = ({viewMode}: any) => {
   const {Trans, trans} = useLocales()
   const methods = useFormContext()
 
@@ -31,6 +31,7 @@ export const SenderInformation = () => {
                 }),
               },
             }}
+            disabled={viewMode}
           />
           <InputControllerMinimumMargin
             name='sender_email'
@@ -49,6 +50,7 @@ export const SenderInformation = () => {
                   'Email address must be a valid address',
               },
             }}
+            disabled={viewMode}
           />
         </FormBody>
 
@@ -69,6 +71,7 @@ export const SenderInformation = () => {
               //     }),
               //   },
             }}
+            disabled={viewMode}
           />
           <InputFormController
             label={trans('registration.phonenumber', {defaultValue: 'Mobile Number'})}
@@ -79,6 +82,7 @@ export const SenderInformation = () => {
             required
             type={'phone'}
             {...{register: {...methods?.register}}}
+            disabled={viewMode}
           />
         </FormBody>
         <FormBody className='gap-8 d-flex'>
@@ -98,6 +102,7 @@ export const SenderInformation = () => {
               //     }),
               //   },
             }}
+            disabled={viewMode}
           />
           <InputControllerMinimumMargin
             name='sender_street'
@@ -115,6 +120,7 @@ export const SenderInformation = () => {
               //     }),
               //   },
             }}
+            disabled={viewMode}
           />
         </FormBody>
         <FormBody className='gap-8 mt-8 d-flex'>
@@ -134,6 +140,7 @@ export const SenderInformation = () => {
               //     }),
               //   },
             }}
+            disabled={viewMode}
           />
           <InputControllerMinimumMargin
             name='sender_buildingName'
@@ -151,6 +158,7 @@ export const SenderInformation = () => {
               //     }),
               //   },
             }}
+            disabled={viewMode}
           />
         </FormBody>
       </div>

@@ -41,7 +41,7 @@ const list = [
   },
 ] as any
 
-export const OrderInformation = ({shipmentDestination, type}: any) => {
+export const OrderInformation = ({shipmentDestination, type, disabled}: any) => {
   const {Trans, trans} = useLocales()
   const methods = useFormContext()
 
@@ -76,6 +76,7 @@ export const OrderInformation = ({shipmentDestination, type}: any) => {
               placeholder={trans('product.category')}
               required
               rules={{required: 'This is required.'}}
+              disabled={disabled}
             />
           </div>
           <div className='w-100'>
@@ -90,6 +91,7 @@ export const OrderInformation = ({shipmentDestination, type}: any) => {
               required
               rules={{required: 'This is required.'}}
               defaultValue={defaultShipment}
+              disabled={disabled}
             />
           </div>
         </FormBody>
@@ -110,6 +112,7 @@ export const OrderInformation = ({shipmentDestination, type}: any) => {
                 }),
               },
             }}
+            disabled={disabled}
           />
           <div className='gap-8 w-100 d-flex'>
             <InputFormController
@@ -119,6 +122,7 @@ export const OrderInformation = ({shipmentDestination, type}: any) => {
               placeholder={''}
               type={'units'}
               unit='Kg'
+              disabled={disabled}
             />
             <InputFormController
               label={trans('product.length')}
@@ -127,6 +131,7 @@ export const OrderInformation = ({shipmentDestination, type}: any) => {
               placeholder={''}
               type={'units'}
               unit='cm'
+              disabled={disabled}
             />
             <InputFormController
               label={trans('product.height')}
@@ -135,6 +140,7 @@ export const OrderInformation = ({shipmentDestination, type}: any) => {
               placeholder={''}
               type={'units'}
               unit='cm'
+              disabled={disabled}
             />
           </div>
         </FormBody>
@@ -155,6 +161,7 @@ export const OrderInformation = ({shipmentDestination, type}: any) => {
             //     }),
             //   },
             // }}
+            disabled={disabled}
           />
           <div className='w-100'>
             <DropdownControllerStyled
@@ -166,6 +173,7 @@ export const OrderInformation = ({shipmentDestination, type}: any) => {
               required
               rules={{required: 'This is required.'}}
               defaultValue={desiredObject}
+              disabled={disabled}
             />
           </div>
         </FormBody>
@@ -179,6 +187,7 @@ export const OrderInformation = ({shipmentDestination, type}: any) => {
               placeholder={trans('program.add.delivery.company')}
               required
               rules={{required: 'This is required.'}}
+              disabled={disabled}
             />
           </div>
           <>
@@ -189,6 +198,7 @@ export const OrderInformation = ({shipmentDestination, type}: any) => {
               control={methods?.control}
               required
               rules={{required: 'This is required.'}}
+              disabled={disabled}
             />
           </>
         </FormBody>

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import {useLocales, useNotification} from 'hooks'
 import {FormProvider, useForm} from 'react-hook-form'
 import {useDispatch, useSelector} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useLocation} from 'react-router-dom'
 import {CancelButton, CardBody, SubmitButton} from './Theme'
 import {isEmpty} from 'lodash'
 import {ordersAPI} from 'services/apis'
@@ -14,8 +14,12 @@ import {ReceiverInformation} from './receiverInformation'
 export const EditOrder = () => {
   const {Trans, trans} = useLocales()
   const navigateTo = useNavigate()
+  const {state}: any = useLocation()
   const dispatch = useDispatch<any>()
   const {success, error} = useNotification()
+  console.log(state, 'statestate')
+
+  const VIEW_MODE = state?.type === 'view'
 
   const data = useSelector((state: any) => state.orderDetailsState?.entities?.order || {})
   const loading = useSelector<any>((state) => state.updateOrderState.loading === 'pending')
@@ -145,14 +149,15 @@ export const EditOrder = () => {
               shipmentDestination: data?.Shipment?.shipmentDestination,
               type: data?.Shipment?.type,
               deliveryCompanyId: data?.Shipment?.deliveryCompanyId,
+              disabled:VIEW_MODE
             }}
           />
         </CardBody>
         <CardBody className='mt-5 bg-white card-body'>
-          <SenderInformation />
+          <SenderInformation  viewMode={VIEW_MODE} />
         </CardBody>
         <CardBody className='mt-5 bg-white card-body'>
-          <ReceiverInformation />
+          <ReceiverInformation  viewMode={VIEW_MODE} />
         </CardBody>
       </div>
       <div className='pt-8 d-flex align-items-center justify-content-end'>
@@ -166,7 +171,8 @@ export const EditOrder = () => {
             disabled={
               Boolean(loading) ||
               !methods?.formState?.isValid ||
-              isEmpty(methods?.formState?.dirtyFields)
+              isEmpty(methods?.formState?.dirtyFields)||VIEW_MODE
+
             }
             loading={Boolean(loading)}
           >

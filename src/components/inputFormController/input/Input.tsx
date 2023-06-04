@@ -24,7 +24,7 @@ interface InputProps {
   unit?: string
   subUnit?: string
   disabled?: boolean
-  onChangeCurrancy?:any
+  onChangeCurrancy?: any
 }
 const unacceptableKeys = [38, 40, 69, 107, 109, 189, 187]
 
@@ -123,6 +123,7 @@ export const Input = ({
             fieldState,
             register,
             control,
+            disabled,
             ...rest,
           }}
         />
@@ -189,7 +190,7 @@ export const Input = ({
             <>
               <DropdownSelect
                 items={['SAR', 'KAW', 'BHD', 'EUR', 'GBP', 'EUR']}
-                 onChange={onChangeCurrancy}
+                onChange={onChangeCurrancy}
                 disabled={disabled}
                 menuStyle={{bottom: 30, overflow: 'auto', maxHeight: '150px'}}
               />
