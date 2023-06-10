@@ -29,7 +29,7 @@ export const Phone = ({
 }: UseControllerReturn & PhoneProps) => {
   const parsedNumber: any = parsePhoneNumber(field?.value) || ''
   const {country, number} = parsedNumber
-  const [phoneCountryCode, phoneCountryCodeSetter] = React.useState<any>(country || 'JO')
+  const [phoneCountryCode, phoneCountryCodeSetter] = React.useState<any>(country || 'SA')
 
   return (
     <Body

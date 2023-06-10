@@ -1,3 +1,4 @@
+import {isValidPhoneNumber} from 'react-phone-number-input'
 import * as yup from 'yup'
 
 export const schema = yup
@@ -31,5 +32,15 @@ export const schema = yup
     //       then: yup.string().oneOf([yup.ref('password')], "Password and Confirm Password didn't match"),
     //     }),
     acceptTerms: yup.bool().required('You must accept the terms and conditions'),
+    phone: yup
+      .string()
+      .nullable()
+      .test({
+        message: 'Phone Number is not valid, check country code',
+        test: (phoneNumber: any) => {
+          return isValidPhoneNumber(String(phoneNumber))
+        },
+      })
+      .required('required'),
   })
   .required()

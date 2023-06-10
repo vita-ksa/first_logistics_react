@@ -19,18 +19,22 @@ export const navLinks = [
   {
     id: 'home',
     title: 'Home',
+    path: '/',
   },
   {
     id: 'features',
     title: 'Features',
+    path: '/features',
   },
   {
     id: 'use-Cases',
     title: 'Use Cases',
+    path: '/use-Cases',
   },
   {
     id: 'integrations',
     title: 'Integrations',
+    path: '/integrations',
   },
 ]
 
