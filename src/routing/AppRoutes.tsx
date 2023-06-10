@@ -8,8 +8,8 @@ import {useSelector} from 'react-redux'
 import {LandingPage} from 'layout/landingPage'
 
 const AppRoutes: FC = () => {
-  const authToken = useSelector<any>((state) => state.auth?.entities?.tokens?.token)
-  const tempToken = useSelector<any>((state) => state.auth?.tempToken?.access?.token)
+  const authToken = useSelector<any>((state: any) => state.auth?.entities?.tokens?.token)
+  const tempToken = useSelector<any>((state: any) => state.auth?.tempToken?.access?.token)
 
   return (
     <BrowserRouter>
@@ -17,6 +17,7 @@ const AppRoutes: FC = () => {
         <Route element={<App />}>
           <Route path='error/*' element={<ErrorsPage />} />
           <Route path='logout' element={<Logout />} />
+
           {tempToken || authToken ? (
             <>
               <Route path='/*' element={<PrivateRoutes />} />
@@ -25,7 +26,7 @@ const AppRoutes: FC = () => {
           ) : (
             <>
               <Route path='auth/*' element={<AuthPage />} />
-              <Route path='' element={<LandingPage />} />
+              <Route path='/*' element={<LandingPage />} />
               <Route path='*' element={<Navigate to='/' />} />
             </>
           )}

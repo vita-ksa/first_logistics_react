@@ -3,6 +3,7 @@ import {useFormContext} from 'react-hook-form'
 import {InputFormController} from 'components'
 import {useLocales} from 'hooks'
 import {FormBody, InputControllerMinimumMargin} from './Theme'
+import {validatePhoneNumber} from 'utilities/validatePhoneNumber'
 
 export const SenderInformation = () => {
   const {Trans, trans} = useLocales()
@@ -74,10 +75,14 @@ export const SenderInformation = () => {
             label={trans('registration.phonenumber', {defaultValue: 'Mobile Number'})}
             name='sender_phone'
             control={methods?.control}
-            placeholder={'7000000000'}
+            placeholder={'5000000000'}
             defaultValue={''}
             required
             type={'phone'}
+            rules={{
+              required: 'This is required.',
+              validate: validatePhoneNumber,
+            }}
             {...{register: {...methods?.register}}}
           />
         </FormBody>
