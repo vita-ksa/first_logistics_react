@@ -119,7 +119,7 @@ export const Registration = () => {
           label={trans('registration.phonenumber', {defaultValue: 'Mobile Number'})}
           name='phone'
           control={control}
-          placeholder={'7000000000'}
+          placeholder={'5000000000'}
           required
           type={'phone'}
           {...register}

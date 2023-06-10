@@ -75,7 +75,7 @@ export const SenderInformation = () => {
             label={trans('registration.phonenumber', {defaultValue: 'Mobile Number'})}
             name='sender_phone'
             control={methods?.control}
-            placeholder={'7000000000'}
+            placeholder={'5000000000'}
             defaultValue={''}
             required
             type={'phone'}
