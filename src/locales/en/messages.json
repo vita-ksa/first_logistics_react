@@ -79,5 +79,6 @@
   "receiver.info.edit.title": "Receiver Information",
   "title.edit.order": "Edit Order",
   "title.view.order": "View Order",
-  "order.add.order": "Add Order"
+  "order.add.order": "Add Order",
+  "sidebar.profile": "Profile"
 }

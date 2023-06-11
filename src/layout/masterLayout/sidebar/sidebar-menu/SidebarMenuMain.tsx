@@ -4,6 +4,7 @@ import {SidebarMenuItem} from './SidebarMenuItem'
 import {ReactComponent as DashboardSVG} from 'assets/icons/dashboard.svg'
 import {ReactComponent as ProductsSVG} from 'assets/icons/proucts.svg'
 import {ReactComponent as OrdersSVG} from 'assets/icons/orders.svg'
+import {ReactComponent as ProfileSVG} from 'assets/icons/user.svg'
 
 const SidebarMenuMain = () => {
   const {trans, Trans} = useLocales()
@@ -23,6 +24,13 @@ const SidebarMenuMain = () => {
         title={trans('breadcrumb.dashboard')}
         fontIcon='bi-app-indicator'
       />
+      <SidebarMenuItem
+        to='/profile-management'
+        Icon={ProfileSVG}
+        title={trans('sidebar.profile')}
+        fontIcon='bi-app-indicator'
+      />
+
       <div className='menu-item'>
         <div className='pb-2 menu-content'>
           <span className='menu-section text-muted ls-1'>

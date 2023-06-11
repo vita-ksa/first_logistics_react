@@ -11,6 +11,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 import {ScrollTop} from '_metronic/layout/components/scroll-top'
 import {Notification} from 'pages/notification'
 import {Modal} from 'components'
+import {LockLoader} from 'pages/lockLoader'
 
 const MasterLayout = () => {
   const location = useLocation()
@@ -43,6 +44,7 @@ const MasterLayout = () => {
         <ScrollTop />
         <Notification />
         <Modal />
+        <LockLoader />
       </ThemeModeProvider>
     </PageDataProvider>
   )

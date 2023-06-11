@@ -18,6 +18,12 @@ const OrdersManagement = lazy(() =>
   }))
 )
 
+const ProfileManagement = lazy(() =>
+  import('pages/profileManagement').then((m) => ({
+    default: m.ProfileManagement,
+  }))
+)
+
 const PrivateRoutes = () => {
   return (
     <Routes>
@@ -41,6 +47,14 @@ const PrivateRoutes = () => {
           element={
             <SuspensedView>
               <OrdersManagement />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='profile-management/*'
+          element={
+            <SuspensedView>
+              <ProfileManagement />
             </SuspensedView>
           }
         />

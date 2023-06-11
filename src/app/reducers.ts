@@ -1,10 +1,11 @@
 import {combineReducers} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import localforage from 'localforage'
-import {authAPI, ordersAPI, productAPI} from '../services/apis'
+import {authAPI, ordersAPI, productAPI, profileAPI} from '../services/apis'
 import notificationReducer from 'pages/notification/notificationSlice'
 import modalReducer from 'components/modal/modalSlice'
 import localesReducers from 'locales/localesSlice'
+import lockLoaderReducer from 'pages/lockLoader/lockLoaderSlice'
 
 const authPersistConfig = {
   key: 'auth',
@@ -27,6 +28,7 @@ const reducers = combineReducers({
   notification: notificationReducer,
   modal: modalReducer,
   locales: localesPersistReducer,
+  lockLoader: lockLoaderReducer,
   refreshToken: authAPI.refreshTokenSlice.reducer,
   register: authAPI.registerSlice.reducer,
   productList: productAPI.getProductListSlice.reducer,
@@ -40,6 +42,7 @@ const reducers = combineReducers({
   categoriesList: ordersAPI.getCategoriesListSlice.reducer,
   deliveryCompanyList: ordersAPI.getDeliveryCompanyListSlice.reducer,
   orderDetailsState: ordersAPI.getOrderDetailsSlice.reducer,
+  userProfile: profileAPI.getUserProfileSlice.reducer,
 })
 
 export default reducers
