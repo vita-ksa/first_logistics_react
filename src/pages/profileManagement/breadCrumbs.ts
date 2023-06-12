@@ -18,19 +18,13 @@ export const profileBreadCrumbs: Array<PageLink> = [
 export const getUserProfileBreadCrumbs = (name: string) => [
   {
     title: name,
-    path: '/user-management',
+    path: '/profile-management',
     isSeparator: true,
     isActive: true,
   },
   {
-    title: 'Dashboard',
-    path: '/dashboard',
-    isSeparator: false,
-    isActive: true,
-  },
-  {
-    title: 'Users Management',
-    path: '/user-management',
+    title: 'Profile',
+    path: '/profile-management',
     isSeparator: false,
     isActive: true,
   },

@@ -7,6 +7,7 @@ import {ReactComponent as CallIcon} from 'assets/icons/call.svg'
 import {ReactComponent as EmailIcon} from 'assets/icons/email.svg'
 import {useLocales} from 'hooks'
 import {useSelector} from 'react-redux'
+import {capitalize} from 'lodash'
 
 export const Profile = () => {
   const data = useSelector((state: any) => state?.userProfile?.entities)
@@ -42,7 +43,7 @@ export const Profile = () => {
             <div className='flex-grow-1'>
               <div className='d-flex justify-content-between align-items-end'>
                 <div className='d-flex align-items-baseline'>
-                  <UserNameTypography>{data?.name}</UserNameTypography>
+                  <UserNameTypography>{capitalize(data?.name)}</UserNameTypography>
                 </div>
                 {/* <div>
                 <IconButtons onClick={blockUser} className='mx-2 btn' isBlocked={data?.isBlocked}>
