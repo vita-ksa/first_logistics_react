@@ -35,3 +35,23 @@ export const getUserProfileSlice = createSlice({
   },
   extraReducers: responseAsyncThunk(getUserProfile()),
 })
+
+export const UpdateDeliveryCompany = () => {
+  return requestAsyncThunk({
+    storeName: 'UpdateDeliveryCompanyState',
+    _url: `/delivery-company/details`,
+    method: 'PATCH_UPLOAD',
+    exact: 'update_delivery_company',
+  })
+}
+
+export const UpdateDeliveryCompanySlice = createSlice({
+  name: 'UpdateDeliveryCompanyState',
+  initialState,
+  reducers: {
+    resetAction: () => {
+      return initialState
+    },
+  },
+  extraReducers: responseAsyncThunk(UpdateDeliveryCompany()),
+})

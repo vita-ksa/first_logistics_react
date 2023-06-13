@@ -1,1 +1,6 @@
-export {getUserProfile, getUserProfileSlice} from './profile'
+export {
+  getUserProfile,
+  getUserProfileSlice,
+  UpdateDeliveryCompany,
+  UpdateDeliveryCompanySlice,
+} from './profile'

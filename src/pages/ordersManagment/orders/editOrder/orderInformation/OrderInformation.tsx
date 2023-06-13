@@ -15,8 +15,8 @@ const destinationOptions = [
     value: 'Local',
   },
   {
-    label: 'International shipment',
-    value: 'International',
+    label: 'External shipment',
+    value: 'External',
   },
 ]
 const shipmentOptions = [

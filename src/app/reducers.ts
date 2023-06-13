@@ -43,6 +43,7 @@ const reducers = combineReducers({
   deliveryCompanyList: ordersAPI.getDeliveryCompanyListSlice.reducer,
   orderDetailsState: ordersAPI.getOrderDetailsSlice.reducer,
   userProfile: profileAPI.getUserProfileSlice.reducer,
+  UpdateDeliveryCompanyState: profileAPI.UpdateDeliveryCompanySlice.reducer,
 })
 
 export default reducers
