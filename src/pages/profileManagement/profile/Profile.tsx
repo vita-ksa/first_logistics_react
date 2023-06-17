@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {InfoCard} from './infoCard'
 import {UpdateProfile} from './updateProfile'
 import {ordersAPI} from 'services/apis'
+import {UpdateShopInfo} from './updateShopInfo'
 
 export const Profile = () => {
   const dispatch = useDispatch<any>()
@@ -30,7 +31,7 @@ export const Profile = () => {
         <title>Profile</title>
       </Helmet>
       <InfoCard {...{activeTab, setActiveTab}} />
-      {userType?.toLowerCase() === 'deliverycompany' ? <UpdateProfile /> : null}
+      {userType?.toLowerCase() === 'deliverycompany' ? <UpdateProfile /> : <UpdateShopInfo />}
     </Fragment>
   )
 }

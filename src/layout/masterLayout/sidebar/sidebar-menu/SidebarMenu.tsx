@@ -1,6 +1,6 @@
 import {SidebarMenuMain} from './SidebarMenuMain'
 
-const SidebarMenu = () => {
+const SidebarMenu = ({userType}: any) => {
   return (
     <div className='app-sidebar-menu overflow-hidden flex-column-fluid'>
       <div
@@ -20,7 +20,7 @@ const SidebarMenu = () => {
           data-kt-menu='true'
           data-kt-menu-expand='false'
         >
-          <SidebarMenuMain />
+          <SidebarMenuMain {...{userType}} />
         </div>
       </div>
     </div>

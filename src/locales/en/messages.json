@@ -94,5 +94,18 @@
   "profile.update.companyRecoredNumber": "Company Recored Number",
   "g.picture.add": "Select a picture or drop it here",
   "g.edit.message": "has been Edited successfully",
-  "delivery.company.info.edit.title": "Delivery Company Information"
+  "delivery.company.info.edit.title": "Delivery Company Information",
+  "shop.info.edit.title": "Shop Information",
+  "profile.update.shopName": "Shop Name",
+  "profile.update.company.record.number": "Company Record Number",
+  "integrations.managment.connected": "Connected",
+  "integrations.managment.more.connections": "More Connections",
+  "sidebar.integrations.management": "Integrations",
+  "integrations.management.shiping.partners": "Shipping Partners",
+  "g.connect.message": "has been Connected successfully",
+  "integrations.management.shop.requests": "Requests",
+  "g.approve": "Approve",
+  "integrations.management.sales.chanels": "Sales Channels",
+  "integrations.managment.connected.sales.chanels": "Connected Sales Channels",
+  "integrations.managment.connected.online.store": "Connect your online store"
 }

@@ -1,21 +1,9 @@
 import React from 'react'
-import {
-  DropdownControllerStyled,
-  FormBody,
-  InputControllerMinimumMargin,
-  Title,
-  CardBody,
-} from './Theme'
+import {FormBody, InputControllerMinimumMargin, Title, CardBody} from './Theme'
 import {useLocales, useNotification} from 'hooks'
 import {useForm} from 'react-hook-form'
-import {
-  Button,
-  InputFormController,
-  MultiDropdownController,
-  MultiSelectController,
-} from 'components'
+import {Button, InputFormController, MultiDropdownController} from 'components'
 import {useDispatch, useSelector} from 'react-redux'
-import {profile} from 'console'
 import {profileAPI} from 'services/apis'
 import {SUCCESS_STATUS} from 'constants/auth'
 import {isEmpty} from 'lodash'

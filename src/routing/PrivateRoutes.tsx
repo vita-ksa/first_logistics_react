@@ -5,6 +5,7 @@ import TopBarProgress from 'react-topbar-progress-indicator'
 import {getCSSVariableValue} from '_metronic/assets/ts/_utils'
 import {WithChildren} from '_metronic/helpers'
 import {DashboardManagement} from 'pages/dashboardManagment'
+import {PriceCalculationManagment} from 'pages/priceCalculationManagment'
 
 const Management = lazy(() =>
   import('pages/managment').then((m) => ({
@@ -24,6 +25,12 @@ const ProfileManagement = lazy(() =>
   }))
 )
 
+const IntegrationsManagment = lazy(() =>
+  import('pages/integrationsManagment').then((m) => ({
+    default: m.IntegrationsManagment,
+  }))
+)
+
 const PrivateRoutes = () => {
   return (
     <Routes>
@@ -32,6 +39,7 @@ const PrivateRoutes = () => {
         <Route path='auth/*' element={<Navigate to='/dashboard' />} />
         {/* Pages */}
         <Route path='dashboard/*' element={<DashboardManagement />} />
+        <Route path='price-calculation' element={<PriceCalculationManagment />} />
 
         {/* Lazy Modules */}
         <Route
@@ -58,6 +66,15 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
+        <Route
+          path='/*'
+          element={
+            <SuspensedView>
+              <IntegrationsManagment />
+            </SuspensedView>
+          }
+        />
+
         {/* Page Not Found */}
         <Route path='*' element={<Navigate to='/dashboard' />} />
       </Route>

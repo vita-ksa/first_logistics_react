@@ -1,0 +1,1 @@
+export {UpdateShopInfo} from './UpdateShopInfo'

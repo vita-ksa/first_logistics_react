@@ -55,3 +55,42 @@ export const UpdateDeliveryCompanySlice = createSlice({
   },
   extraReducers: responseAsyncThunk(UpdateDeliveryCompany()),
 })
+
+export const UpdateShopInfo = () => {
+  return requestAsyncThunk({
+    storeName: 'UpdateShopInfoState',
+    _url: `/user/`,
+    method: 'PATCH_UPLOAD',
+    exact: 'update_shop_info',
+  })
+}
+
+export const UpdateShopInfoSlice = createSlice({
+  name: 'UpdateShopInfoState',
+  initialState,
+  reducers: {
+    resetAction: () => {
+      return initialState
+    },
+  },
+  extraReducers: responseAsyncThunk(UpdateShopInfo()),
+})
+
+export const getImageUrl = () => {
+  return requestAsyncThunk({
+    storeName: 'imageUrlState',
+    _url: `/images/`,
+    method: 'GET',
+  })
+}
+
+export const getImageUrlSlice = createSlice({
+  name: 'imageUrlState',
+  initialState,
+  reducers: {
+    resetAction: () => {
+      return initialState
+    },
+  },
+  extraReducers: responseAsyncThunk(getImageUrl()),
+})

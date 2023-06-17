@@ -5,9 +5,11 @@ import {ILayout, useLayout} from '_metronic/layout/core'
 import {SidebarMenu} from './sidebar-menu/SidebarMenu'
 import {SidebarFooter} from './SidebarFooter'
 import {SidebarLogo} from './SidebarLogo'
+import {useSelector} from 'react-redux'
 
 const Sidebar = () => {
   const {config} = useLayout()
+  const userType = useSelector((state: any) => state?.auth?.entities?.user?.type)
 
   useEffect(() => {
     updateDOM(config)
@@ -20,7 +22,7 @@ const Sidebar = () => {
   return (
     <div id='kt_app_sidebar' className={clsx('app-sidebar', config.app?.sidebar?.default?.class)}>
       <SidebarLogo />
-      <SidebarMenu />
+      <SidebarMenu {...{userType}} />
       <SidebarFooter />
     </div>
   )

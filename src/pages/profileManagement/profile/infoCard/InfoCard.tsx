@@ -1,6 +1,6 @@
 import React from 'react'
 import {LazyLoadImage} from 'react-lazy-load-image-component'
-import {useSelector} from 'react-redux'
+
 import {useLocales} from 'hooks'
 import {capitalize} from 'lodash'
 import blankAvatar from 'assets/img/blank-avatar.png'
@@ -8,15 +8,11 @@ import {ReactComponent as CallIcon} from 'assets/icons/call.svg'
 import {ReactComponent as EmailIcon} from 'assets/icons/email.svg'
 import {DetailsTypography, ImageContainer, UserNameTypography} from '../Theme'
 import {DarkHeading, TableDiv} from './Theme'
+import {useSelector} from 'react-redux'
 
 export const InfoCard = ({activeTab, setActiveTab}: any) => {
-  const data = useSelector((state: any) => state?.userProfile?.entities)
   const {trans} = useLocales()
-
-  const list = [
-    {value: 'generalInfo', label: trans(`${`profile.${data?.type}.info`}`)},
-    {value: 'programs', label: trans('profile.update.info')},
-  ]
+  const data = useSelector((state: any) => state?.userProfile?.entities)
 
   return (
     <div className='mb-5 card mb-xl-10'>
@@ -24,7 +20,11 @@ export const InfoCard = ({activeTab, setActiveTab}: any) => {
         <div className='flex-wrap gap-5 d-flex flex-lg-nowrap'>
           <ImageContainer>
             <LazyLoadImage
-              src={blankAvatar}
+              src={
+                data?.photo
+                  ? `http://109.123.249.49:3006/logistics/images/${data?.photo}`
+                  : blankAvatar
+              }
               className='rounded'
               width='100%'
               height='150px'

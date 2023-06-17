@@ -17,6 +17,11 @@ export const ProfileManagement = () => {
   const loading = useSelector((state: any) => state?.userProfile?.loading)
   const userName = useSelector((state: any) => state?.auth?.entities?.user?.name)
 
+  const reloadData: any = useSelector<any>((state) => [
+    state.UpdateShopInfoState?.entities,
+    state?.UpdateDeliveryCompanyState?.entities,
+  ])
+
   const fetchUserProfile = async () => {
     const {payload} = await dispatch(profileAPI.getUserProfile()({}))
     if (!SUCCESS_STATUS.includes(payload?.status)) {
@@ -30,7 +35,7 @@ export const ProfileManagement = () => {
     return () => {
       dispatch(profileAPI.getUserProfileSlice.actions.resetAction())
     }
-  }, [])
+  }, [...reloadData])
 
   useEffect(() => {
     lockLoader(loading)

@@ -3,4 +3,8 @@ export {
   getUserProfileSlice,
   UpdateDeliveryCompany,
   UpdateDeliveryCompanySlice,
+  UpdateShopInfo,
+  UpdateShopInfoSlice,
+  getImageUrl,
+  getImageUrlSlice,
 } from './profile'
