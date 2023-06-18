@@ -48,12 +48,14 @@ export const PopoverItems = ({layerProps, isOpen, setOpen, id, isApproved}: Popo
       className={`menu menu-sub menu-sub-dropdown ${isOpen ? 'show' : ''}`}
       {...layerProps}
     >
-      <ItemPopover onClick={handelApproveAction.bind(this, 'edit')}>
+      <ItemPopover disabled={isApproved} onClick={handelApproveAction.bind(this, 'edit')}>
         {loading ? (
           <Loader width={'15px'} height={'15px'} />
-        ) : (
-          // <EditSVGStyled />
+        ) : // <EditSVGStyled />
 
+        isApproved ? (
+          <Trans i18nKey='popover.edit'>{trans('g.approved')}</Trans>
+        ) : (
           <Trans i18nKey='popover.edit'>{trans('g.approve')}</Trans>
         )}
       </ItemPopover>

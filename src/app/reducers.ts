@@ -1,7 +1,14 @@
 import {combineReducers} from '@reduxjs/toolkit'
 import {persistReducer} from 'redux-persist'
 import localforage from 'localforage'
-import {authAPI, integrationsAPI, ordersAPI, productAPI, profileAPI} from '../services/apis'
+import {
+  authAPI,
+  credentialsAPI,
+  integrationsAPI,
+  ordersAPI,
+  productAPI,
+  profileAPI,
+} from '../services/apis'
 import notificationReducer from 'pages/notification/notificationSlice'
 import modalReducer from 'components/modal/modalSlice'
 import localesReducers from 'locales/localesSlice'
@@ -53,6 +60,8 @@ const reducers = combineReducers({
   connectToShopState: integrationsAPI.connectToShopSlice.reducer,
   deliveryShopRequestState: integrationsAPI.getDeliveryShopRequestSlice.reducer,
   approveShopRequestState: integrationsAPI.approveShopRequestSlice.reducer,
+  generateCredentialsState: credentialsAPI.getgenerateCredentialsSlice.reducer,
+  getCredentialsState: credentialsAPI.getCredentialsSlice.reducer,
 })
 
 export default reducers

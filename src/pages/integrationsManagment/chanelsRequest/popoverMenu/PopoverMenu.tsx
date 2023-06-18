@@ -32,7 +32,6 @@ export const PopoverMenu = ({id, isApproved}: any) => {
         {...triggerProps}
         style={{color: isOpen ? '#28A4C1' : '#7E8299'}}
         onClick={() => setOpen((el) => !el)}
-        disabled={isApproved}
       >
         {!isOpen ? (
           <OptionsSVG className='svg-icon-2' color='#7E8299' width={'1.5rem'} />

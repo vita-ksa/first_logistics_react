@@ -98,6 +98,12 @@ const SidebarMenuMain = ({userType}: any) => {
           </>
         )}
       </SidebarMenuItemWithSub>
+      <SidebarMenuItem
+        to='/credentials'
+        Icon={OrdersSVG}
+        title={trans('sidebar.credentials')}
+        fontIcon='bi-app-indicator'
+      />
     </>
   )
 }

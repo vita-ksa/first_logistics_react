@@ -21,7 +21,9 @@ export const Wrap = styled.div`
   position: relative;
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   border: 3px solid rgba(249, 249, 249, 0.1);
-
+  display: flex;
+  align-items: center;
+  gap: 10px;
   span {
     img {
       inset: 0px;
@@ -44,7 +46,7 @@ export const Wrap = styled.div`
   }
 `
 export const ConnectButton = styled.button`
-  position: absolute;
+  /* position: absolute; */
   background-color: transparent;
   outline-color: transparent;
   border: none;
@@ -54,4 +56,16 @@ export const ConnectButton = styled.button`
   bottom: 0;
   margin-right: 8px;
   font-weight: 600;
+`
+export const InfoBody = styled.div`
+  height: 100%;
+  padding: 10px;
+  justify-content: space-between;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: flex-start;
+  & > span {
+    font-weight: bold;
+  }
 `

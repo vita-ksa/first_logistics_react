@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {ConnectButton, Wrap} from './Theme'
+import {ConnectButton, InfoBody, Wrap} from './Theme'
 import blankAvatar from 'assets/img/blank-avatar.png'
 import {integrationsAPI, profileAPI} from 'services/apis'
 import {useDispatch, useSelector} from 'react-redux'
@@ -7,6 +7,7 @@ import {LazyLoadImage} from 'react-lazy-load-image-component'
 import {SUCCESS_STATUS} from 'constants/auth'
 import {useLocales, useNotification} from 'hooks'
 import {Loader} from 'components/loader'
+import {capitalize} from 'lodash'
 
 export const ContentItem = ({data}: any) => {
   const dispatch = useDispatch<any>()
@@ -17,7 +18,7 @@ export const ContentItem = ({data}: any) => {
   const handelConnect = async (id: string) => {
     setLoading(true)
     const {payload} = await dispatch(
-      integrationsAPI.connectToDelivery()({
+      integrationsAPI.connectToShop()({
         urlParams: `?shopId=${id}`,
       })
     )
@@ -47,10 +48,6 @@ export const ContentItem = ({data}: any) => {
   return (
     <>
       <Wrap>
-        <ConnectButton disabled={loading} onClick={handelConnect.bind(this, data?.id)}>
-          {loading ? <Loader width={'10px'} height={'10px'} /> : 'Connect >'}
-        </ConnectButton>
-
         <>
           <LazyLoadImage
             src={
@@ -66,6 +63,23 @@ export const ContentItem = ({data}: any) => {
             alt={data?.name}
           />
         </>
+        <InfoBody>
+          <span>{capitalize(data?.name)}</span>
+          <ConnectButton
+            disabled={loading || data?.isApproved !== undefined}
+            onClick={handelConnect.bind(this, data?.id)}
+          >
+            {loading ? (
+              <Loader width={'10px'} height={'10px'} />
+            ) : data?.isApproved === undefined ? (
+              'Connect >'
+            ) : data?.isApproved ? (
+              'Connected'
+            ) : (
+              'Requsted'
+            )}
+          </ConnectButton>
+        </InfoBody>
       </Wrap>
     </>
   )

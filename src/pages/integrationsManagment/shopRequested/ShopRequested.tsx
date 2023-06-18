@@ -6,6 +6,8 @@ import {useDispatch, useSelector} from 'react-redux'
 import {integrationsAPI} from 'services/apis'
 import {SUCCESS_STATUS} from 'constants/auth'
 import {PopoverMenu} from './popoverMenu'
+import {TableThemes} from 'components'
+import blankAvatar from 'assets/img/blank-avatar.png'
 
 export const ShopRequested = () => {
   const {Trans, trans, formatDate} = useLocales()
@@ -28,9 +30,22 @@ export const ShopRequested = () => {
       ),
       accessor: 'name',
       Cell: ({row}: any) => (
-        <>
+        <TableThemes.TitlwBody>
+          <div className='symbol symbol-50px me-5'>
+            <span className='overflow-hidden symbol-label bg-light'>
+              <TableThemes.Image
+                src={`${
+                  row?.original?.image
+                    ? `http://109.123.249.49:3006/logistics/images/${row?.original?.image}`
+                    : blankAvatar
+                }`}
+                className='align-self-end'
+                alt=''
+              />
+            </span>
+          </div>
           <div className='w-100'>{row?.original?.name}</div>
-        </>
+        </TableThemes.TitlwBody>
       ),
     },
     {

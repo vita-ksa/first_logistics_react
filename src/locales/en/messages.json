@@ -107,5 +107,9 @@
   "g.approve": "Approve",
   "integrations.management.sales.chanels": "Sales Channels",
   "integrations.managment.connected.sales.chanels": "Connected Sales Channels",
-  "integrations.managment.connected.online.store": "Connect your online store"
+  "integrations.managment.connected.online.store": "Connect you online store",
+  "sidebar.credentials": "Credentials",
+  "g.credantials.message": "has been Generated successfully",
+  "credantials.generator": "Credentials Generators",
+  "g.approved": "Approved"
 }

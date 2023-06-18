@@ -12,10 +12,10 @@ interface PopoverItemsProps {
   isOpen?: boolean
   setOpen?: any
   id?: string
-  orderNumber?: number
+  isApproved?: boolean
 }
 
-export const PopoverItems = ({layerProps, isOpen, setOpen, id, orderNumber}: PopoverItemsProps) => {
+export const PopoverItems = ({layerProps, isOpen, setOpen, id, isApproved}: PopoverItemsProps) => {
   const {trans, Trans} = useLocales()
   const dispatch = useDispatch<any>()
   const {error, success} = useNotification()
@@ -48,12 +48,14 @@ export const PopoverItems = ({layerProps, isOpen, setOpen, id, orderNumber}: Pop
       className={`menu menu-sub menu-sub-dropdown ${isOpen ? 'show' : ''}`}
       {...layerProps}
     >
-      <ItemPopover onClick={handelApproveAction.bind(this, 'edit')}>
+      <ItemPopover disabled={isApproved} onClick={handelApproveAction.bind(this, 'edit')}>
         {loading ? (
           <Loader width={'15px'} height={'15px'} />
-        ) : (
-          // <EditSVGStyled />
+        ) : // <EditSVGStyled />
 
+        isApproved ? (
+          <Trans i18nKey='popover.edit'>{trans('g.approved')}</Trans>
+        ) : (
           <Trans i18nKey='popover.edit'>{trans('g.approve')}</Trans>
         )}
       </ItemPopover>

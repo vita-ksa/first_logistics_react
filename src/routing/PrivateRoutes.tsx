@@ -31,12 +31,18 @@ const IntegrationsManagment = lazy(() =>
   }))
 )
 
+const CredentialsManagment = lazy(() =>
+  import('pages/credentialsManagment').then((m) => ({
+    default: m.CredentialsManagment,
+  }))
+)
+
 const PrivateRoutes = () => {
   return (
     <Routes>
       <Route element={<MasterLayout />}>
         {/* Redirect to Dashboard after success login/registartion */}
-        <Route path='auth/*' element={<Navigate to='/dashboard' />} />
+        <Route path='auth/*' element={<Navigate to='/price-calculation' />} />
         {/* Pages */}
         <Route path='dashboard/*' element={<DashboardManagement />} />
         <Route path='price-calculation' element={<PriceCalculationManagment />} />
@@ -74,9 +80,17 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
+        <Route
+          path='credentials/*'
+          element={
+            <SuspensedView>
+              <CredentialsManagment />
+            </SuspensedView>
+          }
+        />
 
         {/* Page Not Found */}
-        <Route path='*' element={<Navigate to='/dashboard' />} />
+        <Route path='*' element={<Navigate to='/price-calculation' />} />
       </Route>
     </Routes>
   )
