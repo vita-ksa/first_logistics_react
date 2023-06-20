@@ -14,9 +14,17 @@ interface PopoverItemsProps {
   setOpen?: any
   id?: string
   orderNumber?: number
+  userType?: string
 }
 
-export const PopoverItems = ({layerProps, isOpen, setOpen, id, orderNumber}: PopoverItemsProps) => {
+export const PopoverItems = ({
+  layerProps,
+  isOpen,
+  setOpen,
+  id,
+  orderNumber,
+  userType,
+}: PopoverItemsProps) => {
   const {trans, Trans} = useLocales()
   const dispatch = useDispatch<any>()
   const {error} = useNotification()
@@ -58,14 +66,16 @@ export const PopoverItems = ({layerProps, isOpen, setOpen, id, orderNumber}: Pop
       className={`menu menu-sub menu-sub-dropdown ${isOpen ? 'show' : ''}`}
       {...layerProps}
     >
-      <ItemPopover onClick={handelEditAction.bind(this, 'edit')}>
-        {loading?.loading && loading?.type === 'edit' ? (
-          <Loader width={'15px'} height={'15px'} />
-        ) : (
-          <EditSVGStyled />
-        )}
-        <Trans i18nKey='popover.edit'>{trans('g.edit')}</Trans>
-      </ItemPopover>
+      {userType?.toLowerCase() === 'shop' ? (
+        <ItemPopover onClick={handelEditAction.bind(this, 'edit')}>
+          {loading?.loading && loading?.type === 'edit' ? (
+            <Loader width={'15px'} height={'15px'} />
+          ) : (
+            <EditSVGStyled />
+          )}
+          <Trans i18nKey='popover.edit'>{trans('g.edit')}</Trans>
+        </ItemPopover>
+      ) : null}
       <ItemPopover onClick={handelEditAction.bind(this, 'view')}>
         {loading?.loading && loading?.type === 'view' ? (
           <Loader width={'15px'} height={'15px'} />

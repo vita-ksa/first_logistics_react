@@ -159,3 +159,23 @@ export const getDeliveryCompanyListSlice = createSlice({
   },
   extraReducers: responseAsyncThunk(getDeliveryCompanyList()),
 })
+
+export const updateOrderStatus = () => {
+  return requestAsyncThunk({
+    storeName: 'updateOrderStatusState',
+    _url: `/delivery-company/orders`,
+    method: 'PATCH',
+    exact: 'update_order_status',
+  })
+}
+
+export const updateOrderStatusSlice = createSlice({
+  name: 'updateOrderStatusState',
+  initialState,
+  reducers: {
+    resetAction: () => {
+      return initialState
+    },
+  },
+  extraReducers: responseAsyncThunk(updateOrderStatus()),
+})

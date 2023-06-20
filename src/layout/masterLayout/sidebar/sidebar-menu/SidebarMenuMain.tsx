@@ -6,6 +6,7 @@ import {ReactComponent as ProductsSVG} from 'assets/icons/proucts.svg'
 import {ReactComponent as OrdersSVG} from 'assets/icons/orders.svg'
 import {ReactComponent as ProfileSVG} from 'assets/icons/user.svg'
 import {ReactComponent as IntegrationsSVG} from 'assets/icons/integrations-icon.svg'
+import {ReactComponent as CredentialsSVG} from 'assets/icons/credantial.svg'
 import {SidebarMenuItemWithSub} from './SidebarMenuItemWithSub'
 
 // shipping in shop
@@ -100,7 +101,7 @@ const SidebarMenuMain = ({userType}: any) => {
       </SidebarMenuItemWithSub>
       <SidebarMenuItem
         to='/credentials'
-        Icon={OrdersSVG}
+        Icon={CredentialsSVG}
         title={trans('sidebar.credentials')}
         fontIcon='bi-app-indicator'
       />

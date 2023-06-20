@@ -6,26 +6,64 @@ import {Helmet} from 'react-helmet-async'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {ordersAPI} from 'services/apis'
-import {Name, SenderInfo, StyledTable} from './Theme'
-import {ReactComponent as EditSVG} from 'assets/icons/table/edit.svg'
-import {Loader} from 'components/loader'
+import {StyledTable} from './Theme'
 import {PopoverMenu} from './popoverMenu'
+import {DropdownController} from 'components'
+import {useForm} from 'react-hook-form'
+import {capitalize} from 'lodash'
 
+const statusList = [
+  {
+    label: 'Pending',
+    value: 'Pending',
+  },
+  {
+    label: 'Delivered',
+    value: 'Delivered',
+  },
+  {
+    label: 'Inprogress',
+    value: 'Inprogress',
+  },
+  {
+    label: 'Returned',
+    value: 'Returned',
+  },
+  {
+    label: 'Canceled',
+    value: 'Canceled',
+  },
+]
 export const Orders = () => {
-  const [editLoading, setEditLoading] = useState<any>({
-    loading: false,
-    type: '',
-  })
+  const methods = useForm({mode: 'onChange'})
 
   const {Trans, trans, formatDate} = useLocales()
   const dispatch = useDispatch<any>()
-  const {error} = useNotification()
+  const {success, error} = useNotification()
   const navigateTo = useNavigate()
 
   const data = useSelector((state: any) => state?.ordersList?.entities?.orderList || [])
   const userType = useSelector((state: any) => state?.auth?.entities?.user?.type) as string
   const count = useSelector((state: any) => state?.ordersList?.entities?.totalCount || 0)
   const loading = useSelector((state: any) => state?.ordersList?.loading === 'pending')
+
+  const updateOrderStatusAction = async (value: any, orderId: any) => {
+    console.log(value, 'valuevaluevaluevalue')
+    const {payload} = await dispatch(
+      ordersAPI.updateOrderStatus()({urlParams: `?orderId=${orderId}`, status: value?.value})
+    )
+
+    if (SUCCESS_STATUS.includes(payload?.status)) {
+      console.log(payload, 'payloadpayload')
+      success({
+        message: capitalize(payload?.data?.message),
+      })
+    } else {
+      error({
+        message: payload.message?.message,
+      })
+    }
+  }
 
   const columns = [
     {
@@ -52,7 +90,30 @@ export const Orders = () => {
     {
       Header: () => <Trans i18nKey={'order.list.status'}>Status</Trans>,
       accessor: 'statusId',
-      Cell: ({row}: any) => <>{row.original.status.replaceAll('_', ' ')}</>,
+      Cell: ({row}: any) => (
+        <>
+          {userType?.toLowerCase() === 'shop' ? (
+            row.original.status.replaceAll('_', ' ')
+          ) : (
+            <>
+              {' '}
+              <DropdownController
+                name='trainerName'
+                // label={trans('general.trainer.name', {defaultValue: 'Trainer Name'})}
+                items={statusList || []}
+                control={methods?.control}
+                // placeholder={trans('deal.add.trainer.placeholder')}
+                required
+                // rules={{required: 'This is required.'}}
+                defaultValue={statusList?.find(
+                  (el) => el?.value?.toLowerCase() === row.original.status?.toLowerCase()
+                )}
+                setExternalValue={(value: any) => updateOrderStatusAction(value, row?.original?.id)}
+              />
+            </>
+          )}
+        </>
+      ),
       disableSortBy: true,
     },
     {
@@ -73,63 +134,16 @@ export const Orders = () => {
       Cell: ({row}: any) => <>{row.original.Shipment?.type}</>,
       disableSortBy: true,
     },
-    // {
-    //   Header: () => <Trans i18nKey={'order.list.sender'}>Sender</Trans>,
-    //   accessor: 'sender',
-    //   Cell: ({row}: any) => (
-    //     <TableThemes.TitlwBody>
-    //       <div className='d-flex justify-content-start flex-column'>
-    //         <TableThemes.Label className='mb-1 fs-6'>
-    //           <Name>{row?.original?.Shipment?.sender?.name}</Name>
-    //           <SenderInfo className='gray-text'>
-    //             {row?.original?.Shipment?.sender?.phone}
-    //           </SenderInfo>
-    //           <SenderInfo className='gray-text'>
-    //             {row?.original?.Shipment?.sender?.email}
-    //           </SenderInfo>
-    //         </TableThemes.Label>
-    //       </div>
-    //     </TableThemes.TitlwBody>
-    //   ),
-    //   disableSortBy: true,
-    // },
-    // {
-    //   Header: () => <Trans i18nKey={'order.list.receiver'}>Receiver</Trans>,
-    //   accessor: 'receiver',
-    //   Cell: ({row}: any) => (
-    //     <TableThemes.TitlwBody>
-    //       <div className='d-flex justify-content-start flex-column'>
-    //         <TableThemes.Label className='mb-1 fs-6'>
-    //           <Name>{row?.original?.Shipment?.receiver?.name}</Name>
-    //           <SenderInfo className='gray-text'>
-    //             {row?.original?.Shipment?.receiver?.phone}
-    //           </SenderInfo>
-    //           <SenderInfo className='gray-text'>
-    //             {row?.original?.Shipment?.receiver?.email}
-    //           </SenderInfo>
-    //         </TableThemes.Label>
-    //       </div>
-    //     </TableThemes.TitlwBody>
-    //   ),
-    //   disableSortBy: true,
-    // },
     {
       Header: '',
-      // () => <Trans i18nKey={'view'} />,
       accessor: 'actions',
       Cell: ({row}: any) => (
-        // <>
-
-        //   <TableThemes.Label>
-        //     <TableThemes.EditButton
-        //       onClick={handleEdit.bind(this, row?.original?.id, row?.original?.number)}
-        //     >
-        //       {editLoading?.loading ? <Loader width={'15px'} height={'15px'} /> : <EditSVG />}
-        //     </TableThemes.EditButton>
-        //   </TableThemes.Label>
-        // </>
         <>
-          <PopoverMenu id={row?.original?.id} orderNumber={row?.original?.number} />
+          <PopoverMenu
+            id={row?.original?.id}
+            orderNumber={row?.original?.number}
+            userType={userType}
+          />
         </>
       ),
       disableSortBy: true,
@@ -189,8 +203,9 @@ export const Orders = () => {
           }}
           title={trans('sidebar.orders')}
           searchPlaceholder={'g.search'}
-          onClickAction={handelAddNewOrder}
+          onClickAction={userType?.toLowerCase() === 'shop' ? handelAddNewOrder : false}
           searchInput
+          overFlowX={userType?.toLowerCase() !== 'shop'}
         />
       </div>
     </Fragment>

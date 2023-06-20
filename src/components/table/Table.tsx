@@ -29,6 +29,7 @@ export const Table = ({
   footer = true,
   defaultPageSize = 10,
   cardClassName,
+  overFlowX,
 }: any) => {
   const [search, setSearch] = useState(undefined)
   const [pageCount, setPageCount] = useState<any>(1)
@@ -109,7 +110,10 @@ export const Table = ({
 
       <KTCard className={`mt-4  border-0 ${cardClassName}`}>
         <KTCardBody className='py-4'>
-          <TableBudy className={`${className} table-responsive`}>
+          <TableBudy
+            className={`${className} table-responsive`}
+            style={{overflowX: overFlowX && 'unset'}}
+          >
             <table
               id='kt_table_users'
               className='table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3'

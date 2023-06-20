@@ -11,4 +11,6 @@ export {
   getDeliveryCompanyListSlice,
   getOrderDetails,
   getOrderDetailsSlice,
+  updateOrderStatus,
+  updateOrderStatusSlice,
 } from './orders'

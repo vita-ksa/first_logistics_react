@@ -62,6 +62,7 @@ const reducers = combineReducers({
   approveShopRequestState: integrationsAPI.approveShopRequestSlice.reducer,
   generateCredentialsState: credentialsAPI.getgenerateCredentialsSlice.reducer,
   getCredentialsState: credentialsAPI.getCredentialsSlice.reducer,
+  updateOrderStatusState: ordersAPI.updateOrderStatusSlice.reducer,
 })
 
 export default reducers

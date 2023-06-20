@@ -37,6 +37,7 @@ export const InfoCard = ({activeTab, setActiveTab}: any) => {
               <div className='d-flex align-items-baseline'>
                 <UserNameTypography>{capitalize(data?.name)}</UserNameTypography>
               </div>
+
               {/* <div>
           <IconButtons onClick={blockUser} className='mx-2 btn' isBlocked={data?.isBlocked}>
             {data?.isBlocked ? (

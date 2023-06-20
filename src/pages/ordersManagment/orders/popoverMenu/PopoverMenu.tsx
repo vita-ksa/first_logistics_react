@@ -4,7 +4,7 @@ import {PopoverItems} from './PopoverItems'
 import {ReactComponent as OptionsSVG} from 'assets/icons/more-options.svg'
 import {useLocales} from 'hooks'
 
-export const PopoverMenu = ({id, orderNumber}: any) => {
+export const PopoverMenu = ({id, orderNumber, userType}: any) => {
   const {Trans} = useLocales()
   const [isOpen, setOpen] = useState(false)
   function close() {
@@ -40,7 +40,7 @@ export const PopoverMenu = ({id, orderNumber}: any) => {
         )}
       </button>
 
-      {renderLayer(<PopoverItems {...{layerProps, isOpen, setOpen, id, orderNumber}} />)}
+      {renderLayer(<PopoverItems {...{layerProps, isOpen, setOpen, id, orderNumber, userType}} />)}
     </>
   )
 }
