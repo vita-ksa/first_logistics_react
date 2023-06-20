@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../style'
 import arrowUp from 'assets/icons/arrow-up.svg'
 import robot from 'assets/icons/default-small.svg'
+import Capture from 'assets/img/capture.png'
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import {Clients} from '../clients'
@@ -109,7 +110,7 @@ export const Home = () => {
         </div>
 
         <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
-          <StyledImage src={robot} alt='billing' />
+          <StyledImage src={Capture} alt='billing' />
         </div>
       </section>
 

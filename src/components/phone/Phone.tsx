@@ -45,7 +45,7 @@ export const Phone = ({
         value={phoneCountryCode}
         disabled={disabled}
         onChange={(event) => {
-          field.onChange()
+          // field.onChange()
           phoneCountryCodeSetter(() => event.target.value || undefined)
         }}
       >
