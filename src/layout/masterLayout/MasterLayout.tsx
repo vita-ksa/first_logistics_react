@@ -12,9 +12,12 @@ import {ScrollTop} from '_metronic/layout/components/scroll-top'
 import {Notification} from 'pages/notification'
 import {Modal} from 'components'
 import {LockLoader} from 'pages/lockLoader'
+import {useSelector} from 'react-redux'
 
 const MasterLayout = () => {
   const location = useLocation()
+  const {lang} = useSelector<any>((state) => state?.locales) as any
+
   useEffect(() => {
     reInitMenu()
   }, [location.key])
@@ -23,12 +26,13 @@ const MasterLayout = () => {
     <PageDataProvider>
       <ThemeModeProvider>
         <Helmet>
-          <html lang={'en'} dir='ltr' />
+          <html lang={lang} dir={lang === 'en' ? 'ltr' : 'rtl'} />
           <title>First Logistics</title>
         </Helmet>
         <div className='d-flex flex-column flex-root app-root' id='kt_app_root'>
           <div className='app-page flex-column flex-column-fluid' id='kt_app_page'>
             <HeaderWrapper />
+
             <div className='app-wrapper flex-column flex-row-fluid' id='kt_app_wrapper'>
               <Sidebar />
               <div className='app-main flex-column flex-row-fluid' id='kt_app_main'>

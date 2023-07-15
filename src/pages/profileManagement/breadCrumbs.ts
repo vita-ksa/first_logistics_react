@@ -1,4 +1,4 @@
-import { PageLink } from '_metronic/layout/core'
+import {PageLink} from '_metronic/layout/core'
 
 export const profileBreadCrumbs: Array<PageLink> = [
   {
@@ -8,8 +8,8 @@ export const profileBreadCrumbs: Array<PageLink> = [
     isActive: false,
   },
   {
-    title: 'Dashboard',
-    path: '/dashboard',
+    title: '',
+    path: '',
     isSeparator: false,
     isActive: true,
   },

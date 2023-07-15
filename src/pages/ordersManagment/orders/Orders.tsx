@@ -1,8 +1,6 @@
-import {TableThemes} from 'components/table'
 import {SUCCESS_STATUS} from 'constants/auth'
 import {useLocales, useNotification} from 'hooks'
-import React, {Fragment, useCallback, useState} from 'react'
-import {Helmet} from 'react-helmet-async'
+import React, {Fragment, useCallback, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {ordersAPI} from 'services/apis'
@@ -41,7 +39,6 @@ export const Orders = () => {
   const dispatch = useDispatch<any>()
   const {success, error} = useNotification()
   const navigateTo = useNavigate()
-
   const data = useSelector((state: any) => state?.ordersList?.entities?.orderList || [])
   const userType = useSelector((state: any) => state?.auth?.entities?.user?.type) as string
   const count = useSelector((state: any) => state?.ordersList?.entities?.totalCount || 0)
@@ -175,6 +172,14 @@ export const Orders = () => {
   const handelAddNewOrder = () => {
     navigateTo('/orders/addOrder')
   }
+
+  useEffect(() => {
+    document.title = 'Orders'
+    return () => {
+      document.title = 'First Logistics'
+    }
+  }, [])
+
   const noDataProps = {
     title: trans('orders.nodata.title'),
     desc: trans('orders.nodata.desc'),
@@ -185,9 +190,6 @@ export const Orders = () => {
 
   return (
     <Fragment>
-      <Helmet>
-        <title>Orders</title>
-      </Helmet>
       <div className='w-100'>
         <StyledTable
           {...{

@@ -6,13 +6,47 @@ import {Header} from './Header'
 import defaultSmallSVG from 'assets/icons/default-small.svg'
 import defaultDarkLogoSVG from 'assets/icons/default-dark.svg'
 import {ReactComponent as MenuSVG} from 'assets/icons/abs015.svg'
+import styled from 'styled-components'
+import {DropdownController} from 'components'
+import {useForm} from 'react-hook-form'
+import {useDispatch, useSelector} from 'react-redux'
+import {setLang} from 'locales/localesSlice'
+
+export const DropdownControllerStyled = styled(DropdownController)`
+  width: 100%;
+  max-width: 250px;
+  margin-inline-end: 3.5rem;
+  align-self: center;
+`
+
+const langs = [
+  {label: 'English', value: 'en'},
+  {
+    label: 'Arabic',
+    value: 'ar',
+  },
+]
 
 export function HeaderWrapper() {
   const {config, classes} = useLayout()
+
+  const dispatch = useDispatch<any>()
+  const {lang} = useSelector<any>((state) => state?.locales) as any
+
+  const {control} = useForm({
+    mode: 'all',
+    defaultValues: {
+      lang: {label: lang === 'en' ? 'English' : 'Arabic', value: lang},
+    } as any,
+  })
+
+  const handelChangeLangAction = (value: any) => {
+    dispatch(setLang<any>(value?.value))
+  }
+
   if (!config.app?.header?.display) {
     return null
   }
-
   return (
     <div id='kt_app_header' className='app-header'>
       <div
@@ -78,6 +112,13 @@ export function HeaderWrapper() {
                 <Header />
               </div>
             )}
+          <DropdownControllerStyled
+            setExternalValue={handelChangeLangAction}
+            className=''
+            name='lang'
+            items={langs}
+            control={control}
+          />
         </div>
       </div>
     </div>

@@ -12,8 +12,12 @@ import {useSelector} from 'react-redux'
 
 export const InfoCard = ({activeTab, setActiveTab}: any) => {
   const {trans} = useLocales()
-  const data = useSelector((state: any) => state?.userProfile?.entities)
+  const userRole = useSelector((state: any) => state?.auth?.entities?.user?.role)
+  const data = useSelector((state: any) =>
+    userRole !== 'ADMIN' ? state?.userProfile?.entities : state?.userProfile?.userInfo
+  )
 
+  console.log(data, 'datadata')
   return (
     <div className='mb-5 card mb-xl-10'>
       <div className='p-8 pb-0 card-body'>

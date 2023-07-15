@@ -1,4 +1,4 @@
-import React, {Fragment, useCallback} from 'react'
+import React, {Fragment, useCallback, useEffect} from 'react'
 import {useLocales, useNotification} from 'hooks'
 import {StyledTable} from 'pages/ordersManagment/orders/Theme'
 import {Helmet} from 'react-helmet-async'
@@ -13,6 +13,7 @@ export const ShopRequested = () => {
   const {Trans, trans, formatDate} = useLocales()
   const dispatch = useDispatch<any>()
   const {error} = useNotification()
+  const {lang} = useSelector<any>((state) => state?.locales) as any
   const loading = useSelector(
     (state: any) => state?.deliveryConnectRequestState?.loading === 'pending'
   )
@@ -90,11 +91,15 @@ export const ShopRequested = () => {
     // Icon: UsersNoDataSVG,
   }
 
+  useEffect(() => {
+    document.title = 'Requests'
+    return () => {
+      document.title = 'First Logistics'
+    }
+  }, [])
+
   return (
     <Fragment>
-      <Helmet>
-        <title>Connected</title>
-      </Helmet>
       <div className='w-100'>
         <StyledTable
           {...{

@@ -1,15 +1,22 @@
+import React from 'react'
 import {PageTitle} from '_metronic/layout/core'
 import {useLocales} from 'hooks'
-import React from 'react'
 import {Navigate, Outlet, Route, Routes} from 'react-router-dom'
 import {mainBreadCrumbs} from './breadCrumbs'
 import {Products} from './products'
 
 export const Managment = () => {
   const {trans} = useLocales()
+
   return (
     <Routes>
-      <Route element={<Outlet />}>
+      <Route
+        element={
+          <>
+            <Outlet />
+          </>
+        }
+      >
         <Route
           index
           element={

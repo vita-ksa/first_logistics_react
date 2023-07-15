@@ -27,6 +27,7 @@ export const AddOrder = () => {
   const {success, error} = useNotification()
   const methods = useForm({mode: 'onChange'})
 
+  const {lang} = useSelector<any>((state) => state?.locales) as any
   const loading = useSelector<any>((state) => state.addOrderState.loading === 'pending')
   const categoryId = methods.watch('categoryId')?.value
 
@@ -133,11 +134,15 @@ export const AddOrder = () => {
   }
   const PageComponent = find(pages, (_page) => _page?.id === page)?.page || pages[0]?.page
 
+  useEffect(() => {
+    document.title = 'Add Order'
+    return () => {
+      document.title = 'First Logistics'
+    }
+  }, [])
+
   return (
     <Fragment>
-      <Helmet>
-        <title>Add Order</title>
-      </Helmet>
       <FormProvider {...methods}>
         <div className='bg-transparent card'>
           <Stepper pages={pages} initialValue={page} />

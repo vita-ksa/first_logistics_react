@@ -55,3 +55,43 @@ export const getCredentialsSlice = createSlice({
   },
   extraReducers: responseAsyncThunk(getCredentials()),
 })
+
+export const getDocumentation = () => {
+  return requestAsyncThunk({
+    storeName: 'documentationState',
+    _url: `/user/documentation`,
+    method: 'GET',
+    exact: 'get_Documentation',
+  })
+}
+
+export const getDocumentationSlice = createSlice({
+  name: 'documentationState',
+  initialState,
+  reducers: {
+    resetAction: () => {
+      return initialState
+    },
+  },
+  extraReducers: responseAsyncThunk(getDocumentation()),
+})
+
+export const SaveDocumentationLinks = () => {
+  return requestAsyncThunk({
+    storeName: 'documentationLinksState',
+    _url: `/user/documentation`,
+    method: 'POST',
+    exact: 'save_documentation',
+  })
+}
+
+export const SaveDocumentationLinksSlice = createSlice({
+  name: 'documentationLinksState',
+  initialState,
+  reducers: {
+    resetAction: () => {
+      return initialState
+    },
+  },
+  extraReducers: responseAsyncThunk(SaveDocumentationLinks()),
+})

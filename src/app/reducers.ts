@@ -3,11 +3,13 @@ import {persistReducer} from 'redux-persist'
 import localforage from 'localforage'
 import {
   authAPI,
+  categoriesAPI,
   credentialsAPI,
   integrationsAPI,
   ordersAPI,
   productAPI,
   profileAPI,
+  usersAPI,
 } from '../services/apis'
 import notificationReducer from 'pages/notification/notificationSlice'
 import modalReducer from 'components/modal/modalSlice'
@@ -26,9 +28,19 @@ const localesPersistConfig = {
   whiteList: ['lang'],
 }
 
+const userProfilePersistConfig = {
+  key: 'userProfile',
+  storage: localforage,
+  whiteList: ['entities', 'userInfo', 'orderList'],
+}
+
 const localesPersistReducer = persistReducer(localesPersistConfig, localesReducers)
 
 const authPersistReducer = persistReducer(authPersistConfig, authAPI.authSlice.reducer)
+const userProfilePersistReducer = persistReducer(
+  userProfilePersistConfig,
+  profileAPI.getUserProfileSlice.reducer
+)
 
 const reducers = combineReducers({
   auth: authPersistReducer,
@@ -49,7 +61,7 @@ const reducers = combineReducers({
   categoriesList: ordersAPI.getCategoriesListSlice.reducer,
   deliveryCompanyList: ordersAPI.getDeliveryCompanyListSlice.reducer,
   orderDetailsState: ordersAPI.getOrderDetailsSlice.reducer,
-  userProfile: profileAPI.getUserProfileSlice.reducer,
+  userProfile: userProfilePersistReducer,
   UpdateDeliveryCompanyState: profileAPI.UpdateDeliveryCompanySlice.reducer,
   UpdateShopInfoState: profileAPI.UpdateShopInfoSlice.reducer,
   imageUrlState: profileAPI.getImageUrlSlice.reducer,
@@ -63,6 +75,12 @@ const reducers = combineReducers({
   generateCredentialsState: credentialsAPI.getgenerateCredentialsSlice.reducer,
   getCredentialsState: credentialsAPI.getCredentialsSlice.reducer,
   updateOrderStatusState: ordersAPI.updateOrderStatusSlice.reducer,
+  categoriesListState: categoriesAPI.getCategoriesListSlice.reducer,
+  addCategoryState: categoriesAPI.addCategorySlice.reducer,
+  deleteCategoryState: categoriesAPI.deleteCategorySlice.reducer,
+  userList: usersAPI.getUsersListSlice.reducer,
+  documentationState: credentialsAPI.getDocumentationSlice.reducer,
+  documentationLinksState: credentialsAPI.SaveDocumentationLinksSlice.reducer,
 })
 
 export default reducers

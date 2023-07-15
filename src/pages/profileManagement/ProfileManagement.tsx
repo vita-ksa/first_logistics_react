@@ -13,9 +13,12 @@ export const ProfileManagement = () => {
   const {error} = useNotification()
   const dispatch = useDispatch<any>()
   const {lockLoader} = useLoader()
-
   const loading = useSelector((state: any) => state?.userProfile?.loading)
-  const userName = useSelector((state: any) => state?.auth?.entities?.user?.name)
+
+  const userRole = useSelector((state: any) => state?.auth?.entities?.user?.role)
+  const userName = useSelector((state: any) =>
+    userRole !== 'ADMIN' ? state?.auth?.entities?.user?.name : state?.userProfile?.userInfo?.name
+  )
 
   const reloadData: any = useSelector<any>((state) => [
     state.UpdateShopInfoState?.entities,
@@ -30,16 +33,27 @@ export const ProfileManagement = () => {
   }
 
   useEffect(() => {
+    if (userRole === 'ADMIN') return
     fetchUserProfile()
+  }, [...reloadData])
 
+  useEffect(() => {
+    if (userRole === 'ADMIN') return
     return () => {
       dispatch(profileAPI.getUserProfileSlice.actions.resetAction())
     }
-  }, [...reloadData])
+  }, [])
 
   useEffect(() => {
     lockLoader(loading)
   }, [loading])
+
+  useEffect(() => {
+    document.title = 'Profile'
+    return () => {
+      document.title = 'First Logistics'
+    }
+  }, [])
 
   return (
     <Routes>

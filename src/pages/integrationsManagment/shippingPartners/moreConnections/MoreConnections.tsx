@@ -1,6 +1,5 @@
 import React, {Fragment, useEffect} from 'react'
 import styled from 'styled-components'
-import {Helmet} from 'react-helmet-async'
 import {KTCard, KTCardBody} from '_metronic/helpers'
 import {useSelector} from 'react-redux'
 import {useLoader} from 'hooks'
@@ -16,11 +15,15 @@ export const MoreConnections = () => {
     lockLoader(loading)
   }, [loading])
 
+  useEffect(() => {
+    document.title = 'More Connections'
+    return () => {
+      document.title = 'First Logistics'
+    }
+  }, [])
+
   return (
     <Fragment>
-      <Helmet>
-        <title>More Connections</title>
-      </Helmet>
       <KTCard className={`mt-4  border-0 `}>
         <KTCardBody className='py-4'>
           <TitleBody>

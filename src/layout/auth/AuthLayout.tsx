@@ -58,7 +58,7 @@ export const AuthLayout = () => {
       {/* begin::Body */}
 
       <div className='order-2 p-10 d-flex flex-column flex-lg-row-fluid w-lg-50 order-lg-2'>
-        {/* <div className='d-flex justify-content-end align-items-center'>
+        <div className='d-flex justify-content-end align-items-center'>
           <DropdownControllerStyled
             setExternalValue={handelChangeLangAction}
             className=''
@@ -66,7 +66,7 @@ export const AuthLayout = () => {
             items={langs}
             control={control}
           />
-        </div> */}
+        </div>
         {/* begin::Form */}
         <div className='d-flex flex-center flex-column flex-lg-row-fluid'>
           {/* begin::Wrapper */}

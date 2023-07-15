@@ -18,7 +18,13 @@ export const PriceCalculationManagment = () => {
 
   return (
     <Routes>
-      <Route element={<Outlet />}>
+      <Route
+        element={
+          <>
+            <Outlet />
+          </>
+        }
+      >
         <Route
           index
           element={

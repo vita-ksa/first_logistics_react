@@ -19,9 +19,11 @@ export const Unit = styled.div`
   justify-content: center;
   position: absolute;
   top: 0px;
-  right: 0px;
+  right: ${({dir}) => (dir === 'ltr' ? '0' : 'unset')};
+  left: ${({dir}) => (dir === 'rtl' ? '0' : 'unset')};
   height: 100%;
-  margin-right: 1.54125rem;
+  margin-right: ${({dir}) => (dir === 'ltr' ? ' 1.54125rem' : 'unset')};
+  margin-left: ${({dir}) => (dir === 'rtl' ? ' 1.54125rem' : 'unset')};
   color: var(--grayTextColor);
   font-size: var(--contentSize);
   font-weight: 700;

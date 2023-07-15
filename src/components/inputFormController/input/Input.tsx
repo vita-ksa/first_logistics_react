@@ -9,6 +9,7 @@ import {Phone} from 'components/phone'
 import {FileUpload} from 'components/fileUpload'
 import styled from 'styled-components'
 import {DropdownSelect} from 'components/dropdownSelect'
+import {useSelector} from 'react-redux'
 
 interface InputProps {
   type: React.HTMLInputTypeAttribute
@@ -48,6 +49,8 @@ export const Input = ({
   onChangeCurrancy,
   ...rest
 }: UseControllerReturn & InputProps) => {
+  const {lang} = useSelector<any>((state) => state?.locales) as any
+
   const handelOnKeyDown = (e: any) => {
     if (unacceptableKeys?.includes(e.which)) {
       e.preventDefault()
@@ -162,7 +165,7 @@ export const Input = ({
             disabled={disabled}
             autoComplete={autoComplete}
           />
-          <Unit>
+          <Unit dir={lang === 'en' ? 'ltr' : 'rtl'}>
             <UnitText>
               {unit}
               {subUnit && <sub style={{verticalAlign: 'super'}}>{subUnit}</sub>}
@@ -216,6 +219,3 @@ export const Input = ({
       )
   }
 }
-const CurrencySelect = styled.div`
-  margin-right: 10px;
-`

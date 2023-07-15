@@ -2,16 +2,19 @@ import clsx from 'clsx'
 import React, {Fragment, useEffect, useRef, useState} from 'react'
 import {OverlayTrigger, Tooltip} from 'react-bootstrap'
 import CopyToClipboard from 'react-copy-to-clipboard'
-
 import {ReactComponent as ShowPasswordSVG} from 'assets/icons/eye-slash.svg'
 import styled from 'styled-components'
-import {Helmet} from 'react-helmet-async'
 import {KTCard, KTCardBody} from '_metronic/helpers'
-import {Button} from 'components'
+import {Button, InputFormController} from 'components'
 import {useDispatch, useSelector} from 'react-redux'
 import {useLoader, useLocales, useNotification} from 'hooks'
 import {credentialsAPI} from 'services/apis'
 import {SUCCESS_STATUS} from 'constants/auth'
+import {Link} from 'react-router-dom'
+import {useForm} from 'react-hook-form'
+import {isEmpty} from 'lodash'
+import {yupResolver} from '@hookform/resolvers/yup'
+import {schema} from './schema'
 
 export const CreateCredentials = () => {
   const dispatch = useDispatch<any>()
@@ -19,9 +22,9 @@ export const CreateCredentials = () => {
   const {Trans, trans} = useLocales()
   const codeRef = useRef<HTMLDivElement | null>(null)
   const [copied, setCopied] = useState(false)
-  const {lockLoader} = useLoader()
-
-  const loading = useSelector((state: any) => state?.getCredentialsState?.loading)
+  const userType = useSelector((state: any) => state?.auth?.entities?.user?.type)
+  const userRole = useSelector((state: any) => state?.auth?.entities?.user?.role)
+  const loading = useSelector<any>((state) => state.documentationLinksState.loading === 'pending')
   const generateloading = useSelector<any>(
     (state) => state.generateCredentialsState.loading === 'pending'
   )
@@ -29,6 +32,27 @@ export const CreateCredentials = () => {
   const CredentialsState = useSelector<any>(
     (state) => state.getCredentialsState?.entities?.token
   ) as any
+
+  const documentationState = useSelector<any>(
+    (state) => state.documentationState?.entities?.documentation
+  ) as any
+
+  const initialValues = {
+    delevaryLink: documentationState?.delivery || '',
+    shopLink: documentationState?.shop || '',
+  }
+
+  const {
+    control,
+    handleSubmit,
+    register,
+    watch,
+    formState: {isValid, dirtyFields},
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: 'all',
+    defaultValues: initialValues as any,
+  })
 
   const generateCredentialsAction = async () => {
     const {payload} = await dispatch(credentialsAPI.generateCredentials()({}))
@@ -45,6 +69,33 @@ export const CreateCredentials = () => {
     setCopied(false)
   }
 
+  const onSaveLinks = async (_data: any) => {
+    const {payload} = await dispatch(
+      credentialsAPI.SaveDocumentationLinks()({
+        delivery: _data?.delevaryLink,
+        shop: _data?.shopLink,
+      })
+    )
+
+    if (SUCCESS_STATUS.includes(payload?.status)) {
+      success({
+        message: trans('g.links.message'),
+      })
+    } else {
+      error({
+        message: payload.message?.message,
+      })
+    }
+  }
+
+  useEffect(() => {
+    document.title = 'Credentials Generators'
+    return () => {
+      document.title = 'First Logistics'
+    }
+  }, [])
+
+  console.log(documentationState, 'documentationStatedocumentationState')
   // useEffect(() => {
   //   lockLoader(loading)
   // }, [loading])
@@ -58,9 +109,6 @@ export const CreateCredentials = () => {
 
   return (
     <Fragment>
-      <Helmet>
-        <title>Credentials Generators</title>
-      </Helmet>
       <KTCard className={`mt-4  border-0 `}>
         <KTCardBody className='py-4'>
           <TitleBody>
@@ -101,7 +149,52 @@ export const CreateCredentials = () => {
             >
               Generate
             </Button>
+            {userRole === 'ADMIN' ? null : (
+              <a
+                style={{backgroundColor: '#181C32', color: '#fff'}}
+                className='btn'
+                href={
+                  userType?.toLowerCase() === 'deliverycompany'
+                    ? documentationState?.delivery
+                    : documentationState?.shop
+                }
+                target='_blank'
+              >
+                <Trans i18nKey={'credantials.go.to.documentation'} />
+              </a>
+            )}
           </InnerBody>
+          <>
+            {userRole === 'ADMIN' ? (
+              <div className='mt-8'>
+                <InputFormController
+                  type='link'
+                  label={trans('credantials.add.shop.link')}
+                  name='shopLink'
+                  control={control}
+                  placeholder={trans('trainer.add.placeholder.storelink')}
+                  required
+                />
+                <InputFormController
+                  type='link'
+                  label={trans('credantials.add.delevary.link')}
+                  name='delevaryLink'
+                  control={control}
+                  placeholder={trans('trainer.add.placeholder.storelink')}
+                  required
+                />
+                <div className='w-100 text-end'>
+                  <Button
+                    disabled={!isValid || isEmpty(dirtyFields) || Boolean(loading)}
+                    loading={Boolean(loading)}
+                    onClick={handleSubmit((data) => onSaveLinks(data))}
+                  >
+                    Save Links
+                  </Button>
+                </div>
+              </div>
+            ) : null}
+          </>
         </KTCardBody>
       </KTCard>
     </Fragment>

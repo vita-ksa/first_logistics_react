@@ -111,5 +111,14 @@
   "sidebar.credentials": "Credentials",
   "g.credantials.message": "has been Generated successfully",
   "credantials.generator": "Credentials Generators",
-  "g.approved": "Approved"
+  "g.approved": "Approved",
+  "sidebar.categories": "Categories",
+  "g.delete.success": "has been deleted successfully",
+  "sidebar.users.management": "Users Management",
+  "sidebar.users.management.shops": "Shops",
+  "sidebar.users.management.delivery.company": "Delivery Companies",
+  "credantials.go.to.documentation": "Go To Documentation",
+  "g.links.message": "has been Saved successfully",
+  "credantials.add.shop.link": "Shop Link",
+  "credantials.add.delevary.link": "Delivery Company Link"
 }

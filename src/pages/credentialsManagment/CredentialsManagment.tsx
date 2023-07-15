@@ -26,10 +26,10 @@ export const CredentialsManagment = () => {
   const dispatch = useDispatch<any>()
   const {error} = useNotification()
   const {trans} = useLocales()
-
-  const reloadData = useSelector<any>(
-    (state) => state.generateCredentialsState?.entities?.token
-  ) as any
+  const reloadData = useSelector<any>((state) => [
+    state.generateCredentialsState?.entities?.token,
+    state.documentationLinksState?.entities,
+  ]) as any
 
   const fetchData = useCallback(async ({search}: any) => {
     const {payload} = await dispatch(credentialsAPI.getCredentials()({}))
@@ -39,13 +39,28 @@ export const CredentialsManagment = () => {
     }
   }, [])
 
+  const fetchDocumentation = useCallback(async () => {
+    const {payload} = await dispatch(credentialsAPI.getDocumentation()({}))
+
+    if (!SUCCESS_STATUS.includes(payload?.status)) {
+      error({message: payload?.message?.message})
+    }
+  }, [])
+
   useEffect(() => {
     fetchData({})
-  }, [reloadData])
+    fetchDocumentation()
+  }, [...reloadData])
 
   return (
     <Routes>
-      <Route element={<Outlet />}>
+      <Route
+        element={
+          <>
+            <Outlet />
+          </>
+        }
+      >
         <Route
           path='generators'
           element={

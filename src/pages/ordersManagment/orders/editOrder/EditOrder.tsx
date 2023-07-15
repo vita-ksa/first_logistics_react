@@ -20,6 +20,7 @@ export const EditOrder = () => {
   console.log(state, 'statestate')
 
   const VIEW_MODE = state?.type === 'view'
+  const userRole = useSelector((state: any) => state?.auth?.entities?.user?.role)
 
   const data = useSelector((state: any) => state.orderDetailsState?.entities?.order || {})
   const loading = useSelector<any>((state) => state.updateOrderState.loading === 'pending')
@@ -61,7 +62,7 @@ export const EditOrder = () => {
   const categoryId = methods.watch('categoryId')?.value
 
   const handelCancelAction = () => {
-    navigateTo('/orders')
+    navigateTo(-1)
   }
 
   const onSubmit = async (_data: any) => {
@@ -149,15 +150,15 @@ export const EditOrder = () => {
               shipmentDestination: data?.Shipment?.shipmentDestination,
               type: data?.Shipment?.type,
               deliveryCompanyId: data?.Shipment?.deliveryCompanyId,
-              disabled:VIEW_MODE
+              disabled: VIEW_MODE,
             }}
           />
         </CardBody>
         <CardBody className='mt-5 bg-white card-body'>
-          <SenderInformation  viewMode={VIEW_MODE} />
+          <SenderInformation viewMode={VIEW_MODE} />
         </CardBody>
         <CardBody className='mt-5 bg-white card-body'>
-          <ReceiverInformation  viewMode={VIEW_MODE} />
+          <ReceiverInformation viewMode={VIEW_MODE} />
         </CardBody>
       </div>
       <div className='pt-8 d-flex align-items-center justify-content-end'>
@@ -165,19 +166,20 @@ export const EditOrder = () => {
           <CancelButton onClick={handelCancelAction} className='text-gray-700'>
             <Trans i18nKey={'g.cancel'}>Cancel</Trans>
           </CancelButton>
-
-          <SubmitButton
-            onClick={methods.handleSubmit(onSubmit)}
-            disabled={
-              Boolean(loading) ||
-              !methods?.formState?.isValid ||
-              isEmpty(methods?.formState?.dirtyFields)||VIEW_MODE
-
-            }
-            loading={Boolean(loading)}
-          >
-            <Trans i18nKey={'g.save.changes'}>Save Changes</Trans>
-          </SubmitButton>
+          {userRole === 'ADMIN' ? null : (
+            <SubmitButton
+              onClick={methods.handleSubmit(onSubmit)}
+              disabled={
+                Boolean(loading) ||
+                !methods?.formState?.isValid ||
+                isEmpty(methods?.formState?.dirtyFields) ||
+                VIEW_MODE
+              }
+              loading={Boolean(loading)}
+            >
+              <Trans i18nKey={'g.save.changes'}>Save Changes</Trans>
+            </SubmitButton>
+          )}
         </>
       </div>
     </FormProvider>

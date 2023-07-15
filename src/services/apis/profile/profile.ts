@@ -32,6 +32,11 @@ export const getUserProfileSlice = createSlice({
     resetAction: () => {
       return initialState
     },
+    setUserInfoAction: (state: any, {payload: {user, orderList}}) => {
+      state.userInfo = user
+      state.orderList = orderList
+      return state
+    },
   },
   extraReducers: responseAsyncThunk(getUserProfile()),
 })

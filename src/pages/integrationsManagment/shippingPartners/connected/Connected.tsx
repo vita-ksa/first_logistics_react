@@ -1,7 +1,6 @@
-import React, {Fragment, useCallback} from 'react'
+import React, {Fragment, useCallback, useEffect} from 'react'
 import {useLocales} from 'hooks'
 import {useSelector} from 'react-redux'
-import {Helmet} from 'react-helmet-async'
 import {StyledTable} from 'pages/ordersManagment/orders/Theme'
 import {TableThemes} from 'components'
 import blankAvatar from 'assets/img/blank-avatar.png'
@@ -50,8 +49,15 @@ export const Connected = () => {
       disableSortBy: true,
     },
   ]
-  console.log(data, 'requestrequestrequestrequest')
+
   const fetchData = useCallback(async ({search}: any) => {}, [])
+
+  useEffect(() => {
+    document.title = 'Connected'
+    return () => {
+      document.title = 'First Logistics'
+    }
+  }, [])
 
   const noDataProps = {
     title: trans('orders.nodata.title'),
@@ -63,9 +69,6 @@ export const Connected = () => {
 
   return (
     <Fragment>
-      <Helmet>
-        <title>Connected</title>
-      </Helmet>
       <div className='w-100'>
         <StyledTable
           {...{

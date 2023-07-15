@@ -37,6 +37,18 @@ const CredentialsManagment = lazy(() =>
   }))
 )
 
+const CategoryManagment = lazy(() =>
+  import('pages/categoryManagment').then((m) => ({
+    default: m.CategoryManagment,
+  }))
+)
+
+const UsersManagement = lazy(() =>
+  import('pages/UsersManagement').then((m) => ({
+    default: m.UsersManagement,
+  }))
+)
+
 const PrivateRoutes = () => {
   return (
     <Routes>
@@ -88,9 +100,25 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
+        <Route
+          path='category/*'
+          element={
+            <SuspensedView>
+              <CategoryManagment />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='user-management/*'
+          element={
+            <SuspensedView>
+              <UsersManagement />
+            </SuspensedView>
+          }
+        />
 
         {/* Page Not Found */}
-        <Route path='*' element={<Navigate to='/price-calculation' />} />
+        <Route path='*' element={<Navigate to='/' />} />
       </Route>
     </Routes>
   )

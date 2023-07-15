@@ -1,5 +1,4 @@
 import React, {Fragment, useCallback, useEffect} from 'react'
-import {Helmet} from 'react-helmet-async'
 import {useLocales, useNotification} from 'hooks'
 import {ReactComponent as UsersNoDataSVG} from 'assets/icons/default-small.svg'
 import {SUCCESS_STATUS} from 'constants/auth'
@@ -99,6 +98,13 @@ export const Products = () => {
     }
   }, [])
 
+  useEffect(() => {
+    document.title = 'Products'
+    return () => {
+      document.title = 'First Logistics'
+    }
+  }, [])
+
   const noDataProps = {
     title: trans('products.nodata.title'),
     desc: trans('products.nodata.desc'),
@@ -108,10 +114,6 @@ export const Products = () => {
   }
   return (
     <Fragment>
-      <Helmet>
-        <title>Products</title>
-      </Helmet>
-
       <div className='w-100'>
         <StyledTable
           {...{

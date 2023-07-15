@@ -1,7 +1,6 @@
-import React, {Fragment, useCallback} from 'react'
+import React, {Fragment, useCallback, useEffect} from 'react'
 import {useLocales, useNotification} from 'hooks'
 import {StyledTable} from 'pages/ordersManagment/orders/Theme'
-import {Helmet} from 'react-helmet-async'
 import {useDispatch, useSelector} from 'react-redux'
 import {integrationsAPI} from 'services/apis'
 import {SUCCESS_STATUS} from 'constants/auth'
@@ -13,6 +12,7 @@ export const ChanelsRequest = () => {
   const {Trans, trans, formatDate} = useLocales()
   const dispatch = useDispatch<any>()
   const {error} = useNotification()
+
   const loading = useSelector(
     (state: any) => state?.deliveryShopRequestState?.loading === 'pending'
   )
@@ -90,11 +90,15 @@ export const ChanelsRequest = () => {
     // Icon: UsersNoDataSVG,
   }
 
+  useEffect(() => {
+    document.title = 'Requests'
+    return () => {
+      document.title = 'First Logistics'
+    }
+  }, [])
+
   return (
     <Fragment>
-      <Helmet>
-        <title>Connected</title>
-      </Helmet>
       <div className='w-100'>
         <StyledTable
           {...{

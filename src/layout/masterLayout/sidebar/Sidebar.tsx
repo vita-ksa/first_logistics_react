@@ -6,10 +6,12 @@ import {SidebarMenu} from './sidebar-menu/SidebarMenu'
 import {SidebarFooter} from './SidebarFooter'
 import {SidebarLogo} from './SidebarLogo'
 import {useSelector} from 'react-redux'
+import {unset} from 'lodash'
 
 const Sidebar = () => {
   const {config} = useLayout()
   const userType = useSelector((state: any) => state?.auth?.entities?.user?.type)
+  const userRole = useSelector((state: any) => state?.auth?.entities?.user?.role)
 
   useEffect(() => {
     updateDOM(config)
@@ -20,9 +22,13 @@ const Sidebar = () => {
   }
 
   return (
-    <div id='kt_app_sidebar' className={clsx('app-sidebar', config.app?.sidebar?.default?.class)}>
+    <div
+      id='kt_app_sidebar'
+      // style={{right: 0, left: 'unset'}}
+      className={clsx('app-sidebar', config.app?.sidebar?.default?.class)}
+    >
       <SidebarLogo />
-      <SidebarMenu {...{userType}} />
+      <SidebarMenu {...{userType, userRole}} />
       <SidebarFooter />
     </div>
   )

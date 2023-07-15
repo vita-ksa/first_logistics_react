@@ -1,11 +1,11 @@
 import {SidebarMenuMain} from './SidebarMenuMain'
 
-const SidebarMenu = ({userType}: any) => {
+const SidebarMenu = ({userType, userRole}: any) => {
   return (
-    <div className='app-sidebar-menu overflow-hidden flex-column-fluid'>
+    <div className='overflow-hidden app-sidebar-menu flex-column-fluid'>
       <div
         id='kt_app_sidebar_menu_wrapper'
-        className='app-sidebar-wrapper hover-scroll-overlay-y my-5'
+        className='my-5 app-sidebar-wrapper hover-scroll-overlay-y'
         data-kt-scroll='true'
         data-kt-scroll-activate='true'
         data-kt-scroll-height='auto'
@@ -15,12 +15,12 @@ const SidebarMenu = ({userType}: any) => {
         data-kt-scroll-save-state='true'
       >
         <div
-          className='menu menu-column menu-rounded menu-sub-indention px-3'
+          className='px-3 menu menu-column menu-rounded menu-sub-indention'
           id='#kt_app_sidebar_menu'
           data-kt-menu='true'
           data-kt-menu-expand='false'
         >
-          <SidebarMenuMain {...{userType}} />
+          <SidebarMenuMain {...{userType, userRole}} />
         </div>
       </div>
     </div>

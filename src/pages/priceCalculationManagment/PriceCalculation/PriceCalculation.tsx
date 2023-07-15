@@ -1,8 +1,9 @@
 import {KTCard, KTCardBody} from '_metronic/helpers'
-import React, {Fragment} from 'react'
+import React, {Fragment, useEffect} from 'react'
 import {Helmet} from 'react-helmet-async'
 import styled from 'styled-components'
 import ComingSoon from 'assets/icons/comming-soon.svg'
+import {useSelector} from 'react-redux'
 
 export const Image = styled.img`
   --f: 0.1;
@@ -24,11 +25,15 @@ export const Image = styled.img`
 `
 
 export const PriceCalculation = () => {
+  useEffect(() => {
+    document.title = 'Price Calculation'
+    return () => {
+      document.title = 'First Logistics'
+    }
+  }, [])
+
   return (
     <Fragment>
-      <Helmet>
-        <title>Price Calculation</title>
-      </Helmet>
       <div className='w-100'>
         <KTCard>
           <KTCardBody className='d-flex justify-content-center align-content-center'>

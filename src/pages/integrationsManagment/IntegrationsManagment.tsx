@@ -1,5 +1,4 @@
 import {PageTitle} from '_metronic/layout/core'
-import {capitalize} from 'lodash'
 import React, {useCallback, useEffect} from 'react'
 import {Navigate, Outlet, Route, Routes} from 'react-router-dom'
 import {
@@ -20,10 +19,11 @@ import {ShippingPartnerHeader} from './shippingPartners/shippingPartnerHeader'
 import {ChanelsRequest} from './chanelsRequest'
 
 export const IntegrationsManagment = () => {
-  const {Trans, trans} = useLocales()
+  const {trans} = useLocales()
   const dispatch = useDispatch<any>()
   const {error} = useNotification()
   const userType = useSelector((state: any) => state?.auth?.entities?.user?.type)
+
   const reloadData = useSelector((state: any) => [
     state?.connectToDeliveryState?.entities,
     state?.connectToShopState?.entities,
