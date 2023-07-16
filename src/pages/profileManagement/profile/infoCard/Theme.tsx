@@ -1,4 +1,4 @@
-import {InputFormController} from 'components'
+import {InputFormController, SwitchButtonController} from 'components'
 import styled from 'styled-components'
 
 export const Image = styled.img`
@@ -61,4 +61,10 @@ export const ScheduleFileHref = styled.a`
   text-decoration-line: underline;
   color: #1250c7;
   cursor: pointer;
+`
+export const Input = styled(SwitchButtonController)<any>`
+  input {
+    height: 1.2rem !important;
+    width: 2.2rem !important;
+  }
 `

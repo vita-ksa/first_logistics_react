@@ -81,6 +81,7 @@ const reducers = combineReducers({
   userList: usersAPI.getUsersListSlice.reducer,
   documentationState: credentialsAPI.getDocumentationSlice.reducer,
   documentationLinksState: credentialsAPI.SaveDocumentationLinksSlice.reducer,
+  activeUserState: profileAPI.activeUserSlice.reducer,
 })
 
 export default reducers

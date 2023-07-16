@@ -1,14 +1,16 @@
 import React from 'react'
 import {LazyLoadImage} from 'react-lazy-load-image-component'
-
 import {useLocales} from 'hooks'
 import {capitalize} from 'lodash'
 import blankAvatar from 'assets/img/blank-avatar.png'
 import {ReactComponent as CallIcon} from 'assets/icons/call.svg'
 import {ReactComponent as EmailIcon} from 'assets/icons/email.svg'
 import {DetailsTypography, ImageContainer, UserNameTypography} from '../Theme'
-import {DarkHeading, TableDiv} from './Theme'
+import {DarkHeading, Input, TableDiv} from './Theme'
 import {useSelector} from 'react-redux'
+import {toggleAction} from 'components/modal/modalSlice'
+import {useForm} from 'react-hook-form'
+import {ActiveTrainerModal} from './activeTrainerModal'
 
 export const InfoCard = ({activeTab, setActiveTab}: any) => {
   const {trans} = useLocales()
@@ -17,7 +19,18 @@ export const InfoCard = ({activeTab, setActiveTab}: any) => {
     userRole !== 'ADMIN' ? state?.userProfile?.entities : state?.userProfile?.userInfo
   )
 
-  console.log(data, 'datadata')
+  const {control} = useForm({
+    mode: 'all',
+  })
+
+  const OpenActivateModal = (value: any) => {
+    toggleAction({
+      show: true,
+      component: <ActiveTrainerModal isActive={value} id={data?.id} name={data?.name} />,
+      className: 'w-75',
+    })
+  }
+
   return (
     <div className='mb-5 card mb-xl-10'>
       <div className='p-8 pb-0 card-body'>
@@ -41,7 +54,19 @@ export const InfoCard = ({activeTab, setActiveTab}: any) => {
               <div className='d-flex align-items-baseline'>
                 <UserNameTypography>{capitalize(data?.name)}</UserNameTypography>
               </div>
-
+              {userRole === 'ADMIN' ? (
+                <Input
+                  control={control}
+                  name='isActive'
+                  label={'Active:'}
+                  field={{
+                    value: data?.isActive,
+                    onChange: (e: any) => {
+                      OpenActivateModal(e?.target?.checked)
+                    },
+                  }}
+                />
+              ) : null}
               {/* <div>
           <IconButtons onClick={blockUser} className='mx-2 btn' isBlocked={data?.isBlocked}>
             {data?.isBlocked ? (

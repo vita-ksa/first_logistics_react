@@ -94,7 +94,7 @@ export const DeliveryCompanies = () => {
                 this,
                 row?.original?.user,
                 row?.original?.name,
-                row?.original?.Shipment
+                row?.original?.orders
               )}
             >
               <ViewSVG />

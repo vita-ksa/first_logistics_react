@@ -99,3 +99,23 @@ export const getImageUrlSlice = createSlice({
   },
   extraReducers: responseAsyncThunk(getImageUrl()),
 })
+
+export const activeUser = () => {
+  return requestAsyncThunk({
+    storeName: 'activeUserState',
+    _url: `/user/activate?`,
+    method: 'PATCH',
+    exact: 'active_user',
+  })
+}
+
+export const activeUserSlice = createSlice({
+  name: 'activeUserState',
+  initialState,
+  reducers: {
+    resetAction: () => {
+      return initialState
+    },
+  },
+  extraReducers: responseAsyncThunk(activeUser()),
+})

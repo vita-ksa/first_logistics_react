@@ -7,4 +7,6 @@ export {
   UpdateShopInfoSlice,
   getImageUrl,
   getImageUrlSlice,
+  activeUser,
+  activeUserSlice,
 } from './profile'

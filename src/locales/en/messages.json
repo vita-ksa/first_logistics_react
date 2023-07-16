@@ -120,5 +120,9 @@
   "credantials.go.to.documentation": "Go To Documentation",
   "g.links.message": "has been Saved successfully",
   "credantials.add.shop.link": "Shop Link",
-  "credantials.add.delevary.link": "Delivery Company Link"
+  "credantials.add.delevary.link": "Delivery Company Link",
+  "g.active": "Active",
+  "g.inactive": "Inactive",
+  "trainer.has.been.activated.successfully": "status has been activated successfully",
+  "trainer.has.been.deactivated.successfully": "status has been inactivated successfully"
 }

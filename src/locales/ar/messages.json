@@ -119,5 +119,9 @@
   "credantials.go.to.documentation": "اذهب إلى الوثائق",
   "g.links.message": "تم الحفظ بنجاح",
   "credantials.add.shop.link": "رابط المتجر",
-  "credantials.add.delevary.link": "رابط شركة التوصيل"
+  "credantials.add.delevary.link": "رابط شركة التوصيل",
+  "g.active": "نشط",
+  "g.inactive": "غير نشط",
+  "trainer.has.been.activated.successfully": "تم تفعيل الحالة بنجاح",
+  "trainer.has.been.deactivated.successfully": "تم الغاء تفعيل الحالة بنجاح"
 }
