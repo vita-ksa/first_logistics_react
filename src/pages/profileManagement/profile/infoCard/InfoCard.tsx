@@ -18,7 +18,11 @@ export const InfoCard = ({activeTab, setActiveTab}: any) => {
   const data = useSelector((state: any) =>
     userRole !== 'ADMIN' ? state?.userProfile?.entities : state?.userProfile?.userInfo
   )
-
+  const userType = useSelector((state: any) => state?.auth?.entities?.user?.type)
+  const list = [
+    {value: 'updateInfo', label: trans('profile.update.info')},
+    {value: 'categories', label: trans('sidebar.categories')},
+  ]
   const {control} = useForm({
     mode: 'all',
   })
@@ -89,25 +93,7 @@ export const InfoCard = ({activeTab, setActiveTab}: any) => {
             </DetailsTypography>
           </div>
         </div>
-        {/* <div className='mt-8 overflow-auto d-flex h-55px'>
-          <ul className='border-transparent nav nav-stretch nav-line-tabs nav-line-tabs-2x fs-5 fw-bolder flex-nowrap'>
-            {list?.map((item: any) => (
-              <li key={item.value} className='nav-item'>
-                <button
-                  className={
-                    `nav-link  me-6 bg-transparent` + (activeTab === item.value ? ' active' : '')
-                  }
-                  style={{
-                    color: `${activeTab === item.value ? '#000' : ''}`,
-                  }}
-                  onClick={() => setActiveTab(item.value)}
-                >
-                  {item.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div> */}
+
         <div className='w-100 border-top d-flex'>
           {/* table */}
           <TableDiv>
@@ -136,6 +122,27 @@ export const InfoCard = ({activeTab, setActiveTab}: any) => {
             <h4>{data?.isActive ? 'Active' : 'Inactive'}</h4>
           </TableDiv>
         </div>
+        {userType?.toLowerCase() === 'deliverycompany' ? (
+          <div className='mt-0 overflow-auto d-flex h-55px border-top '>
+            <ul className='border-transparent nav nav-stretch nav-line-tabs nav-line-tabs-2x fs-5 fw-bolder flex-nowrap'>
+              {list?.map((item: any) => (
+                <li key={item.value} className='nav-item'>
+                  <button
+                    className={
+                      `nav-link  me-6 bg-transparent` + (activeTab === item.value ? ' active' : '')
+                    }
+                    style={{
+                      color: `${activeTab === item.value ? '#000' : ''}`,
+                    }}
+                    onClick={() => setActiveTab(item.value)}
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </div>
     </div>
   )

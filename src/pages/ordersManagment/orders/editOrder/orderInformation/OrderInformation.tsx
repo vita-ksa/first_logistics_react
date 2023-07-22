@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useMemo} from 'react'
 import {useLocales} from 'hooks'
 import {useFormContext} from 'react-hook-form'
 import {InputFormController, RadioController} from 'components'
@@ -30,20 +30,20 @@ const shipmentOptions = [
   },
 ]
 
-const list = [
-  {
-    label: 'Cash On Delivery',
-    value: 'CashOnDelivery',
-  },
-  {
-    label: 'Visa',
-    value: 'Visa',
-  },
-] as any
-
 export const OrderInformation = ({shipmentDestination, type, disabled}: any) => {
   const {Trans, trans} = useLocales()
   const methods = useFormContext()
+
+  const list = [
+    {
+      label: trans('payment.method.cash.on.delivery', {defaultValue: 'Cash On Delivery'}),
+      value: 'CashOnDelivery',
+    },
+    {
+      label: trans('payment.method.visa', {defaultValue: 'Visa'}),
+      value: 'Visa',
+    },
+  ] as any
 
   const {categoriesList, deliveryCompanyList} = useSelector((state: any) => {
     return {
@@ -193,7 +193,7 @@ export const OrderInformation = ({shipmentDestination, type, disabled}: any) => 
           <>
             <RadioController
               name='paymentMethod'
-              title='Payment Method'
+              title={trans('order.add.payment.method', {defaultValue: 'Payment Method'})}
               list={list}
               control={methods?.control}
               required

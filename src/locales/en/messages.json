@@ -124,5 +124,10 @@
   "g.active": "Active",
   "g.inactive": "Inactive",
   "trainer.has.been.activated.successfully": "status has been activated successfully",
-  "trainer.has.been.deactivated.successfully": "status has been inactivated successfully"
+  "trainer.has.been.deactivated.successfully": "status has been inactivated successfully",
+  "user.details.tabs.program": "user.details.tabs.program",
+  "order.add.payment.method": "Payment Method",
+  "registration.phonenumber": "Mobile Number",
+  "payment.method.cash.on.delivery": "Cash On Delivery",
+  "payment.method.visa": "Visa"
 }

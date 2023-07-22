@@ -123,5 +123,9 @@
   "g.active": "نشط",
   "g.inactive": "غير نشط",
   "trainer.has.been.activated.successfully": "تم تفعيل الحالة بنجاح",
-  "trainer.has.been.deactivated.successfully": "تم الغاء تفعيل الحالة بنجاح"
+  "trainer.has.been.deactivated.successfully": "تم الغاء تفعيل الحالة بنجاح",
+  "order.add.payment.method": "طريقة الدفع",
+  "registration.phonenumber": "رقم الجوال",
+  "payment.method.cash.on.delivery": "الدفع عند الاستلام",
+  "payment.method.visa": "فيزا"
 }

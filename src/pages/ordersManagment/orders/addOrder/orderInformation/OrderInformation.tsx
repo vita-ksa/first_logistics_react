@@ -173,7 +173,7 @@ export const OrderInformation = () => {
           <>
             <RadioController
               name='paymentMethod'
-              title='Payment Method'
+              title={trans('order.add.payment.method', {defaultValue: 'Payment Method'})}
               list={list}
               control={methods?.control}
               defaultValue={'CashOnDelivery'}

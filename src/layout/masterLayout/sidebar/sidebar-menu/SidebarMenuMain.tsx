@@ -19,7 +19,7 @@ const SidebarMenuMain = ({userType, userRole}: any) => {
   console.log(userRole, 'userRoleuserRoleuserRole')
   return (
     <>
-      <div className='menu-item'>
+      {/* <div className='menu-item'>
         <div className='pb-2 menu-content'>
           <span className='menu-section text-muted ls-1'>
             <Trans i18nKey={'sidebar.title.overview'} />
@@ -31,7 +31,7 @@ const SidebarMenuMain = ({userType, userRole}: any) => {
         Icon={DashboardSVG}
         title={trans('breadcrumb.price.calculation', {defaultValue: 'price Calculation'})}
         fontIcon='bi-app-indicator'
-      />
+      /> */}
 
       {/* <SidebarMenuItem
         to='/dashboard'

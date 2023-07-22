@@ -28,6 +28,7 @@ export const ActiveTrainerModal = ({isActive, name, id}: ActivateTrainerModalPro
     const {payload} = await dispatch(
       profileAPI.activeUser()({
         urlParams: `userId=${id}`,
+        isActive,
       })
     )
     if (SUCCESS_STATUS.includes(payload?.status)) {
@@ -52,7 +53,7 @@ export const ActiveTrainerModal = ({isActive, name, id}: ActivateTrainerModalPro
   return (
     <div className='p-8 text-center'>
       <div>
-        <div className='w-100 mb-8 mt-4 d-flex justify-content-center align-items-center '>
+        <div className='mt-4 mb-8 w-100 d-flex justify-content-center align-items-center '>
           {isActive ? <ActiveTrainerSVG /> : <WarningSVG />}
         </div>
         <h2>
@@ -63,7 +64,7 @@ export const ActiveTrainerModal = ({isActive, name, id}: ActivateTrainerModalPro
           )}
         </h2>
       </div>
-      <ConfirmMsg className='mb-12 px-10'>
+      <ConfirmMsg className='px-10 mb-12'>
         {!isActive ? (
           <Trans i18nKey={'trainer.details.inactive.program.message'} values={{value: name}}>
             Are you sure that you want to inactive{' '}
@@ -77,10 +78,10 @@ export const ActiveTrainerModal = ({isActive, name, id}: ActivateTrainerModalPro
         )}
       </ConfirmMsg>
 
-      <div className='d-flex gap-5'>
+      <div className='gap-5 d-flex'>
         <button
           type='button'
-          className='btn btn-lg bg-light text-gray-700 w-50'
+          className='text-gray-700 btn btn-lg bg-light w-50'
           onClick={handleClose}
         >
           <Trans i18nKey={'g.cancel'} />
@@ -88,11 +89,11 @@ export const ActiveTrainerModal = ({isActive, name, id}: ActivateTrainerModalPro
         <Button
           type='button'
           loading={loading}
-          className='btn btn-lg text-white w-50 btn-active'
+          className='text-white btn btn-lg w-50 btn-active'
           color={'black'}
           onClick={onSubmit}
         >
-          {!isActive ? <Trans i18nKey={'g.inactive'} /> : <Trans i18nKey={'g.yes'} />}
+          {!isActive ? <Trans i18nKey={'g.inactive'} /> : <Trans i18nKey={'g.active'} />}
         </Button>
       </div>
     </div>

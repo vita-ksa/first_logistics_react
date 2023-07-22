@@ -5,6 +5,7 @@ import {UpdateProfile} from './updateProfile'
 import {ordersAPI} from 'services/apis'
 import {UpdateShopInfo} from './updateShopInfo'
 import {OrdersTable} from './ordersTable'
+import {Category} from './category'
 
 export const Profile = () => {
   const dispatch = useDispatch<any>()
@@ -15,7 +16,7 @@ export const Profile = () => {
 
   const loading = useSelector((state: any) => state?.userProfile?.loading)
 
-  const [activeTab, setActiveTab] = useState<any>('generalInfo')
+  const [activeTab, setActiveTab] = useState<any>('updateInfo')
 
   useEffect(() => {
     dispatch(ordersAPI.getCategoriesList()({})).then(() =>
@@ -43,7 +44,10 @@ export const Profile = () => {
       {userRole === 'ADMIN' ? (
         <OrdersTable data={orderList || []} />
       ) : userType?.toLowerCase() === 'deliverycompany' ? (
-        <UpdateProfile />
+        <>
+          {activeTab === 'updateInfo' ? <UpdateProfile /> : null}
+          {activeTab === 'categories' ? <Category /> : null}
+        </>
       ) : (
         <UpdateShopInfo />
       )}
