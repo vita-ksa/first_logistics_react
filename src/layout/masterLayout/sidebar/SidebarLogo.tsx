@@ -1,6 +1,6 @@
 import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import Avatar from 'assets/img/blank-avatar.png'
+import DarkLogo from 'assets/icons/default-dark.svg'
 import Logo from 'assets/icons/default-small.svg'
 
 const SidebarLogo = () => {
@@ -10,9 +10,14 @@ const SidebarLogo = () => {
     <>
       <div className='px-6 mt-4 app-sidebar-logo' id='kt_app_sidebar_logo'>
         <Link to='/dashboard'>
-          <img alt='Logo' src={Logo} className='h-33px app-sidebar-logo-default' />
+          <img
+            alt='Logo'
+            style={{width: '100px'}}
+            src={Logo}
+            className='h-33px app-sidebar-logo-default'
+          />
 
-          <img alt='Logo' src={Logo} className='h-20px app-sidebar-logo-minimize' />
+          <img alt='Logo' src={DarkLogo} className='h-20px app-sidebar-logo-minimize' />
         </Link>
       </div>
       <div className='px-6 pb-5 mt-5 app-sidebar-logo' id='kt_app_sidebar_logo'>

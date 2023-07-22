@@ -89,9 +89,9 @@ export const AuthLayout = () => {
         {/* begin::Content */}
         <div className='px-5 d-flex flex-column flex-center py-15 px-md-15 w-100'>
           {/* begin::Logo */}
-          <Link to='/' className='mb-12'>
+          {/* <Link to='/' className='mb-12'>
             <img alt='Logo' src={Logo} className='h-75px' />
-          </Link>
+          </Link> */}
           {/* end::Logo */}
           {/* begin::Title */}
           <h1 className='text-center text-white fs-2qx fw-bolder mb-7 '>Welcome</h1>

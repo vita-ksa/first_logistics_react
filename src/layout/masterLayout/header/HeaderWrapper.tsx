@@ -3,7 +3,6 @@ import clsx from 'clsx'
 import {Link} from 'react-router-dom'
 import {useLayout} from '_metronic/layout/core'
 import {Header} from './Header'
-import defaultSmallSVG from 'assets/icons/default-small.svg'
 import defaultDarkLogoSVG from 'assets/icons/default-dark.svg'
 import {ReactComponent as MenuSVG} from 'assets/icons/abs015.svg'
 import styled from 'styled-components'
@@ -71,7 +70,7 @@ export function HeaderWrapper() {
               </div>
               <div className='d-flex align-items-center flex-grow-1 flex-lg-grow-0'>
                 <Link to='/dashboard' className='d-lg-none'>
-                  <img alt='Logo' src={defaultSmallSVG} className='h-25px' />
+                  <img alt='Logo' style={{width: 90}} src={defaultDarkLogoSVG} className='h-25px' />
                 </Link>
               </div>
             </div>
@@ -84,6 +83,7 @@ export function HeaderWrapper() {
               <img
                 alt='Logo'
                 src={defaultDarkLogoSVG}
+                style={{width: 90}}
                 className='h-20px h-lg-30px app-sidebar-logo-default'
               />
             </Link>

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 export const Nav = styled.nav`
   position: fixed;
@@ -18,7 +18,7 @@ export const Nav = styled.nav`
 
 export const Logo = styled.a`
   padding: 0;
-  width: 60px;
+  width: 90px;
   margin-top: 4px;
   max-height: 70px;
   font-size: 0;

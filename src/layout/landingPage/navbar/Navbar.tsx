@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from 'assets/icons/default-small.svg'
+import DarkLogo from 'assets/icons/default-dark.svg'
 import menu from 'assets/icons/menu.svg'
 import {navLinks} from 'constants/landing-data'
 import {DropDown, Login, Logo, Nav, NavMenu, SignOut, UserImg} from './Theme'
@@ -9,7 +9,7 @@ export const Navbar = () => {
   return (
     <Nav>
       <Logo>
-        <img src={logo} alt='firstLogistics' />
+        <img style={{width: 90}} src={DarkLogo} alt='firstLogistics' />
       </Logo>
 
       <>
