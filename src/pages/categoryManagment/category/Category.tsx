@@ -1,5 +1,5 @@
 import {TableThemes} from 'components'
-import {SUCCESS_STATUS} from 'constants/auth'
+import {IMAGE_URL_ENDPOINT, SUCCESS_STATUS} from 'constants/auth'
 import {useLocales, useNotification} from 'hooks'
 import {StyledTable} from 'pages/ordersManagment/orders/Theme'
 import React, {useCallback, useEffect} from 'react'
@@ -61,7 +61,7 @@ export const Category = () => {
                 <TableThemes.Image
                   src={`${
                     row?.original?.image
-                      ? `http://109.123.249.49:3006/logistics/images/${row?.original?.image}`
+                      ? `${IMAGE_URL_ENDPOINT}/${row?.original?.image}`
                       : blankAvatar
                   }`}
                   className='align-self-end'

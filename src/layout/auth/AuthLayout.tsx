@@ -7,6 +7,7 @@ import {useForm} from 'react-hook-form'
 import {useDispatch, useSelector} from 'react-redux'
 import {setLang} from 'locales/localesSlice'
 import styled from 'styled-components'
+import {useLocales} from 'hooks'
 
 export const DropdownControllerStyled = styled(DropdownController)`
   width: 100%;
@@ -26,7 +27,7 @@ export const AuthLayout = () => {
   const {pathname} = useLocation()
   const {lang} = useSelector<any>((state) => state?.locales) as any
   const dispatch = useDispatch<any>()
-
+  const {Trans} = useLocales()
   const {control} = useForm({
     mode: 'all',
     defaultValues: {
@@ -94,7 +95,9 @@ export const AuthLayout = () => {
           </Link> */}
           {/* end::Logo */}
           {/* begin::Title */}
-          <h1 className='text-center text-white fs-2qx fw-bolder mb-7 '>Welcome</h1>
+          <h1 className='text-center text-white fs-2qx fw-bolder mb-7 '>
+            <Trans i18nKey={'auth.layout.welcome.to.tamreeni'}>Welcome</Trans>
+          </h1>
           {/* end::Title */}
           {/* begin::Image */}
 

@@ -7,21 +7,6 @@ import {useNotification, useLocales} from 'hooks'
 import {credentialsAPI} from 'services/apis'
 import {PageLink, PageTitle} from '_metronic/layout/core'
 
-const profileBreadCrumbs: Array<PageLink> = [
-  {
-    title: 'Credentials',
-    path: '/credentials',
-    isSeparator: false,
-    isActive: true,
-  },
-  {
-    title: '',
-    path: '/credentials',
-    isSeparator: false,
-    isActive: true,
-  },
-]
-
 export const CredentialsManagment = () => {
   const dispatch = useDispatch<any>()
   const {error} = useNotification()
@@ -30,6 +15,21 @@ export const CredentialsManagment = () => {
     state.generateCredentialsState?.entities?.token,
     state.documentationLinksState?.entities,
   ]) as any
+
+  const profileBreadCrumbs: Array<PageLink> = [
+    {
+      title: trans('sidebar.credentials', {defaultValue: 'Credentials'}),
+      path: '/credentials',
+      isSeparator: false,
+      isActive: true,
+    },
+    {
+      title: '',
+      path: '/credentials',
+      isSeparator: false,
+      isActive: true,
+    },
+  ]
 
   const fetchData = useCallback(async ({search}: any) => {
     const {payload} = await dispatch(credentialsAPI.getCredentials()({}))

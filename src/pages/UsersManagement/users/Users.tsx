@@ -3,7 +3,7 @@ import {useLocales} from 'hooks'
 import moment from 'moment'
 import {useDispatch, useSelector} from 'react-redux'
 import {profileAPI, usersAPI} from 'services/apis'
-import {SUCCESS_STATUS} from 'constants/auth'
+import {IMAGE_URL_ENDPOINT, SUCCESS_STATUS} from 'constants/auth'
 import {useNotification} from 'hooks/useNotification'
 
 import {ReactComponent as ViewSVG} from 'assets/icons/right-arr.svg'
@@ -62,7 +62,7 @@ export const Users = () => {
                 <TableThemes.Image
                   src={`${
                     row?.original?.image
-                      ? `http://109.123.249.49:3006/logistics/images/${row?.original?.image}`
+                      ? `${IMAGE_URL_ENDPOINT}/${row?.original?.image}`
                       : blankAvatar
                   }`}
                   className='align-self-end'

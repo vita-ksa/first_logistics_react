@@ -4,7 +4,7 @@ import blankAvatar from 'assets/img/blank-avatar.png'
 import {integrationsAPI, profileAPI} from 'services/apis'
 import {useDispatch, useSelector} from 'react-redux'
 import {LazyLoadImage} from 'react-lazy-load-image-component'
-import {SUCCESS_STATUS} from 'constants/auth'
+import {IMAGE_URL_ENDPOINT, SUCCESS_STATUS} from 'constants/auth'
 import {useLocales, useNotification} from 'hooks'
 import {Loader} from 'components/loader'
 import {capitalize} from 'lodash'
@@ -50,11 +50,7 @@ export const ContentItem = ({data}: any) => {
       <Wrap>
         <>
           <LazyLoadImage
-            src={
-              data?.image?.url
-                ? `http://109.123.249.49:3006/logistics/images/${data?.image?.url}`
-                : blankAvatar
-            }
+            src={data?.image?.url ? `${IMAGE_URL_ENDPOINT}/${data?.image?.url}` : blankAvatar}
             // className='rounded'
             width='100%'
             height='100%'
@@ -72,11 +68,14 @@ export const ContentItem = ({data}: any) => {
             {loading ? (
               <Loader width={'10px'} height={'10px'} />
             ) : data?.isApproved === undefined ? (
-              'Connect >'
+              <>
+                <Trans i18nKey={'connect'}>Connect</Trans>
+                <span>{'>'}</span>
+              </>
             ) : data?.isApproved ? (
-              'Connected'
+              <Trans i18nKey={'connected'}>Connected</Trans>
             ) : (
-              'Requsted'
+              <Trans i18nKey={'requsted'}> Requsted</Trans>
             )}
           </ConnectButton>
         </InfoBody>

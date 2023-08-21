@@ -112,7 +112,9 @@ export const CreateCredentials = () => {
       <KTCard className={`mt-4  border-0 `}>
         <KTCardBody className='py-4'>
           <TitleBody>
-            <Title>Credentials Generators</Title>
+            <Title>
+              <Trans i18nKey={'credantials.generator'}>Credentials Generators</Trans>
+            </Title>
             <Paragraph>
               {/* Unlock a World of Shipping Possibilities. Seamlessly Integrate with your preferred
               shipping partner from 200+ local and global delivery companies. */}
@@ -134,7 +136,11 @@ export const CreateCredentials = () => {
                     overlay={<Tooltip id='tooltip-copy-to-clipboard'>Copy Code</Tooltip>}
                   >
                     <CopyToClipboard text={CredentialsState} onCopy={() => setCopied(true)}>
-                      <a className='highlight-copy btn'>{copied ? 'copied' : 'copy'}</a>
+                      <a className='highlight-copy btn'>
+                        {copied
+                          ? trans('copied', {defaultValue: 'copied'})
+                          : trans('copy', {defaultValue: 'copy'})}
+                      </a>
                     </CopyToClipboard>
                   </OverlayTrigger>
 
@@ -147,7 +153,7 @@ export const CreateCredentials = () => {
               loading={Boolean(generateloading)}
               onClick={generateCredentialsAction}
             >
-              Generate
+              <Trans i18nKey={'g.generate'}>Generate</Trans>
             </Button>
             {userRole === 'ADMIN' ? null : (
               <a
@@ -189,7 +195,7 @@ export const CreateCredentials = () => {
                     loading={Boolean(loading)}
                     onClick={handleSubmit((data) => onSaveLinks(data))}
                   >
-                    Save Links
+                    <Trans i18nKey={'save.links'}> Save Links</Trans>
                   </Button>
                 </div>
               </div>

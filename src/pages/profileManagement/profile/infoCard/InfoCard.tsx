@@ -11,6 +11,7 @@ import {useSelector} from 'react-redux'
 import {toggleAction} from 'components/modal/modalSlice'
 import {useForm} from 'react-hook-form'
 import {ActiveTrainerModal} from './activeTrainerModal'
+import {IMAGE_URL_ENDPOINT} from 'constants/auth'
 
 export const InfoCard = ({activeTab, setActiveTab}: any) => {
   const {trans} = useLocales()
@@ -41,11 +42,7 @@ export const InfoCard = ({activeTab, setActiveTab}: any) => {
         <div className='flex-wrap gap-5 d-flex flex-lg-nowrap'>
           <ImageContainer>
             <LazyLoadImage
-              src={
-                data?.photo
-                  ? `http://109.123.249.49:3006/logistics/images/${data?.photo}`
-                  : blankAvatar
-              }
+              src={data?.photo ? `${IMAGE_URL_ENDPOINT}/${data?.photo}` : blankAvatar}
               className='rounded'
               width='100%'
               height='150px'

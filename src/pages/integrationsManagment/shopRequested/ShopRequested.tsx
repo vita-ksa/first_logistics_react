@@ -4,7 +4,7 @@ import {StyledTable} from 'pages/ordersManagment/orders/Theme'
 import {Helmet} from 'react-helmet-async'
 import {useDispatch, useSelector} from 'react-redux'
 import {integrationsAPI} from 'services/apis'
-import {SUCCESS_STATUS} from 'constants/auth'
+import {IMAGE_URL_ENDPOINT, SUCCESS_STATUS} from 'constants/auth'
 import {PopoverMenu} from './popoverMenu'
 import {TableThemes} from 'components'
 import blankAvatar from 'assets/img/blank-avatar.png'
@@ -37,7 +37,7 @@ export const ShopRequested = () => {
               <TableThemes.Image
                 src={`${
                   row?.original?.image
-                    ? `http://109.123.249.49:3006/logistics/images/${row?.original?.image}`
+                    ? `${IMAGE_URL_ENDPOINT}/${row?.original?.image}`
                     : blankAvatar
                 }`}
                 className='align-self-end'

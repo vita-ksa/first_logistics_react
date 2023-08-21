@@ -2,7 +2,7 @@ import React, {Fragment, useEffect} from 'react'
 import styled from 'styled-components'
 import {KTCard, KTCardBody} from '_metronic/helpers'
 import {useSelector} from 'react-redux'
-import {useLoader} from 'hooks'
+import {useLoader, useLocales} from 'hooks'
 import {ContentItem} from './contentItem'
 import {Content} from './contentItem/Theme'
 
@@ -10,7 +10,7 @@ export const MoreConnections = () => {
   const {lockLoader} = useLoader()
   const data = useSelector((state: any) => state?.deliveryListState?.entities?.shops || [])
   const loading = useSelector((state: any) => state?.deliveryListState?.loading)
-
+  const {Trans} = useLocales()
   useEffect(() => {
     lockLoader(loading)
   }, [loading])
@@ -27,11 +27,15 @@ export const MoreConnections = () => {
       <KTCard className={`mt-4  border-0 `}>
         <KTCardBody className='py-4'>
           <TitleBody>
-            <Title>Connect your online store</Title>
+            <Title>
+              <Trans i18nKey={'more.connections.title'}>Connect your online store</Trans>
+            </Title>
             <Paragraph>
-              Connect your online store to our powerful dashboard, and watch as your store orders
-              are effortlessly captured and synchronized in real-time. Say goodbye to manual data
-              entry and hello to streamlined efficiency.
+              <Trans i18nKey={'more.connections.Paragraph'}>
+                Connect your online store to our powerful dashboard, and watch as your store orders
+                are effortlessly captured and synchronized in real-time. Say goodbye to manual data
+                entry and hello to streamlined efficiency.
+              </Trans>
             </Paragraph>
           </TitleBody>
           <Container>

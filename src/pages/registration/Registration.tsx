@@ -88,10 +88,14 @@ export const Registration = () => {
     >
       <div className='mb-10 text-center'>
         {/* begin::Title */}
-        <h1 className='mb-3 text-dark fw-bolder'>Sign Up</h1>
+        <h1 className='mb-3 text-dark fw-bolder'>
+          <Trans i18nKey={'sign.up'}>Sign Up</Trans>
+        </h1>
         {/* end::Title */}
 
-        <div className='text-gray-500 fw-semibold fs-6'>Your Social Campaigns</div>
+        <div className='text-gray-500 fw-semibold fs-6'>
+          <Trans i18nKey={'your.social.campaigns'}>Your Social Campaigns</Trans>
+        </div>
       </div>
       <>
         <InputFormController
@@ -191,9 +195,9 @@ export const Registration = () => {
             {...register('acceptTerms')}
           />
           <span>
-            I Accept the{' '}
+            <Trans i18nKey={'i.accept.the'}> I Accept the</Trans>
             <a href='#' target='_blank' className='ms-1 link-primary'>
-              Terms
+              <Trans i18nKey={'terms'}> Terms</Trans>
             </a>
             .
           </span>
@@ -215,7 +219,7 @@ export const Registration = () => {
           disabled={!isValid || isEmpty(dirtyFields) || !acceptTerms || Boolean(loading)}
           loading={Boolean(loading)}
         >
-          Submit
+          <Trans i18nKey={'g.submit'}>g.submit</Trans>
         </Button>
         <Link to='/auth/login'>
           <button
@@ -223,7 +227,7 @@ export const Registration = () => {
             id='kt_login_signup_form_cancel_button'
             className='mb-5 btn btn-lg btn-light-primary w-100'
           >
-            Cancel
+            <Trans i18nKey={'g.cancel'}>Cancel</Trans>
           </button>
         </Link>
       </div>

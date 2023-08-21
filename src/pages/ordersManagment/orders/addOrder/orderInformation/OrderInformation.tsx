@@ -29,17 +29,6 @@ const shipmentOptions = [
     value: 'Documents',
   },
 ]
-
-const list = [
-  {
-    label: 'Cash On Delivery',
-    value: 'CashOnDelivery',
-  },
-  {
-    label: 'Visa',
-    value: 'Visa',
-  },
-] as any
 export const OrderInformation = () => {
   const {Trans, trans} = useLocales()
   const methods = useFormContext()
@@ -51,6 +40,16 @@ export const OrderInformation = () => {
     }
   })
 
+  const list = [
+    {
+      label: trans('payment.method.cash.on.delivery', {defaultValue: 'Cash On Delivery'}),
+      value: 'CashOnDelivery',
+    },
+    {
+      label: trans('payment.method.visa', {defaultValue: 'Visa'}),
+      value: 'Visa',
+    },
+  ] as any
   return (
     <div className='mt-5 w-100'>
       <div className='pb-10 pb-lg-15'>

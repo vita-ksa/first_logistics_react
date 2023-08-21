@@ -84,7 +84,7 @@ export const UpdateShopInfo = () => {
               <div className='w-50 pr-4'>
                 <InputFormController
                   name='image_url'
-                  label={trans('Picture')}
+                  label={trans('picture')}
                   type='file'
                   placeholder={trans('g.picture.add')}
                   control={control}

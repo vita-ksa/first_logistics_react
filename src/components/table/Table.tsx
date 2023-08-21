@@ -8,6 +8,7 @@ import {LoaderBody, TableBudy, Footer} from './Theme'
 import {Toolbar} from './toolbar'
 import {useSearch} from 'hooks'
 import {Loader} from 'components/loader'
+import {useSelector} from 'react-redux'
 
 export const Table = ({
   searchPlaceholder,
@@ -38,6 +39,8 @@ export const Table = ({
 
   const columns = useMemo(() => initColumns, [])
   const nodata = useMemo(() => noDataProps, [])
+
+  const {lang} = useSelector<any>((state) => state?.locales) as any
 
   const {
     getTableProps,
@@ -159,8 +162,8 @@ export const Table = ({
               menuStyle={{bottom: 30}}
             />
           ) : null}
-          <div className='d-flex align-items-center ms-auto'>
-            <Pagination {...{pageCount, handlePageClick}} initialPage={pageIndex} />
+          <div className={`d-flex align-items-center ${lang === 'en' ? 'ms-auto' : 'mr-auto'} `}>
+            <Pagination {...{pageCount, handlePageClick}} initialPage={pageIndex} lang={lang} />
           </div>
         </Footer>
       ) : null}

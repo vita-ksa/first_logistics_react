@@ -1,8 +1,8 @@
-import {PageTitle} from '_metronic/layout/core'
+import {PageLink, PageTitle} from '_metronic/layout/core'
 import React, {useEffect} from 'react'
 import {Outlet, Route, Routes} from 'react-router-dom'
 import {Users} from './users'
-import {profileBreadCrumbs} from 'pages/profileManagement/breadCrumbs'
+
 import {DeliveryCompanies} from './deliveryCompanies'
 import {useLocales} from 'hooks'
 
@@ -15,6 +15,21 @@ export const UsersManagement = () => {
       document.title = 'First Logistics'
     }
   }, [])
+
+  const profileBreadCrumbs: Array<PageLink> = [
+    {
+      title: trans('sidebar.users.management', {defaultValue: 'Users Management'}),
+      path: '/user-management',
+      isSeparator: true,
+      isActive: false,
+    },
+    {
+      title: '',
+      path: '',
+      isSeparator: false,
+      isActive: true,
+    },
+  ]
 
   return (
     <Routes>

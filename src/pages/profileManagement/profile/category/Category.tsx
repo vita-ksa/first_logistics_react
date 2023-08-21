@@ -5,6 +5,7 @@ import React, {useCallback, useEffect} from 'react'
 import {useSelector} from 'react-redux'
 import blankAvatar from 'assets/img/blank-avatar.png'
 import {CardBody} from '../updateProfile/Theme'
+import {IMAGE_URL_ENDPOINT} from 'constants/auth'
 
 export const Category = () => {
   const {Trans, trans, formatDate} = useLocales()
@@ -28,7 +29,7 @@ export const Category = () => {
                 <TableThemes.Image
                   src={`${
                     row?.original?.image
-                      ? `http://109.123.249.49:3006/logistics/images/${row?.original?.image}`
+                      ? `${IMAGE_URL_ENDPOINT}/${row?.original?.image}`
                       : blankAvatar
                   }`}
                   className='align-self-end'

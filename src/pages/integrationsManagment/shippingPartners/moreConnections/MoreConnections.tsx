@@ -2,7 +2,7 @@ import React, {Fragment, useEffect} from 'react'
 import styled from 'styled-components'
 import {KTCard, KTCardBody} from '_metronic/helpers'
 import {useSelector} from 'react-redux'
-import {useLoader} from 'hooks'
+import {useLoader, useLocales} from 'hooks'
 import {ContentItem} from './contentItem'
 import {Content} from './contentItem/Theme'
 
@@ -10,7 +10,7 @@ export const MoreConnections = () => {
   const {lockLoader} = useLoader()
   const data = useSelector((state: any) => state?.deliveryListState?.entities?.deliveryList || [])
   const loading = useSelector((state: any) => state?.deliveryListState?.loading)
-
+  const {Trans} = useLocales()
   useEffect(() => {
     lockLoader(loading)
   }, [loading])
@@ -27,10 +27,14 @@ export const MoreConnections = () => {
       <KTCard className={`mt-4  border-0 `}>
         <KTCardBody className='py-4'>
           <TitleBody>
-            <Title>Connect a shipping partner</Title>
+            <Title>
+              <Trans i18nKey={'connect.a.shipping.partner'}>Connect a shipping partner</Trans>
+            </Title>
             <Paragraph>
-              Unlock a World of Shipping Possibilities. Seamlessly Integrate with your preferred
-              shipping partner from 200+ local and global delivery companies.
+              <Trans i18nKey={'connect.a.shipping.partner.message'}>
+                Unlock a World of Shipping Possibilities. Seamlessly Integrate with your preferred
+                shipping partner from 200+ local and global delivery companies.
+              </Trans>
             </Paragraph>
           </TitleBody>
           <Container>

@@ -35,19 +35,19 @@ export const AddOrder = () => {
     () => [
       {
         id: 1,
-        title: 'Order Information',
+        title: trans("order.info.edit.title",{defaultValue:'Order Information'}) ,
         text: '',
         page: <OrderInformation />,
       },
       {
         id: 2,
-        title: 'Sender Information',
+        title: trans("sender.info.edit.title",{defaultValue:'Sender Information'}) ,
         text: '',
         page: <SenderInformation />,
       },
       {
         id: 3,
-        title: 'Receiver Information',
+        title: trans('receiver.info.edit.title',{defaultValue:"Receiver Information"}) ,
         text: '',
         page: <ReceiverInformation />,
       },

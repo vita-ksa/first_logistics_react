@@ -6,6 +6,7 @@ import {getCSSVariableValue} from '_metronic/assets/ts/_utils'
 import {WithChildren} from '_metronic/helpers'
 import {DashboardManagement} from 'pages/dashboardManagment'
 import {PriceCalculationManagment} from 'pages/priceCalculationManagment'
+import {useSelector} from 'react-redux'
 
 const Management = lazy(() =>
   import('pages/managment').then((m) => ({
@@ -50,14 +51,20 @@ const UsersManagement = lazy(() =>
 )
 
 const PrivateRoutes = () => {
+  const userRole = useSelector((state: any) => state?.auth?.entities?.user?.role)
   return (
     <Routes>
       <Route element={<MasterLayout />}>
         {/* Redirect to Dashboard after success login/registartion */}
-        <Route path='auth/*' element={<Navigate to='/price-calculation' />} />
+        <Route
+          path='auth/*'
+          element={
+            <Navigate to={`${userRole === 'ADMIN' ? '/category' : '/profile-management'}`} />
+          }
+        />
         {/* Pages */}
-        <Route path='dashboard/*' element={<DashboardManagement />} />
-        <Route path='price-calculation' element={<PriceCalculationManagment />} />
+        {/* <Route path='dashboard/*' element={<DashboardManagement />} />
+        <Route path='price-calculation' element={<PriceCalculationManagment />} /> */}
 
         {/* Lazy Modules */}
         <Route

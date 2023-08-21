@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux'
 import {StyledTable} from 'pages/ordersManagment/orders/Theme'
 import {TableThemes} from 'components'
 import blankAvatar from 'assets/img/blank-avatar.png'
+import {IMAGE_URL_ENDPOINT} from 'constants/auth'
 
 export const Connected = () => {
   const {Trans, trans, formatDate} = useLocales()
@@ -27,7 +28,7 @@ export const Connected = () => {
               <TableThemes.Image
                 src={`${
                   row?.original?.image
-                    ? `http://109.123.249.49:3006/logistics/images/${row?.original?.image?.url}`
+                    ? `${IMAGE_URL_ENDPOINT}/${row?.original?.image?.url}`
                     : blankAvatar
                 }`}
                 className='align-self-end'
