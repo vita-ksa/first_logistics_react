@@ -7,4 +7,9 @@ services:
     hostname: first_logistics
     restart: always
     ports:
-      - 6009:80
+      - 8080:80
+    
+networks:
+  default:
+    driver: bridge
+
