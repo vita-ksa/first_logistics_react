@@ -13,6 +13,7 @@ import {ReceiverInformation} from './receiverInformation'
 import {BackButton, CancelButton, SubmitButton} from './Theme'
 import {useNavigate} from 'react-router-dom'
 import {SUCCESS_STATUS} from 'constants/auth'
+import {DelevaryCompany} from './delevaryCompany'
 
 export const CardBody = styled.div`
   background: #ffffff;
@@ -29,27 +30,32 @@ export const AddOrder = () => {
 
   const {lang} = useSelector<any>((state) => state?.locales) as any
   const loading = useSelector<any>((state) => state.addOrderState.loading === 'pending')
-  const categoryId = methods.watch('categoryId')?.value
 
   const pages = useMemo(
     () => [
       {
         id: 1,
-        title: trans("order.info.edit.title",{defaultValue:'Order Information'}) ,
+        title: trans('order.info.edit.title', {defaultValue: 'Order Information'}),
         text: '',
         page: <OrderInformation />,
       },
       {
         id: 2,
-        title: trans("sender.info.edit.title",{defaultValue:'Sender Information'}) ,
+        title: trans('sender.info.edit.title', {defaultValue: 'Sender Information'}),
         text: '',
         page: <SenderInformation />,
       },
       {
         id: 3,
-        title: trans('receiver.info.edit.title',{defaultValue:"Receiver Information"}) ,
+        title: trans('receiver.info.edit.title', {defaultValue: 'Receiver Information'}),
         text: '',
         page: <ReceiverInformation />,
+      },
+      {
+        id: 4,
+        title: trans('delivery.info.edit.title', {defaultValue: 'Delivery Companies'}),
+        text: '',
+        page: <DelevaryCompany />,
       },
     ],
     []
@@ -65,21 +71,65 @@ export const AddOrder = () => {
   }, [])
 
   useEffect(() => {
-    if (!categoryId) return
-    dispatch(
-      ordersAPI.getDeliveryCompanyList()({
-        categoryId,
-      })
-    ).then(() => dispatch(ordersAPI.getDeliveryCompanyListSlice.actions.getOptions()))
+    // if (!categoryId) return
+    // dispatch(
+    //   ordersAPI.getDeliveryCompanyList()({
+    //     categoryId,
+    //   })
+    // ).then(() => dispatch(ordersAPI.getDeliveryCompanyListSlice.actions.getOptions()))
     return () => {
       dispatch(ordersAPI.getDeliveryCompanyListSlice.actions.resetAction())
     }
-  }, [categoryId])
+  }, [])
 
   const handelCancelAction = () => {
     navigateTo('/orders')
   }
   const handelNext = () => {
+    if (page === 3) {
+      const data = {
+        categoryId: methods.watch('categoryId')?.value,
+        shipmentDetails: {
+          shipmentDestination: methods.watch('shipmentDestination')?.value,
+          content: methods.watch('content'),
+          height: methods.watch('height'),
+          weight: methods.watch('weight'),
+          quantity: methods.watch('quantity'),
+          type: methods.watch('type')?.value,
+          // deliveryCompanyId: methods.watch("deliveryCompanyId"),
+          paymentMethod: methods.watch('paymentMethod'),
+          sender: {
+            name: methods.watch('sender_name'),
+            email: methods.watch('sender_email'),
+            phone: methods.watch('sender_phone'),
+            country: methods.watch('sender_country'),
+            city: methods.watch('sender_city'),
+            street: methods.watch('sender_street'),
+            additionalInfo: methods.watch('sender_additionalInfo'),
+            buildingName: methods.watch('sender_buildingName'),
+          },
+          receiver: {
+            name: methods.watch('receiver_name'),
+            email: methods.watch('receiver_email'),
+            phone: methods.watch('receiver_phone'),
+            country: methods.watch('receiver_country'),
+            city: methods.watch('receiver_city'),
+            street: methods.watch('receiver_street'),
+            additionalInfo: methods.watch('receiver_additionalInfo'),
+            buildingName: methods.watch('receiver_buildingName'),
+          },
+        },
+      }
+
+      if (data) {
+        dispatch(
+          ordersAPI.getDeliveryCompanyList()({
+            data,
+          })
+        ).then(() => dispatch(ordersAPI.getDeliveryCompanyListSlice.actions.getOptions()))
+      }
+    }
+
     setPage((currPage) => currPage + 1)
   }
 
@@ -93,7 +143,7 @@ export const AddOrder = () => {
         weight: _data?.weight,
         quantity: _data?.quantity,
         type: _data?.type?.value,
-        deliveryCompanyId: _data?.deliveryCompanyId?.value,
+        deliveryCompanyId: _data?.deliveryCompanyId,
         paymentMethod: _data?.paymentMethod,
         sender: {
           name: _data?.sender_name,
@@ -140,7 +190,7 @@ export const AddOrder = () => {
       document.title = 'First Logistics'
     }
   }, [])
-
+  console.log(methods.watch(), 'watchwatchwatch')
   return (
     <Fragment>
       <FormProvider {...methods}>
@@ -171,7 +221,7 @@ export const AddOrder = () => {
               ) : (
                 <SubmitButton
                   loading={Boolean(loading)}
-                  disabled={Boolean(loading)}
+                  disabled={Boolean(loading) || !methods.formState.isValid}
                   onClick={methods.handleSubmit(onSubmit)}
                 >
                   <Trans i18nKey={'order.add.order'}>Add Order</Trans>

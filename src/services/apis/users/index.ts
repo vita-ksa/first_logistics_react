@@ -1,1 +1,1 @@
-export {getUsersList, getUsersListSlice} from './users'
+export {getUsersList, getUsersListSlice, approvedUser, approvedUserSlice} from './users'

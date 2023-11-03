@@ -1,8 +1,9 @@
-import { Button } from 'components'
-import styled, { css } from 'styled-components'
+import {Button} from 'components'
+import styled, {css} from 'styled-components'
 
-export const SubmitButton = styled(Button)`
+export const SubmitButton = styled(Button)<any>`
   height: 48px;
+  background-color: ${(props) => props.disabled && '#585a65'};
 `
 
 export const CardBody = styled.div`

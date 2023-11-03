@@ -12,6 +12,7 @@ import blankAvatar from 'assets/img/blank-avatar.png'
 import {useNavigate} from 'react-router-dom'
 import {TableThemes} from 'components'
 import {StyledTable} from 'pages/managment/products/Theme'
+import {PopoverMenu} from '../popoverMenu'
 
 export const Users = () => {
   const {trans, Trans, formatDate} = useLocales()
@@ -22,12 +23,13 @@ export const Users = () => {
   const data = useSelector((state: any) => state?.userList?.entities?.userList || [])
   const count = useSelector((state: any) => state?.userList?.entities?.totalCount || 0)
   const loading = useSelector((state: any) => state?.userList?.loading === 'pending')
+  const reloadData = useSelector((state: any) => state?.approveUserState?.entities || [])
 
-  const viewUser = (userinfo: any, commpName: string, orderList: any) => {
-    const user = {...userinfo, shop: {name: commpName}}
-    dispatch(profileAPI.getUserProfileSlice.actions.setUserInfoAction({user, orderList}))
-    navigate(`/profile-management/user`)
-  }
+  // const viewUser = (userinfo: any, commpName: string, orderList: any) => {
+  //   const user = {...userinfo, shop: {name: commpName}}
+  //   dispatch(profileAPI.getUserProfileSlice.actions.setUserInfoAction({user, orderList}))
+  //   navigate(`/profile-management/user`)
+  // }
 
   useEffect(() => {
     return () => {
@@ -84,24 +86,40 @@ export const Users = () => {
       disableSortBy: true,
       sortType,
     },
-
+    {
+      Header: () => <Trans i18nKey={'order.list.isApproved'}>is Approved</Trans>,
+      accessor: 'isApproved',
+      Cell: ({row}: any) => {
+        console.log(row?.original, 'row?.originalrow?.original')
+        const isApproved = row?.original?.user?.isApproved
+        return (
+          <>
+            <TableThemes.TitlwBody>
+              <div
+                className='w-100'
+                style={{
+                  color: isApproved ? 'green' : 'red',
+                }}
+              >
+                {isApproved ? 'Approved' : 'Not Approved'}
+              </div>
+            </TableThemes.TitlwBody>
+          </>
+        )
+      },
+      disableSortBy: true,
+    },
     {
       Header: '',
-      accessor: 'view',
+      accessor: 'actions',
       Cell: ({row}: any) => (
         <>
-          <TableThemes.Label className='text-end'>
-            <TableThemes.EditButton
-              onClick={viewUser.bind(
-                this,
-                row?.original?.user,
-                row?.original?.name,
-                row?.original?.oredrs
-              )}
-            >
-              <ViewSVG />
-            </TableThemes.EditButton>
-          </TableThemes.Label>
+          <PopoverMenu
+            id={row?.original?.id}
+            orderNumber={row?.original?.number}
+            // userType={userType}
+            row={row?.original}
+          />
         </>
       ),
       disableSortBy: true,
@@ -150,6 +168,7 @@ export const Users = () => {
           count,
           loading,
           exportData: false,
+          reloadData: [reloadData],
         }}
         title={trans('sidebar.users.management.shops')}
         searchInput={false}

@@ -1,0 +1,50 @@
+import React, {useEffect, useState} from 'react'
+import {ConnectButton, InfoBody, Wrap} from './Theme'
+import blankAvatar from 'assets/img/blank-avatar.png'
+import {integrationsAPI, profileAPI} from 'services/apis'
+import {useDispatch, useSelector} from 'react-redux'
+import {LazyLoadImage} from 'react-lazy-load-image-component'
+import {IMAGE_URL_ENDPOINT, SUCCESS_STATUS} from 'constants/auth'
+import {useLocales, useNotification} from 'hooks'
+import {Loader} from 'components/loader'
+import {capitalize} from 'lodash'
+import {useFormContext} from 'react-hook-form'
+
+export const ContentItem = ({data}: any) => {
+  const {Trans, trans} = useLocales()
+
+  const methods = useFormContext()
+
+  console.log(data, methods, ' deliveryCompanydeliveryCompany')
+  return (
+    <>
+      <Wrap htmlFor={data?.id}>
+        <>
+          <LazyLoadImage
+            src={data?.image?.url ? `${IMAGE_URL_ENDPOINT}/${data?.image?.url}` : blankAvatar}
+            // className='rounded'
+            width='100%'
+            height='100%'
+            effect='blur'
+            style={{objectFit: 'cover'}}
+            alt={data?.name}
+          />
+        </>
+        <InfoBody>
+          <span>{capitalize(data?.name)}</span>
+          <div className='mt-auto ml-auto fv-row'>
+            {/* <label className='form-check form-check-inline' > */}
+            <input
+              value={data?.id}
+              className='form-check-input'
+              type='radio'
+              id={data?.id}
+              {...methods.register('deliveryCompanyId', {required: 'this is requerd'})}
+            />
+            {/* </label> */}
+          </div>
+        </InfoBody>
+      </Wrap>
+    </>
+  )
+}

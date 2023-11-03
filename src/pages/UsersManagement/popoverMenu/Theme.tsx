@@ -8,7 +8,7 @@ export const PopoverBody = styled.div`
   box-shadow: 0px 0px 7px #00000029;
   min-height: 58px;
   z-index: 1010;
-  width: 140px;
+  width: 120px;
   border-radius: 5px;
 
   padding: 7px 9px;

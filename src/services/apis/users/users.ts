@@ -33,3 +33,23 @@ export const getUsersListSlice = createSlice({
   },
   extraReducers: responseAsyncThunk(getUsersList()),
 })
+
+export const approvedUser = () => {
+  return requestAsyncThunk({
+    storeName: 'approveUserState',
+    _url: `/user/approve-user?`,
+    method: 'PATCH',
+    exact: 'approve-user',
+  })
+}
+
+export const approvedUserSlice = createSlice({
+  name: 'approveUserState',
+  initialState,
+  reducers: {
+    resetAction: () => {
+      return initialState
+    },
+  },
+  extraReducers: responseAsyncThunk(approvedUser()),
+})

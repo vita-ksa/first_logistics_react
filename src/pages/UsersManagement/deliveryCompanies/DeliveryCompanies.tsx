@@ -10,6 +10,7 @@ import blankAvatar from 'assets/img/blank-avatar.png'
 import {useNavigate} from 'react-router-dom'
 import {TableThemes} from 'components'
 import {StyledTable} from 'pages/managment/products/Theme'
+import {PopoverMenu} from '../popoverMenu'
 
 export const DeliveryCompanies = () => {
   const {trans, Trans, formatDate} = useLocales()
@@ -83,23 +84,61 @@ export const DeliveryCompanies = () => {
       sortType,
     },
 
+    // {
+    //   Header: '',
+    //   accessor: 'view',
+    //   Cell: ({row}: any) => (
+    //     <>
+    //       <TableThemes.Label className='text-end'>
+    //         <TableThemes.EditButton
+    //           onClick={viewUser.bind(
+    //             this,
+    //             row?.original?.user,
+    //             row?.original?.name,
+    //             row?.original?.orders
+    //           )}
+    //         >
+    //           <ViewSVG />
+    //         </TableThemes.EditButton>
+    //       </TableThemes.Label>
+    //     </>
+    //   ),
+    //   disableSortBy: true,
+    // },
+    {
+      Header: () => <Trans i18nKey={'order.list.isApproved'}>is Approved</Trans>,
+      accessor: 'isApproved',
+      Cell: ({row}: any) => {
+        console.log(row?.original, 'row?.originalrow?.original')
+        const isApproved = row?.original?.user?.isApproved
+        return (
+          <>
+            <TableThemes.TitlwBody>
+              <div
+                className='w-100'
+                style={{
+                  color: isApproved ? 'green' : 'red',
+                }}
+              >
+                {isApproved ? 'Approved' : 'Not Approved'}
+              </div>
+            </TableThemes.TitlwBody>
+          </>
+        )
+      },
+      disableSortBy: true,
+    },
     {
       Header: '',
-      accessor: 'view',
+      accessor: 'actions',
       Cell: ({row}: any) => (
         <>
-          <TableThemes.Label className='text-end'>
-            <TableThemes.EditButton
-              onClick={viewUser.bind(
-                this,
-                row?.original?.user,
-                row?.original?.name,
-                row?.original?.orders
-              )}
-            >
-              <ViewSVG />
-            </TableThemes.EditButton>
-          </TableThemes.Label>
+          <PopoverMenu
+            id={row?.original?.id}
+            orderNumber={row?.original?.number}
+            // userType={userType}
+            row={row?.original}
+          />
         </>
       ),
       disableSortBy: true,

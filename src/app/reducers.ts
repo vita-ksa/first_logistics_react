@@ -82,6 +82,7 @@ const reducers = combineReducers({
   documentationState: credentialsAPI.getDocumentationSlice.reducer,
   documentationLinksState: credentialsAPI.SaveDocumentationLinksSlice.reducer,
   activeUserState: profileAPI.activeUserSlice.reducer,
+  approveUserState: usersAPI.approvedUserSlice.reducer,
 })
 
 export default reducers

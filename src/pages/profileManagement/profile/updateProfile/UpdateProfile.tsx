@@ -58,6 +58,7 @@ export const UpdateProfile = () => {
     shipto?.map((el: any) => formData.append('shipto[]', el))
     formData.append('deliveryTimePeriod', _data?.deliveryTimePeriod)
     formData.append('companyRecoredNumber', _data?.companyRecoredNumber)
+    formData.append('webhook', _data?.webhook)
     formData.append('image', _data?.image_url?.files)
 
     const {payload} = await dispatch(
@@ -152,8 +153,8 @@ export const UpdateProfile = () => {
               />
             </FormBody>
           </div>
-          <FormBody>
-            <div className='w-50 pr-4'>
+          <FormBody className='gap-8 d-flex'>
+            <>
               <InputFormController
                 name='image_url'
                 label={trans('picture')}
@@ -164,7 +165,25 @@ export const UpdateProfile = () => {
                 rules={{required: 'This is required.'}}
                 fileTypes={['jpg', 'png', 'png']}
               />
-            </div>
+            </>
+            <InputControllerMinimumMargin
+              name='webhook'
+              label={trans('profile.update.webhook', {defaultValue: 'webhook'})}
+              placeholder={trans('')}
+              type='text'
+              required
+              control={control}
+              // rules={{
+              //   required: 'This is required.',
+              //   maxLength: {
+              //     value: 20,
+              //     message: trans('program.name.length.max', {
+              //       defaultValue: 'Maximum 20 characters',
+              //     }),
+              //   },
+              // }}
+              rules={{required: 'This is required.'}}
+            />
           </FormBody>
         </div>
         <div className='d-flex justify-content-end mt-15'>

@@ -159,7 +159,7 @@ export const OrderInformation = () => {
         </FormBody>
         <FormBody className='gap-8 mt-8 d-flex'>
           <div className='w-50 pe-4'>
-            <DropdownControllerStyled
+            {/* <DropdownControllerStyled
               name='deliveryCompanyId'
               label={trans('program.add.delivery.company', {defaultValue: 'Delivery Company'})}
               items={deliveryCompanyList || []}
@@ -167,7 +167,7 @@ export const OrderInformation = () => {
               placeholder={trans('program.add.delivery.company')}
               required
               rules={{required: 'This is required.'}}
-            />
+            /> */}
           </div>
           <>
             <RadioController

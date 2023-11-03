@@ -7,6 +7,8 @@ import {useDispatch} from 'react-redux'
 import {useNotification} from 'hooks'
 import {Loader} from 'components/loader'
 import {useNavigate} from 'react-router-dom'
+import {UpdatePaymentLinkModal} from './updatePaymentLinkModal'
+import {toggleAction} from 'components/modal/modalSlice'
 
 interface PopoverItemsProps {
   layerProps?: any
@@ -15,6 +17,7 @@ interface PopoverItemsProps {
   id?: string
   orderNumber?: number
   userType?: string
+  link?: any
 }
 
 export const PopoverItems = ({
@@ -24,6 +27,7 @@ export const PopoverItems = ({
   id,
   orderNumber,
   userType,
+  link,
 }: PopoverItemsProps) => {
   const {trans, Trans} = useLocales()
   const dispatch = useDispatch<any>()
@@ -57,7 +61,13 @@ export const PopoverItems = ({
     })
   }
 
-  const handelDeleteAction = async () => {}
+  const handelAddNewModal = () => {
+    toggleAction({
+      show: true,
+      component: <UpdatePaymentLinkModal type={'add'} id={id} link={link} />,
+    })
+    setOpen(false)
+  }
 
   if (!isOpen) return null
 
@@ -75,7 +85,11 @@ export const PopoverItems = ({
           )}
           <Trans i18nKey='popover.edit'>{trans('g.edit')}</Trans>
         </ItemPopover>
-      ) : null}
+      ) : (
+        <ItemPopover onClick={handelAddNewModal.bind(this)}>
+          <Trans i18nKey='popover.update.payment.link'>Edit Payment Link</Trans>
+        </ItemPopover>
+      )}
       <ItemPopover onClick={handelEditAction.bind(this, 'view')}>
         {loading?.loading && loading?.type === 'view' ? (
           <Loader width={'15px'} height={'15px'} />
@@ -84,10 +98,6 @@ export const PopoverItems = ({
         )}
         <Trans i18nKey='popover.view'>{trans('g.view')}</Trans>
       </ItemPopover>
-      {/* <ItemPopover onClick={handelDeleteAction.bind(this)}>
-        {deleteloading ? <Loader width={'15px'} height={'15px'} /> : <DeleteSVGStyled />}
-        <Trans i18nKey='popover.delete'>{trans('g.delete')}</Trans>
-      </ItemPopover> */}
     </PopoverBody>
   )
 }

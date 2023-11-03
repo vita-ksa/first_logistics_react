@@ -43,6 +43,7 @@ export const Orders = () => {
   const userType = useSelector((state: any) => state?.auth?.entities?.user?.type) as string
   const count = useSelector((state: any) => state?.ordersList?.entities?.totalCount || 0)
   const loading = useSelector((state: any) => state?.ordersList?.loading === 'pending')
+  const reloadData = useSelector((state: any) => state?.updateOrderStatusState?.entities)
 
   const updateOrderStatusAction = async (value: any, orderId: any) => {
     console.log(value, 'valuevaluevaluevalue')
@@ -126,6 +127,16 @@ export const Orders = () => {
       disableSortBy: true,
     },
     {
+      Header: () => <Trans i18nKey={'order.list.Link'}>Payment Link</Trans>,
+      accessor: 'paymentLink',
+      Cell: ({row}: any) => (
+        <a href={row.original?.paymentLink} target='_blank' rel='noreferrer'>
+          {row.original.paymentLink || '-'}
+        </a>
+      ),
+      disableSortBy: true,
+    },
+    {
       Header: () => <Trans i18nKey={'order.list.type'}>Type</Trans>,
       accessor: 'type',
       Cell: ({row}: any) => <>{row.original.Shipment?.type}</>,
@@ -140,6 +151,7 @@ export const Orders = () => {
             id={row?.original?.id}
             orderNumber={row?.original?.number}
             userType={userType}
+            link={row?.original?.paymentLink}
           />
         </>
       ),
@@ -201,7 +213,7 @@ export const Orders = () => {
             loading,
             // Filter: PopoverMenu,
             exportData: false,
-            reloadData: [],
+            reloadData: [reloadData],
           }}
           title={trans('sidebar.orders')}
           searchPlaceholder={'g.search'}

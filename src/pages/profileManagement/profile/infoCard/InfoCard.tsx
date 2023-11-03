@@ -114,6 +114,10 @@ export const InfoCard = ({activeTab, setActiveTab}: any) => {
                 : trans('profile.not.completed')}
             </h4>
           </TableDiv>
+          <TableDiv>
+            <DarkHeading>{trans('profile.user.webhook', {defaultValue: 'webhook'})}</DarkHeading>
+            <h4>{data?.deliveryCompany?.webhook || '-'}</h4>
+          </TableDiv>
           <TableDiv className='border-right-0'>
             <DarkHeading>{trans('profile.user.is.active')}</DarkHeading>
             <h4>{data?.isActive ? 'Active' : 'Inactive'}</h4>
