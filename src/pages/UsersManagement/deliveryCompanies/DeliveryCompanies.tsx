@@ -2,19 +2,16 @@ import React, {useCallback, useEffect, useMemo} from 'react'
 import {useLocales} from 'hooks'
 import moment from 'moment'
 import {useDispatch, useSelector} from 'react-redux'
-import {profileAPI, usersAPI} from 'services/apis'
+import {usersAPI} from 'services/apis'
 import {IMAGE_URL_ENDPOINT, SUCCESS_STATUS} from 'constants/auth'
 import {useNotification} from 'hooks/useNotification'
-import {ReactComponent as ViewSVG} from 'assets/icons/right-arr.svg'
 import blankAvatar from 'assets/img/blank-avatar.png'
-import {useNavigate} from 'react-router-dom'
 import {TableThemes} from 'components'
 import {StyledTable} from 'pages/managment/products/Theme'
 import {PopoverMenu} from '../popoverMenu'
 
 export const DeliveryCompanies = () => {
   const {trans, Trans, formatDate} = useLocales()
-  const navigate = useNavigate()
   const dispatch = useDispatch<any>()
   const {error} = useNotification()
 
@@ -22,12 +19,6 @@ export const DeliveryCompanies = () => {
   const count = useSelector((state: any) => state?.userList?.entities?.totalCount || 0)
   const loading = useSelector((state: any) => state?.userList?.loading === 'pending')
   const reloadData = useSelector((state: any) => state?.approveUserState?.entities || [])
-
-  const viewUser = (userinfo: any, commpName: string, orderList: any) => {
-    const user = {...userinfo, deliveryCompany: {name: commpName}}
-    dispatch(profileAPI.getUserProfileSlice.actions.setUserInfoAction({user, orderList}))
-    navigate(`/profile-management/user`)
-  }
 
   useEffect(() => {
     return () => {
@@ -85,27 +76,6 @@ export const DeliveryCompanies = () => {
       sortType,
     },
 
-    // {
-    //   Header: '',
-    //   accessor: 'view',
-    //   Cell: ({row}: any) => (
-    //     <>
-    //       <TableThemes.Label className='text-end'>
-    //         <TableThemes.EditButton
-    //           onClick={viewUser.bind(
-    //             this,
-    //             row?.original?.user,
-    //             row?.original?.name,
-    //             row?.original?.orders
-    //           )}
-    //         >
-    //           <ViewSVG />
-    //         </TableThemes.EditButton>
-    //       </TableThemes.Label>
-    //     </>
-    //   ),
-    //   disableSortBy: true,
-    // },
     {
       Header: () => <Trans i18nKey={'order.list.isApproved'}>is Approved</Trans>,
       accessor: 'isApproved',

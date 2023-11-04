@@ -7,7 +7,7 @@ import {ReactComponent as LinkIcon} from 'assets/icons/link.svg'
 import {AmountBody, AmountInput, IconThem, Unit, UnitText} from './Theme'
 import {Phone} from 'components/phone'
 import {FileUpload} from 'components/fileUpload'
-import styled from 'styled-components'
+
 import {DropdownSelect} from 'components/dropdownSelect'
 import {useSelector} from 'react-redux'
 

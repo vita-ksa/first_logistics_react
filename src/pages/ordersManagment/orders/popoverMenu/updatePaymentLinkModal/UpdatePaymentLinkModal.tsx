@@ -1,9 +1,9 @@
-import React, {useEffect, useMemo, useState} from 'react'
+import React from 'react'
 import {useLocales} from 'hooks'
 import {useForm} from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup'
 import {dismissAction} from 'components/modal/modalSlice'
-import {InputFormController, Button, DropdownController} from 'components'
+import {InputFormController, Button} from 'components'
 import {schema} from './schema'
 import {ReactComponent as CloseSVG} from 'assets/icons/close_modal.svg'
 import {useDispatch, useSelector} from 'react-redux'
@@ -11,10 +11,9 @@ import {capitalize, isEmpty} from 'lodash'
 import {useNotification} from 'hooks/useNotification'
 import {SUCCESS_STATUS} from 'constants/auth'
 import {FormBody} from './Theme'
-import {categoriesAPI, ordersAPI, productAPI} from 'services/apis'
+import {ordersAPI} from 'services/apis'
 
 export const UpdatePaymentLinkModal = ({type = 'add', id, link}: any) => {
-  const VIEW_MODE = type === 'view'
   const dispatch = useDispatch<any>()
   const {trans} = useLocales()
   const {success, error} = useNotification()

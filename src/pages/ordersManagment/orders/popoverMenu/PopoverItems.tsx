@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useLocales} from 'hooks/locales'
-import {PopoverBody, ItemPopover, DeleteSVGStyled, EditSVGStyled, ViewSVGStyled} from './Theme'
+import {PopoverBody, ItemPopover, EditSVGStyled, ViewSVGStyled} from './Theme'
 import {ordersAPI} from 'services/apis'
 import {SUCCESS_STATUS} from 'constants/auth'
 import {useDispatch} from 'react-redux'

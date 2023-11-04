@@ -1,7 +1,7 @@
 import React from 'react'
 import {useLocales} from 'hooks'
 import {SidebarMenuItem} from './SidebarMenuItem'
-import {ReactComponent as DashboardSVG} from 'assets/icons/dashboard.svg'
+
 import {ReactComponent as ProductsSVG} from 'assets/icons/proucts.svg'
 import {ReactComponent as OrdersSVG} from 'assets/icons/orders.svg'
 import {ReactComponent as ProfileSVG} from 'assets/icons/user.svg'

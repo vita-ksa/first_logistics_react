@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 const ReactPaginateStyled = styled(ReactPaginate)<any>`
   flex-flow: ${(props) => props?.lang === 'ar' && 'row-reverse'};
-`
+` as any
 
 export const Pagination = ({pageCount, handlePageClick, initialPage, lang}: any) => {
   return (
