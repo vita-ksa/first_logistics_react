@@ -164,9 +164,9 @@ export const Orders = () => {
 
     const url: any = `${
       userType?.toLowerCase() === 'shop'
-        ? `/order/?page=${page}&perPage=${pageSize}${search ? `&name=${search}` : ''}`
+        ? `/order/?page=${page}&perPage=${pageSize}${search ? `&orderNumber=${search}` : ''}`
         : `/delivery-company/orders/?page=${page}&perPage=${pageSize}${
-            search ? `&name=${search}` : ''
+            search ? `&orderNumber=${search}` : ''
           }`
     }`
 
@@ -216,10 +216,11 @@ export const Orders = () => {
             reloadData: [reloadData],
           }}
           title={trans('sidebar.orders')}
-          searchPlaceholder={'g.search'}
+          searchPlaceholder={'Search Order'}
           onClickAction={userType?.toLowerCase() === 'shop' ? handelAddNewOrder : false}
           searchInput
           overFlowX={userType?.toLowerCase() !== 'shop'}
+          searchType={'number'}
         />
       </div>
     </Fragment>

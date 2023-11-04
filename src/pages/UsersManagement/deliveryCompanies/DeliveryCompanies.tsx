@@ -21,6 +21,7 @@ export const DeliveryCompanies = () => {
   const data = useSelector((state: any) => state?.userList?.entities?.userList || [])
   const count = useSelector((state: any) => state?.userList?.entities?.totalCount || 0)
   const loading = useSelector((state: any) => state?.userList?.loading === 'pending')
+  const reloadData = useSelector((state: any) => state?.approveUserState?.entities || [])
 
   const viewUser = (userinfo: any, commpName: string, orderList: any) => {
     const user = {...userinfo, deliveryCompany: {name: commpName}}
@@ -188,8 +189,8 @@ export const DeliveryCompanies = () => {
           noDataProps,
           count,
           loading,
-
           exportData: false,
+          reloadData: [reloadData],
         }}
         title={trans('sidebar.users.management.delivery.company')}
         searchInput={false}

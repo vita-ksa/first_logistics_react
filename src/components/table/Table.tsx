@@ -31,6 +31,7 @@ export const Table = ({
   defaultPageSize = 10,
   cardClassName,
   overFlowX,
+  searchType,
 }: any) => {
   const [search, setSearch] = useState(undefined)
   const [pageCount, setPageCount] = useState<any>(1)
@@ -108,6 +109,7 @@ export const Table = ({
           exportData,
           renderCount,
           dataToExport: data,
+          searchType,
         }}
       />
 
