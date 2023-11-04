@@ -1,4 +1,4 @@
-import React, {useState, useTransition} from 'react'
+import React, {useState} from 'react'
 import {useLocales} from 'hooks/locales'
 import {PopoverBody, ItemPopover, DeleteSVGStyled, EditSVGStyled, ViewSVGStyled} from './Theme'
 import {toggleAction} from 'components/modal/modalSlice'

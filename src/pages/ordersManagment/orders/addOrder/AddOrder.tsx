@@ -1,5 +1,4 @@
 import React, {Fragment, useEffect, useMemo, useState} from 'react'
-import {Helmet} from 'react-helmet-async'
 import {Stepper} from 'components'
 import {useLocales, useNotification} from 'hooks'
 import {find} from 'lodash'
@@ -28,7 +27,6 @@ export const AddOrder = () => {
   const {success, error} = useNotification()
   const methods = useForm({mode: 'onChange'})
 
-  const {lang} = useSelector<any>((state) => state?.locales) as any
   const loading = useSelector<any>((state) => state.addOrderState.loading === 'pending')
 
   const pages = useMemo(

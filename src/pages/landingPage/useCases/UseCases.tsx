@@ -1,6 +1,5 @@
 import React from 'react'
 import styles, {layout} from '../style'
-import google from 'assets/icons/google.svg'
 import {motion} from 'framer-motion'
 import {landingAnimations} from 'constants/animations'
 

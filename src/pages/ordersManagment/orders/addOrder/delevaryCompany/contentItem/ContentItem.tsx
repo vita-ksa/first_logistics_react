@@ -1,18 +1,12 @@
-import React, {useEffect, useState} from 'react'
-import {ConnectButton, InfoBody, Wrap} from './Theme'
+import React from 'react'
+import {InfoBody, Wrap} from './Theme'
 import blankAvatar from 'assets/img/blank-avatar.png'
-import {integrationsAPI, profileAPI} from 'services/apis'
-import {useDispatch, useSelector} from 'react-redux'
 import {LazyLoadImage} from 'react-lazy-load-image-component'
-import {IMAGE_URL_ENDPOINT, SUCCESS_STATUS} from 'constants/auth'
-import {useLocales, useNotification} from 'hooks'
-import {Loader} from 'components/loader'
+import {IMAGE_URL_ENDPOINT} from 'constants/auth'
 import {capitalize} from 'lodash'
 import {useFormContext} from 'react-hook-form'
 
 export const ContentItem = ({data}: any) => {
-  const {Trans, trans} = useLocales()
-
   const methods = useFormContext()
 
   console.log(data, methods, ' deliveryCompanydeliveryCompany')

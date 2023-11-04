@@ -1,10 +1,9 @@
 import React from 'react'
 import {motion} from 'framer-motion'
 import {landingAnimations} from 'constants/animations'
-import styles from '../style'
+
 import {StartButton} from '../startButton'
 import styled from 'styled-components'
-import robot from 'assets/icons/default-small.svg'
 
 const StyledSection = styled.section`
   display: flex;

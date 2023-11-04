@@ -1,5 +1,5 @@
 import {useEffect} from 'react'
-import {Outlet, Link, useLocation} from 'react-router-dom'
+import {Outlet, useLocation} from 'react-router-dom'
 import Logo from 'assets/icons/default-small.svg'
 import {Notification} from 'pages/notification'
 import {DropdownController} from 'components'

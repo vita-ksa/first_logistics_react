@@ -33,10 +33,9 @@ export const OrderInformation = () => {
   const {Trans, trans} = useLocales()
   const methods = useFormContext()
 
-  const {categoriesList, deliveryCompanyList} = useSelector((state: any) => {
+  const {categoriesList} = useSelector((state: any) => {
     return {
       categoriesList: state?.categoriesList?.options,
-      deliveryCompanyList: state.deliveryCompanyList?.options,
     }
   })
 

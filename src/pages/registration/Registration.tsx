@@ -42,7 +42,7 @@ export const Registration = () => {
   const {
     control,
     handleSubmit,
-    formState: {isValid, isSubmitted, dirtyFields},
+    formState: {isValid, dirtyFields},
     register,
     getValues,
   } = useForm({

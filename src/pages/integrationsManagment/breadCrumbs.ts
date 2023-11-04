@@ -1,5 +1,3 @@
-import {PageLink} from '_metronic/layout/core'
-
 export const getShippingPartnarBreadCrumbs = [
   {
     title: 'Shipping Partners',

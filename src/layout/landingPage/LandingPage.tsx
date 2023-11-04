@@ -1,7 +1,6 @@
 import React from 'react'
 import {Route, Routes, useLocation} from 'react-router-dom'
 import {LandingLayout} from './LandingLayout'
-import {LandingPage as Landing} from 'pages/landingPage'
 import {Home} from 'pages/landingPage/home'
 import {Features} from 'pages/landingPage/features'
 import {UseCases} from 'pages/landingPage/useCases'

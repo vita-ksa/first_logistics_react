@@ -2,10 +2,8 @@ import React, {useState} from 'react'
 import {useLayer} from 'react-laag'
 import {PopoverItems} from './PopoverItems'
 import {ReactComponent as OptionsSVG} from 'assets/icons/more-options.svg'
-import {useLocales} from 'hooks'
 
 export const PopoverMenu = ({id, isApproved}: any) => {
-  const {Trans} = useLocales()
   const [isOpen, setOpen] = useState(false)
   function close() {
     setOpen(false)

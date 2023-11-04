@@ -3,8 +3,6 @@ import {Outlet} from 'react-router-dom'
 import {Navbar} from './navbar'
 import 'theme/landingTheme.scss'
 import styled from 'styled-components'
-import {Footer} from 'pages/landingPage/footer'
-import styles from 'pages/landingPage/style'
 
 export const LandingLayout = () => {
   return (

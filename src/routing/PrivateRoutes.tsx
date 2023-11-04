@@ -4,8 +4,7 @@ import {MasterLayout} from 'layout/masterLayout/MasterLayout'
 import TopBarProgress from 'react-topbar-progress-indicator'
 import {getCSSVariableValue} from '_metronic/assets/ts/_utils'
 import {WithChildren} from '_metronic/helpers'
-import {DashboardManagement} from 'pages/dashboardManagment'
-import {PriceCalculationManagment} from 'pages/priceCalculationManagment'
+
 import {useSelector} from 'react-redux'
 
 const Management = lazy(() =>
