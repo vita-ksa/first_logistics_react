@@ -1,7 +1,6 @@
 import React, {Fragment, useCallback, useEffect} from 'react'
 import {useLocales, useNotification} from 'hooks'
 import {StyledTable} from 'pages/ordersManagment/orders/Theme'
-import {Helmet} from 'react-helmet-async'
 import {useDispatch, useSelector} from 'react-redux'
 import {integrationsAPI} from 'services/apis'
 import {IMAGE_URL_ENDPOINT, SUCCESS_STATUS} from 'constants/auth'
@@ -13,7 +12,6 @@ export const ShopRequested = () => {
   const {Trans, trans, formatDate} = useLocales()
   const dispatch = useDispatch<any>()
   const {error} = useNotification()
-  const {lang} = useSelector<any>((state) => state?.locales) as any
   const loading = useSelector(
     (state: any) => state?.deliveryConnectRequestState?.loading === 'pending'
   )
