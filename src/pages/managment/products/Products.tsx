@@ -127,7 +127,7 @@ export const Products = () => {
             reloadData,
           }}
           title={trans('breadcrumb.products')}
-          searchPlaceholder={'g.search'}
+          searchPlaceholder={'Search'}
           onClickAction={handelAddNewModal}
           searchInput
         />
