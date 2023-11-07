@@ -6,6 +6,7 @@ import {ordersAPI} from 'services/apis'
 import {UpdateShopInfo} from './updateShopInfo'
 import {OrdersTable} from './ordersTable'
 import {Category} from './category'
+import {Shipto} from './shipto'
 
 export const Profile = () => {
   const dispatch = useDispatch<any>()
@@ -47,6 +48,7 @@ export const Profile = () => {
         <>
           {activeTab === 'updateInfo' ? <UpdateProfile /> : null}
           {activeTab === 'categories' ? <Category /> : null}
+          {activeTab === 'shipto' ? <Shipto /> : null}
         </>
       ) : (
         <UpdateShopInfo />

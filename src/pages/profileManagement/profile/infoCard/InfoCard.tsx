@@ -23,6 +23,7 @@ export const InfoCard = ({activeTab, setActiveTab}: any) => {
   const list = [
     {value: 'updateInfo', label: trans('profile.update.info')},
     {value: 'categories', label: trans('sidebar.categories')},
+    {value: 'shipto', label: trans('sidebar.shipto', {defaultValue: 'Ship to'})},
   ]
   const {control} = useForm({
     mode: 'all',
@@ -123,6 +124,35 @@ export const InfoCard = ({activeTab, setActiveTab}: any) => {
             <h4>{data?.isActive ? 'Active' : 'Inactive'}</h4>
           </TableDiv>
         </div>
+        {userType?.toLowerCase() === 'deliverycompany' ? (
+          <div className='w-100 border-top d-flex'>
+            {/* table */}
+            <TableDiv>
+              <DarkHeading>
+                {trans('profile.recorednumber', {defaultValue: 'Recored Number'})}
+              </DarkHeading>
+              <h4>{data?.deliveryCompany?.companyDetails?.companyRecoredNumber || '-'}</h4>
+            </TableDiv>
+
+            <TableDiv>
+              <DarkHeading>
+                {trans('profile.userdelivery.time.period', {defaultValue: 'Delivery Time Period'})}
+              </DarkHeading>
+              <h4>{data?.deliveryCompany?.companyDetails?.deliveryTimePeriod || '-'}</h4>
+            </TableDiv>
+          </div>
+        ) : null}
+        {userType?.toLowerCase() === 'shop' ? (
+          <div className='w-100 border-top d-flex'>
+            {/* table */}
+            <TableDiv>
+              <DarkHeading>
+                {trans('profile.recorednumber', {defaultValue: 'Recored Number'})}
+              </DarkHeading>
+              <h4>{data?.shop?.companyRecordNumber || '-'}</h4>
+            </TableDiv>
+          </div>
+        ) : null}
         {userType?.toLowerCase() === 'deliverycompany' ? (
           <div className='mt-0 overflow-auto d-flex h-55px border-top '>
             <ul className='border-transparent nav nav-stretch nav-line-tabs nav-line-tabs-2x fs-5 fw-bolder flex-nowrap'>

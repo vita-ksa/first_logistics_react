@@ -1,18 +1,29 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components'
 import {ContentItem} from './contentItem'
 import {Content} from './contentItem/Theme'
 import {useLocales} from 'hooks'
 import {useSelector} from 'react-redux'
 import {isEmpty} from 'lodash'
+import {Loader} from 'components/loader'
+import {useDispatch} from 'react-redux'
+import {ordersAPI} from 'services/apis'
 
 export const DelevaryCompany = () => {
   const {Trans} = useLocales()
-  const {deliveryCompanyList} = useSelector((state: any) => {
+  const dispatch = useDispatch()
+  const {deliveryCompanyList, loading} = useSelector((state: any) => {
     return {
       deliveryCompanyList: state.deliveryCompanyList?.entities?.deliveryCompany,
+      loading: state.deliveryCompanyList?.loading,
     }
   })
+
+  useEffect(() => {
+    return () => {
+      dispatch(ordersAPI.getDeliveryCompanyListSlice.actions.resetAction())
+    }
+  }, [])
 
   return (
     <div>
@@ -28,6 +39,10 @@ export const DelevaryCompany = () => {
               <ContentItem key={item.id} {...{data: item}} />
             ))}
           </Content>
+        ) : loading ? (
+          <div className='flex justify-center w-full '>
+            <Loader width={'30px'} height={'30px'} />
+          </div>
         ) : (
           <div
             style={{fontWeight: 700, fontSize: 20}}

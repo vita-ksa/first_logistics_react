@@ -26,16 +26,21 @@ export const ContentItem = ({data}: any) => {
         </>
         <InfoBody>
           <span>{capitalize(data?.name)}</span>
-          <div className='mt-auto ml-auto fv-row'>
-            {/* <label className='form-check form-check-inline' > */}
-            <input
-              value={data?.id}
-              className='form-check-input'
-              type='radio'
-              id={data?.id}
-              {...methods.register('deliveryCompanyId', {required: 'this is requerd'})}
-            />
-            {/* </label> */}
+          <span>price : {data?.data?.price}</span>
+          <div className='flex justify-between items-center w-full'>
+            <span>{data?.data?.deliveryPeriod}</span>
+
+            <div className='mt-auto ml-auto fv-row'>
+              {/* <label className='form-check form-check-inline' > */}
+              <input
+                value={data?.id}
+                className='form-check-input'
+                type='radio'
+                id={data?.id}
+                {...methods.register('deliveryCompanyId', {required: 'this is requerd'})}
+              />
+              {/* </label> */}
+            </div>
           </div>
         </InfoBody>
       </Wrap>
